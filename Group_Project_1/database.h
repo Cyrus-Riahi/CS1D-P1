@@ -11,7 +11,7 @@ public:
     void addToDatabase();
 
 private:
-    Database();         // private constructor so it cannot be accessed
+    Database();         // private constructor so it cannot be accessed publicly
     static Database* instance;
 };
 
