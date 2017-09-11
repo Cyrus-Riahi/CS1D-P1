@@ -1,2 +1,5 @@
 *.debug
 build*
+.qmake*
+Makefil*
+debug/

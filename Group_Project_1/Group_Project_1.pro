@@ -25,9 +25,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    database.cpp
+    database.cpp \
+    routetracker.cpp
 
 HEADERS  += mainwindow.h \
-    database.h
+    database.h \
+    routetracker.h \
+    collegestovisit.h
 
 FORMS    += mainwindow.ui
