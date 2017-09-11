@@ -1,5 +1,6 @@
 *.debug
 build*
-.qmake*
 Makefil*
 debug/
+.qma*
+*.o
