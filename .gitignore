@@ -4,3 +4,4 @@ Makefil*
 debug/
 .qma*
 *.o
+*.user
