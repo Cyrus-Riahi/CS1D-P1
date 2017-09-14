@@ -23,7 +23,6 @@ void routeTracker(QString schoolName,           // Name of school that gets pass
         totalMiles += closestSchool->distance;
 
         // Calls the function again
-//        qDebug() << "closest school: "<< closestSchoolName;
         routeTracker(closestSchoolName, --numOfSchoolsVisiting, totalMiles, collegesToVisit);
     }
 }
