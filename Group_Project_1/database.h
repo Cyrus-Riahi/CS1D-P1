@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QPair>
 #include <QDebug>
+#include <QSqlQueryModel>
 
 
 // Our database is a singleton because we dont want accidental copies
@@ -15,6 +16,8 @@ public:
     void addToDatabase();
     college* getClosestSchool(QString schoolName,
                           QVector<college*> collegesToVisit);
+
+//    QSqlQueryModel* souvenirModel(Qstring schoolName);
 
 
 private:

@@ -226,6 +226,9 @@ debug/moc_mainwindow.cpp: C:/Qt/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQueryModel \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		mainwindow.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.8/mingw53_32/bin/moc.exe
@@ -369,6 +372,9 @@ debug/main.o: main.cpp mainwindow.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQueryModel \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/5.8/mingw53_32/include/QtWidgets/QApplication \
 		C:/Qt/5.8/mingw53_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -495,6 +501,9 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQueryModel \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
@@ -570,6 +579,9 @@ debug/database.o: database.cpp database.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQueryModel \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QFileInfo \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qfileinfo.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qfile.h \
@@ -648,7 +660,10 @@ debug/routetracker.o: routetracker.cpp routetracker.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qset.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qcontiguouscache.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h
+		C:/Qt/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQueryModel \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquerymodel.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\routetracker.o routetracker.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 

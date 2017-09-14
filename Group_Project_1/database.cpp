@@ -72,3 +72,8 @@ college* Database::getClosestSchool(QString schoolName,
     collegesToVisit[index]->visited = true;
     return collegesToVisit[index];
 }
+
+//QSqlQueryModel* Database::souvenirModel(Qstring schoolName){
+//    QSqlQueryModel* model = new QSqlQueryModel;
+
+//}
