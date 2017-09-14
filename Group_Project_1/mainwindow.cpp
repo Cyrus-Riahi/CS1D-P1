@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,9 +10,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     Database::getInstance();
 
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_CB_School_Souvenirs_currentIndexChanged(const QString &arg1)
+{
+
 }

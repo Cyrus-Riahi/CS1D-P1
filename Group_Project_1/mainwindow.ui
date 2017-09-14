@@ -27,7 +27,7 @@
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>1</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="tripPlannerTab">
         <attribute name="title">
@@ -63,6 +63,66 @@
         <attribute name="title">
          <string>Souvenirs</string>
         </attribute>
+        <widget class="QComboBox" name="CB_School_Souvenirs">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>161</width>
+           <height>22</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Saddleback</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of Michigan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UCI (University of California Irvine)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>UCLA (University of California, Los Angelas)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of Oregon</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of Texas</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of the Pacific</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of Wisconsin</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QTableView" name="souvenirTable">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>10</y>
+           <width>256</width>
+           <height>192</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </widget>
      </item>
