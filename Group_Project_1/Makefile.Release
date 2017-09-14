@@ -217,19 +217,19 @@ release/moc_mainwindow.cpp: C:/Qt/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		routetracker.h \
 		database.h \
 		collegestovisit.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlDatabase \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqldatabase.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qtsqlglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
 		mainwindow.h \
 		release/moc_predefs.h \
 		C:/Qt/5.8/mingw53_32/bin/moc.exe
-	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/erice/OneDrive/Documents/GitHub/CS1D-Group-Project-1/Group_Project_1 -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtSql -IC:/Qt/5.8/mingw53_32/include/QtCore -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include release/moc_predefs.h -IC:/Qt/5.8/mingw53_32/mkspecs/win32-g++ -IC:/Users/Sean/Desktop/CS1D-Group-Project-1/Group_Project_1 -IC:/Qt/5.8/mingw53_32/include -IC:/Qt/5.8/mingw53_32/include/QtWidgets -IC:/Qt/5.8/mingw53_32/include/QtGui -IC:/Qt/5.8/mingw53_32/include/QtANGLE -IC:/Qt/5.8/mingw53_32/include/QtSql -IC:/Qt/5.8/mingw53_32/include/QtCore -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward mainwindow.h -o release\moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -360,13 +360,13 @@ release/main.o: main.cpp mainwindow.h \
 		routetracker.h \
 		database.h \
 		collegestovisit.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlDatabase \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqldatabase.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qtsqlglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
 		C:/Qt/5.8/mingw53_32/include/QtWidgets/QApplication \
@@ -486,13 +486,13 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		routetracker.h \
 		database.h \
 		collegestovisit.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlDatabase \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqldatabase.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qtsqlglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQuery \
 		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
 		ui_mainwindow.h \
@@ -538,9 +538,9 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 
 release/database.o: database.cpp database.h \
 		collegestovisit.h \
-		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlDatabase \
-		C:/Qt/5.8/mingw53_32/include/QtSql/qsqldatabase.h \
-		C:/Qt/5.8/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qchar.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qconfig.h \
@@ -563,16 +563,11 @@ release/database.o: database.cpp database.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qmutex.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qnumeric.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qversiontagging.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qstring.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qchar.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qbytearray.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qrefcount.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qarraydata.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qstringbuilder.h \
-		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQuery \
-		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qvector.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qalgorithms.h \
@@ -585,6 +580,11 @@ release/database.o: database.cpp database.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qregexp.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qstringmatcher.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qpoint.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qdebug.h \
@@ -617,9 +617,9 @@ release/database.o: database.cpp database.h \
 release/routetracker.o: routetracker.cpp routetracker.h \
 		database.h \
 		collegestovisit.h \
-		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlDatabase \
-		C:/Qt/5.8/mingw53_32/include/QtSql/qsqldatabase.h \
-		C:/Qt/5.8/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/5.8/mingw53_32/include/QtCore/qchar.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qglobal.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qconfig.h \
@@ -642,16 +642,11 @@ release/routetracker.o: routetracker.cpp routetracker.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qmutex.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qnumeric.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qversiontagging.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qstring.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/qchar.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qbytearray.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qrefcount.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qarraydata.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qstringbuilder.h \
-		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQuery \
-		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
-		C:/Qt/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QVector \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qvector.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qalgorithms.h \
@@ -664,6 +659,11 @@ release/routetracker.o: routetracker.cpp routetracker.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qregexp.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qstringmatcher.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qpoint.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlDatabase \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqldatabase.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qtsqlglobal.h \
+		C:/Qt/5.8/mingw53_32/include/QtSql/QSqlQuery \
+		C:/Qt/5.8/mingw53_32/include/QtSql/qsqlquery.h \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QPair \
 		C:/Qt/5.8/mingw53_32/include/QtCore/QDebug \
 		C:/Qt/5.8/mingw53_32/include/QtCore/qdebug.h \
