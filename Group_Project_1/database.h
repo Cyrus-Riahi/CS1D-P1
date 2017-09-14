@@ -13,7 +13,6 @@ class Database: public QSqlDatabase
 public:
     static Database* getInstance();
     void addToDatabase();
-    QString getClosestSchool(QString schoolName);
     college* getClosestSchool(QString schoolName,
                           QVector<college*> collegesToVisit);
 

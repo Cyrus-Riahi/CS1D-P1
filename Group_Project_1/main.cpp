@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
         while(query.next())
         {
             collegesToVisit.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toInt()));
-//            qDebug() << query.value(0).toString() << " to " << query.value(1).toString() << " " << query.value(2).toInt();
         }
     }
 

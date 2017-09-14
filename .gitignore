@@ -1,7 +1,7 @@
 *.debug
 build*
-Makefil*
 debug/
 .qma*
 *.o
 *.user
+*.cpp.autosave
