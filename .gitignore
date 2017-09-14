@@ -4,4 +4,4 @@ debug/
 .qma*
 *.o
 *.user
-*.cpp.autosave
+*.autosave
