@@ -22,8 +22,11 @@ int main(int argc, char *argv[])
         }
     }
 
-    int totalMiles = 0;
-    routeTracker("University of the Pacific", 10, totalMiles, collegesToVisit);
+    int totalMiles;
+    totalMiles= 0;
+    QString testString = "University of the Pacific";
+    int numOfTrips = 10;
+    routeTracker(testString, numOfTrips, totalMiles, collegesToVisit);
 
     return a.exec();
 }
