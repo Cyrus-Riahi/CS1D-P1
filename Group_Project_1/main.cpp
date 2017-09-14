@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     }
 
     int totalMiles = 0;
-    routeTracker("University of the Pacific", 10, totalMiles, collegesToVisit);
+//    routeTracker("University of the Pacific", 10, totalMiles, collegesToVisit);
 
     return a.exec();
 }

@@ -2,10 +2,8 @@
 
 void routeTracker(QString schoolName,           // Name of school that gets passed in
                   int numOfSchoolsVisiting,     // Total number of schools visiting
-                  int & totalMiles,              // Total mileage of the trip
-                  QVector<college*> collegesToVisit) {// Vector of schools we are visiting that contains:
-                                                // first: string which is the school name
-                                                // second: bool which is true if the school has been visited
+                  int &totalMiles,              // Total mileage of the trip
+                  QVector<college*> collegesToVisit) {// Vector of schools we are visiting
     // Our database
     Database *DB = Database::getInstance();
 
