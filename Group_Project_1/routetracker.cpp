@@ -2,7 +2,7 @@
 
 void routeTracker(QString schoolName,           // Name of school that gets passed in
                   int numOfSchoolsVisiting,     // Total number of schools visiting
-                  int &totalMiles,              // Total mileage of the trip
+                  int & totalMiles,              // Total mileage of the trip
                   QVector<college*> collegesToVisit) {// Vector of schools we are visiting
     // Our database
     Database *DB = Database::getInstance();
@@ -23,7 +23,7 @@ void routeTracker(QString schoolName,           // Name of school that gets pass
         totalMiles += closestSchool->distance;
 
         // Calls the function again
-        qDebug() << "closest school: "<< closestSchoolName;
+//        qDebug() << "closest school: "<< closestSchoolName;
         routeTracker(closestSchoolName, --numOfSchoolsVisiting, totalMiles, collegesToVisit);
     }
 }

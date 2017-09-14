@@ -1,5 +1,5 @@
 build*
-*/debug/*
+debug/
 .qma*
 *.o
 *.user
