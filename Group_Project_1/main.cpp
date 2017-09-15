@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
     int totalMiles;
     totalMiles= 0;
-    QString testString = "Saddleback";
+    QString testString = "Saddleback College";
     int numOfTrips = 10;
     routeTracker(testString, numOfTrips, totalMiles, collegesToVisit);
 
