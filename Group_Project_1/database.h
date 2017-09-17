@@ -6,7 +6,7 @@
 #include <QPair>
 #include <QDebug>
 #include <QSqlQueryModel>
-
+#include <math.h>
 
 // Our database is a singleton because we dont want accidental copies
 class Database: public QSqlDatabase
@@ -16,6 +16,7 @@ public:
     void addToDatabase();
     college* getClosestSchool(QString schoolName,
                           QVector<college*> collegesToVisit);
+    int getNumSchools();
 
 //    QSqlQueryModel* souvenirModel(Qstring schoolName);
 

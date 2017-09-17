@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>495</width>
-    <height>280</height>
+    <width>813</width>
+    <height>398</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,15 +19,21 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>491</width>
-      <height>231</height>
+      <width>811</width>
+      <height>341</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabWidget">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>1</number>
        </property>
        <widget class="QWidget" name="tripPlannerTab">
         <attribute name="title">
@@ -38,25 +44,135 @@
         <attribute name="title">
          <string>Distance Tracker</string>
         </attribute>
-        <widget class="QComboBox" name="comboBox">
+        <widget class="QComboBox" name="CB_Distance_Tracker">
          <property name="geometry">
           <rect>
-           <x>50</x>
-           <y>30</y>
-           <width>55</width>
+           <x>10</x>
+           <y>10</y>
+           <width>271</width>
            <height>22</height>
           </rect>
          </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="currentText">
+          <string>Select A School</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>Select A School</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Arizona State University</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Massachusetts Institute of Technology (MIT)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Northwestern</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Ohio State University</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Saddleback College</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of  Michigan</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of California, Irvine (UCI)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of California, Los Angeles (UCLA)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of Oregon</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of the Pacific</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>University of Wisconsin</string>
+          </property>
+         </item>
         </widget>
-        <widget class="QTableView" name="tableView">
+        <widget class="QTableWidget" name="tableWidget2">
          <property name="geometry">
           <rect>
-           <x>200</x>
+           <x>290</x>
            <y>10</y>
-           <width>256</width>
-           <height>192</height>
+           <width>501</width>
+           <height>301</height>
           </rect>
          </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="showDropIndicator" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="dragDropOverwriteMode">
+          <bool>false</bool>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="rowCount">
+          <number>0</number>
+         </property>
+         <property name="columnCount">
+          <number>2</number>
+         </property>
+         <attribute name="horizontalHeaderCascadingSectionResizes">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>120</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>50</number>
+         </attribute>
+         <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <column/>
+         <column/>
         </widget>
        </widget>
        <widget class="QWidget" name="souvenirsTab">
@@ -134,8 +250,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>495</width>
-     <height>17</height>
+     <width>813</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -151,5 +267,22 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>CB_Distance_Tracker</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>tableWidget2</receiver>
+   <slot>clearContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>164</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>302</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

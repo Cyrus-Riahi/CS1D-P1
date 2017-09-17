@@ -21,6 +21,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -35,8 +36,8 @@ public:
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
     QWidget *distanceTrackerTab;
-    QComboBox *comboBox;
-    QTableView *tableView;
+    QComboBox *CB_Distance_Tracker;
+    QTableWidget *tableWidget2;
     QWidget *souvenirsTab;
     QComboBox *CB_School_Souvenirs;
     QTableView *souvenirTable;
@@ -48,12 +49,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(495, 280);
+        MainWindow->resize(813, 398);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 0, 491, 231));
+        gridLayoutWidget->setGeometry(QRect(0, 0, 811, 341));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
@@ -61,17 +62,35 @@ public:
         gridLayout->setContentsMargins(0, 0, 0, 0);
         tabWidget = new QTabWidget(gridLayoutWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setMaximumSize(QSize(16777215, 16777215));
         tripPlannerTab = new QWidget();
         tripPlannerTab->setObjectName(QStringLiteral("tripPlannerTab"));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
-        comboBox = new QComboBox(distanceTrackerTab);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
-        comboBox->setGeometry(QRect(50, 30, 55, 22));
-        tableView = new QTableView(distanceTrackerTab);
-        tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(200, 10, 256, 192));
+        CB_Distance_Tracker = new QComboBox(distanceTrackerTab);
+        CB_Distance_Tracker->setObjectName(QStringLiteral("CB_Distance_Tracker"));
+        CB_Distance_Tracker->setGeometry(QRect(10, 10, 271, 22));
+        CB_Distance_Tracker->setEditable(false);
+        tableWidget2 = new QTableWidget(distanceTrackerTab);
+        if (tableWidget2->columnCount() < 2)
+            tableWidget2->setColumnCount(2);
+        tableWidget2->setObjectName(QStringLiteral("tableWidget2"));
+        tableWidget2->setGeometry(QRect(290, 10, 501, 301));
+        tableWidget2->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        tableWidget2->setProperty("showDropIndicator", QVariant(false));
+        tableWidget2->setDragDropOverwriteMode(false);
+        tableWidget2->setAlternatingRowColors(true);
+        tableWidget2->setSelectionMode(QAbstractItemView::SingleSelection);
+        tableWidget2->setSortingEnabled(true);
+        tableWidget2->setRowCount(0);
+        tableWidget2->setColumnCount(2);
+        tableWidget2->horizontalHeader()->setCascadingSectionResizes(false);
+        tableWidget2->horizontalHeader()->setDefaultSectionSize(120);
+        tableWidget2->horizontalHeader()->setMinimumSectionSize(50);
+        tableWidget2->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
+        tableWidget2->horizontalHeader()->setStretchLastSection(false);
+        tableWidget2->verticalHeader()->setVisible(false);
         tabWidget->addTab(distanceTrackerTab, QString());
         souvenirsTab = new QWidget();
         souvenirsTab->setObjectName(QStringLiteral("souvenirsTab"));
@@ -88,7 +107,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 495, 17));
+        menuBar->setGeometry(QRect(0, 0, 813, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -98,8 +117,9 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
+        QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -109,6 +129,22 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
+        CB_Distance_Tracker->clear();
+        CB_Distance_Tracker->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Select A School", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Arizona State University", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Massachusetts Institute of Technology (MIT)", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Northwestern", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Ohio State University", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Saddleback College", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "University of  Michigan", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "University of California, Irvine (UCI)", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "University of California, Los Angeles (UCLA)", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "University of Oregon", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "University of the Pacific", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "University of Wisconsin", Q_NULLPTR)
+        );
+        CB_Distance_Tracker->setCurrentText(QApplication::translate("MainWindow", "Select A School", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));
         CB_School_Souvenirs->clear();
         CB_School_Souvenirs->insertItems(0, QStringList()

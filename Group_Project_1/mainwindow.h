@@ -19,6 +19,8 @@ public:
 private slots:
     void on_CB_School_Souvenirs_currentIndexChanged(const QString &arg1);
 
+    void on_CB_Distance_Tracker_currentTextChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 };

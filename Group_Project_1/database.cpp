@@ -1,5 +1,7 @@
 #include "database.h"
 #include <QFileInfo>
+#include <QSqlError>
+#include <math.h>
 
 // This ensures that our database is a singleton.
 // We only need one copy of the database
@@ -71,6 +73,20 @@ college* Database::getClosestSchool(QString schoolName,
     }
     collegesToVisit[index]->visited = true;
     return collegesToVisit[index];
+}
+
+int Database::getNumSchools()
+{
+    QSqlQuery qry;
+    if(qry.exec("select count(*) from College_Campus_Distances;"))
+    {
+        return (ceil(sqrt(qry.value(0).toInt())));
+    }
+    else
+    {
+        qDebug() << "Error = " << this->lastError().text();
+        return 0;
+    }
 }
 
 //QSqlQueryModel* Database::souvenirModel(Qstring schoolName){
