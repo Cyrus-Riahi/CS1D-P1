@@ -30,13 +30,14 @@ ui_*.h
 *.jsc
 Makefile*
 *build-*
+*.stash
 
 # Qt unit tests
 
 target_wrapper.*
 
 # QtCreator
-
+*.exe
 *.autosave
 
 # QtCtreator Qml

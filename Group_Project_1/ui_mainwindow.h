@@ -20,7 +20,6 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTableView>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -40,7 +39,7 @@ public:
     QTableWidget *tableWidget2;
     QWidget *souvenirsTab;
     QComboBox *CB_School_Souvenirs;
-    QTableView *souvenirTable;
+    QTableWidget *souvenirTable;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -96,10 +95,28 @@ public:
         souvenirsTab->setObjectName(QStringLiteral("souvenirsTab"));
         CB_School_Souvenirs = new QComboBox(souvenirsTab);
         CB_School_Souvenirs->setObjectName(QStringLiteral("CB_School_Souvenirs"));
-        CB_School_Souvenirs->setGeometry(QRect(10, 10, 161, 22));
-        souvenirTable = new QTableView(souvenirsTab);
+        CB_School_Souvenirs->setGeometry(QRect(10, 10, 271, 22));
+        souvenirTable = new QTableWidget(souvenirsTab);
+        if (souvenirTable->columnCount() < 3)
+            souvenirTable->setColumnCount(3);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        souvenirTable->setHorizontalHeaderItem(0, __qtablewidgetitem);
         souvenirTable->setObjectName(QStringLiteral("souvenirTable"));
-        souvenirTable->setGeometry(QRect(210, 10, 256, 192));
+        souvenirTable->setGeometry(QRect(290, 10, 501, 301));
+        souvenirTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        souvenirTable->setProperty("showDropIndicator", QVariant(false));
+        souvenirTable->setDragDropOverwriteMode(false);
+        souvenirTable->setAlternatingRowColors(true);
+        souvenirTable->setSelectionMode(QAbstractItemView::SingleSelection);
+        souvenirTable->setSortingEnabled(true);
+        souvenirTable->setRowCount(0);
+        souvenirTable->setColumnCount(3);
+        souvenirTable->horizontalHeader()->setCascadingSectionResizes(false);
+        souvenirTable->horizontalHeader()->setDefaultSectionSize(120);
+        souvenirTable->horizontalHeader()->setMinimumSectionSize(50);
+        souvenirTable->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
+        souvenirTable->horizontalHeader()->setStretchLastSection(false);
+        souvenirTable->verticalHeader()->setVisible(false);
         tabWidget->addTab(souvenirsTab, QString());
 
         gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
@@ -119,7 +136,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -129,34 +146,10 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
-        CB_Distance_Tracker->clear();
-        CB_Distance_Tracker->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "Select A School", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Arizona State University", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Massachusetts Institute of Technology (MIT)", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Northwestern", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Ohio State University", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Saddleback College", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of  Michigan", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of California, Irvine (UCI)", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of California, Los Angeles (UCLA)", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of Oregon", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of the Pacific", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of Wisconsin", Q_NULLPTR)
-        );
-        CB_Distance_Tracker->setCurrentText(QApplication::translate("MainWindow", "Select A School", Q_NULLPTR));
+        CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));
-        CB_School_Souvenirs->clear();
-        CB_School_Souvenirs->insertItems(0, QStringList()
-         << QApplication::translate("MainWindow", "Saddleback", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of Michigan", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "UCI (University of California Irvine)", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "UCLA (University of California, Los Angelas)", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of Oregon", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of Texas", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of the Pacific", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "University of Wisconsin", Q_NULLPTR)
-        );
+        QTableWidgetItem *___qtablewidgetitem = souvenirTable->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(souvenirsTab), QApplication::translate("MainWindow", "Souvenirs", Q_NULLPTR));
     } // retranslateUi
 

@@ -31,6 +31,7 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     database.h \
     routetracker.h \
-    collegestovisit.h
+    collegestovisit.h \
+    souvenir.h
 
 FORMS    += mainwindow.ui

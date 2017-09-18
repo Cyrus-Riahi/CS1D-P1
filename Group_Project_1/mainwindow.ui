@@ -33,7 +33,7 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="tripPlannerTab">
         <attribute name="title">
@@ -57,68 +57,8 @@
           <bool>false</bool>
          </property>
          <property name="currentText">
-          <string>Select A School</string>
+          <string/>
          </property>
-         <item>
-          <property name="text">
-           <string>Select A School</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Arizona State University</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Massachusetts Institute of Technology (MIT)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Northwestern</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Ohio State University</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Saddleback College</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of  Michigan</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of California, Irvine (UCI)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of California, Los Angeles (UCLA)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of Oregon</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of the Pacific</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of Wisconsin</string>
-          </property>
-         </item>
         </widget>
         <widget class="QTableWidget" name="tableWidget2">
          <property name="geometry">
@@ -184,60 +124,69 @@
           <rect>
            <x>10</x>
            <y>10</y>
-           <width>161</width>
+           <width>271</width>
            <height>22</height>
           </rect>
          </property>
-         <item>
-          <property name="text">
-           <string>Saddleback</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of Michigan</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>UCI (University of California Irvine)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>UCLA (University of California, Los Angelas)</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of Oregon</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of Texas</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of the Pacific</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>University of Wisconsin</string>
-          </property>
-         </item>
         </widget>
-        <widget class="QTableView" name="souvenirTable">
+        <widget class="QTableWidget" name="souvenirTable">
          <property name="geometry">
           <rect>
-           <x>210</x>
+           <x>290</x>
            <y>10</y>
-           <width>256</width>
-           <height>192</height>
+           <width>501</width>
+           <height>301</height>
           </rect>
          </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="showDropIndicator" stdset="0">
+          <bool>false</bool>
+         </property>
+         <property name="dragDropOverwriteMode">
+          <bool>false</bool>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="rowCount">
+          <number>0</number>
+         </property>
+         <property name="columnCount">
+          <number>3</number>
+         </property>
+         <attribute name="horizontalHeaderCascadingSectionResizes">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>120</number>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>50</number>
+         </attribute>
+         <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>1</string>
+          </property>
+         </column>
+         <column/>
+         <column/>
         </widget>
        </widget>
       </widget>

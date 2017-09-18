@@ -21,6 +21,10 @@ private slots:
 
     void on_CB_Distance_Tracker_currentTextChanged(const QString &arg1);
 
+    void populate_CD_Distance_Tracker_Combo_Box();
+
+    void populate_CD_School_Souvenirs_Combo_Box();
+
 private:
     Ui::MainWindow *ui;
 };
