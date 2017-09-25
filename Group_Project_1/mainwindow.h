@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "routetracker.h"
+#include "souvenir.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +25,8 @@ private slots:
     void populate_CD_Distance_Tracker_Combo_Box();
 
     void populate_CD_School_Souvenirs_Combo_Box();
+
+    void on_backToLoginButton_clicked();
 
 private:
     Ui::MainWindow *ui;

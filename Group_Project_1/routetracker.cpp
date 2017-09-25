@@ -10,8 +10,6 @@ void routeTracker(QString schoolName,           // Name of school that gets pass
     // Closest school in comparison to schoolName
     college* closestSchool = DB->getClosestSchool(schoolName, collegesToVisit);
 
-    qDebug() << "From " << closestSchool->startingCollege << " to " << closestSchool->endingCollege << " is " << closestSchool->distance;
-
     QString closestSchoolName = closestSchool->endingCollege;
     // Base Case
     if(numOfSchoolsVisiting == 0)

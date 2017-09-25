@@ -18,6 +18,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
@@ -34,6 +35,7 @@ public:
     QGridLayout *gridLayout;
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
+    QPushButton *backToLoginButton;
     QWidget *distanceTrackerTab;
     QComboBox *CB_Distance_Tracker;
     QTableWidget *tableWidget2;
@@ -64,6 +66,9 @@ public:
         tabWidget->setMaximumSize(QSize(16777215, 16777215));
         tripPlannerTab = new QWidget();
         tripPlannerTab->setObjectName(QStringLiteral("tripPlannerTab"));
+        backToLoginButton = new QPushButton(tripPlannerTab);
+        backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
+        backToLoginButton->setGeometry(QRect(210, 270, 75, 23));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -136,7 +141,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -145,6 +150,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
         CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));

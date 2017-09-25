@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "souvenir.h"
+#include "windowholder.h"
 #include <QDebug>
 #include <QTableWidget>
 #include <QHeaderView>
@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //ui->tableWidget2 = new QTableWidget(0, 2);
     QStringList labels;
     labels << tr("Destination") << tr("Distance");
     ui->tableWidget2->setHorizontalHeaderLabels(labels);
@@ -29,6 +28,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->souvenirTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
 
+//    connect(&l, SIGNAL(l.isUser()), this, SLOT(show()));
+//    l.show();
+//    this->hide();
+
+//    l.isUser();
 
     Database *DB = Database::getInstance();
     this->populate_CD_Distance_Tracker_Combo_Box();
@@ -208,4 +212,11 @@ void MainWindow::on_CB_Distance_Tracker_currentTextChanged(const QString &arg1)
 
     }
 
+}
+
+void MainWindow::on_backToLoginButton_clicked()
+{
+    windowHolder* WH = windowHolder::getInstance();
+    WH->MainWindowHide();
+    WH->LoginWindowShow();
 }

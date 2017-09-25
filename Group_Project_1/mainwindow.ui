@@ -33,12 +33,25 @@
         </size>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tripPlannerTab">
         <attribute name="title">
          <string>Trip Planner</string>
         </attribute>
+        <widget class="QPushButton" name="backToLoginButton">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>270</y>
+           <width>75</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Back to Login</string>
+         </property>
+        </widget>
        </widget>
        <widget class="QWidget" name="distanceTrackerTab">
         <attribute name="title">
