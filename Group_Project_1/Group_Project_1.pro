@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     routetracker.cpp \
     loginwindow.cpp \
     windowholder.cpp \
-    adminwindow.cpp
+    adminwindow.cpp \
+    createloginwindow.cpp
 
 HEADERS  += mainwindow.h \
     database.h \
@@ -38,8 +39,10 @@ HEADERS  += mainwindow.h \
     souvenir.h \
     loginwindow.h \
     windowholder.h \
-    adminwindow.h
+    adminwindow.h \
+    createloginwindow.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
-    adminwindow.ui
+    adminwindow.ui \
+    createloginwindow.ui

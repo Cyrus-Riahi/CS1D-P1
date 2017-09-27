@@ -12,12 +12,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     QStringList labels;
-    labels << tr("Destination") << tr("Distance");
+    labels << "Destination" << "Distance (miles)";
     ui->tableWidget2->setHorizontalHeaderLabels(labels);
     ui->tableWidget2->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Interactive);
     ui->tableWidget2->verticalHeader()->hide();
     ui->tableWidget2->setShowGrid(false);
     ui->tableWidget2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->tableWidget2->setSortingEnabled(false);
 
     QStringList labels2;
     labels2 << "School" << "Souvenir" << "Price";
@@ -27,19 +28,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->souvenirTable->setShowGrid(false);
     ui->souvenirTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-
-//    connect(&l, SIGNAL(l.isUser()), this, SLOT(show()));
-//    l.show();
-//    this->hide();
-
-//    l.isUser();
-
     Database *DB = Database::getInstance();
     this->populate_CD_Distance_Tracker_Combo_Box();
     this->populate_CD_School_Souvenirs_Combo_Box();
-
-
-
 }
 
 MainWindow::~MainWindow()
@@ -166,48 +157,66 @@ void MainWindow::on_CB_Distance_Tracker_currentTextChanged(const QString &arg1)
     QSqlQuery query;
     query.prepare("PRAGMA foreign_keys = ON");
 
-    if (query.exec("SELECT * FROM College_Campus_Distances"))
-    {
-        while(query.next())
-        {
-            collegesList.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toInt()));
-        }
-    }
+//    if (query.exec("SELECT * FROM College_Campus_Distances"))
+//    {
+//        while(query.next())
+//        {
+//            collegesList.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toInt()));
+//            // "SELECT EndingCollege, Distance FROM College_Campus_Distance WHERE StartingCollege = \"schoolName\""
+//        }
+//    }
+
+    // qDebug() << ui->CB_Distance_Tracker->currentText();
+
+
 
 
     if(ui->CB_Distance_Tracker->currentText()!="Select A School")
     {
-
-        int numSchools = ceil(sqrt(collegesList.size()));
-
-        int currentSchoolIndex = -1;
-        // int row = ui->tableWidget2->rowCount();
-
-
-        // Watch this for out of bounds
-        for(int i = 0; i < collegesList.size(); i+=(numSchools-1))
+        QString schoolName = ui->CB_Distance_Tracker->currentText();
+        query.prepare("SELECT EndingCollege, Distance FROM College_Campus_Distances WHERE StartingCollege = :schoolName"
+                      " ORDER BY Distance ASC");
+        query.bindValue(0, schoolName);
+        if (query.exec())
         {
-            if(ui->CB_Distance_Tracker->currentText() == collegesList[i]->startingCollege)
+            while(query.next())
             {
-                currentSchoolIndex = i;
-                break;
+                collegesList.push_back(new college(schoolName, query.value(0).toString(), false, query.value(1).toInt()));
             }
         }
 
-        if(currentSchoolIndex < 0)
-        {
-            qDebug() << "NOT FOUND?? Shouldn't be a thing";
-        }
-        else
-        {
+
+        int numSchools = collegesList.size();/*ceil(sqrt(collegesList.size()));*/
+
+//        int currentSchoolIndex = -1;
+//        // int row = ui->tableWidget2->rowCount();
+
+
+//        // Watch this for out of bounds
+//        for(int i = 0; i < collegesList.size(); i+=(numSchools-1))
+//        {
+//            if(ui->CB_Distance_Tracker->currentText() == collegesList[i]->startingCollege)
+//            {
+//                currentSchoolIndex = i;
+//                break;
+//            }
+//        }
+
+//        if(currentSchoolIndex < 0)
+//        {
+//            qDebug() << "NOT FOUND?? Shouldn't be a thing";
+//        }
+//        else
+//        {
             ui->tableWidget2->setRowCount(0);
-            for(int i = 0; i < (numSchools-1); i++)
+            for(int i = 0; i < (numSchools); i++)
             {
                 ui->tableWidget2->insertRow(i);
-                ui->tableWidget2->setItem(i, 0, new QTableWidgetItem(collegesList[currentSchoolIndex + i]->endingCollege));
-                ui->tableWidget2->setItem(i, 1, new QTableWidgetItem(QString::number(collegesList[currentSchoolIndex + i]->distance)));
+                ui->tableWidget2->setItem(i, 0, new QTableWidgetItem(collegesList[i]->endingCollege));
+                ui->tableWidget2->setItem(i, 1, new QTableWidgetItem(QString::number(collegesList[i]->distance)));
+//                qDebug() << collegesList[currentSchoolIndex + i]->distance;
             }
-        }
+//        }
 
 
     }

@@ -1,5 +1,6 @@
 #include "loginwindow.h"
 #include "adminwindow.h"
+#include "createloginwindow.h"
 #ifndef WINDOWHOLDER_H
 #define WINDOWHOLDER_H
 
@@ -33,6 +34,15 @@ public:
     {
         admin.show();
     }
+    void CreateWindowHide()
+    {
+        create.hide();
+    }
+    void CreateWindowShow()
+    {
+        create.show();
+    }
+
 
 
 
@@ -42,6 +52,7 @@ private:
     MainWindow main;
     loginWindow login;
     adminWindow admin;
+    CreateLoginWindow create;
 };
 
 #endif // WINDOWHOLDER_H

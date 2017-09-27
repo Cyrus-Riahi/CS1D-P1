@@ -64,3 +64,10 @@ bool loginWindow::isUser()
     return this->user;
 }
 
+
+void loginWindow::on_pushButton_clicked()
+{
+    windowHolder* WH = windowHolder::getInstance();
+    WH->LoginWindowHide();
+    WH->CreateWindowShow();
+}

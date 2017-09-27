@@ -31,7 +31,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QWidget *gridLayoutWidget;
+    QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
@@ -50,18 +50,17 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(813, 398);
+        MainWindow->resize(896, 475);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        gridLayoutWidget = new QWidget(centralWidget);
-        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 0, 811, 341));
-        gridLayout = new QGridLayout(gridLayoutWidget);
+        gridLayout_2 = new QGridLayout(centralWidget);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        tabWidget = new QTabWidget(gridLayoutWidget);
+        tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setMaximumSize(QSize(16777215, 16777215));
         tripPlannerTab = new QWidget();
@@ -69,6 +68,8 @@ public:
         backToLoginButton = new QPushButton(tripPlannerTab);
         backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
         backToLoginButton->setGeometry(QRect(210, 270, 75, 23));
+        backToLoginButton->setAutoFillBackground(false);
+        backToLoginButton->setFlat(false);
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -80,7 +81,7 @@ public:
         if (tableWidget2->columnCount() < 2)
             tableWidget2->setColumnCount(2);
         tableWidget2->setObjectName(QStringLiteral("tableWidget2"));
-        tableWidget2->setGeometry(QRect(290, 10, 501, 301));
+        tableWidget2->setGeometry(QRect(290, 10, 571, 361));
         tableWidget2->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tableWidget2->setProperty("showDropIndicator", QVariant(false));
         tableWidget2->setDragDropOverwriteMode(false);
@@ -126,10 +127,13 @@ public:
 
         gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
 
+
+        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 813, 21));
+        menuBar->setGeometry(QRect(0, 0, 896, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -141,7 +145,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
