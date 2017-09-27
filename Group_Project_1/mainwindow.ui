@@ -26,7 +26,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="tripPlannerTab">
          <attribute name="title">
@@ -146,8 +146,8 @@
            <rect>
             <x>290</x>
             <y>10</y>
-            <width>501</width>
-            <height>301</height>
+            <width>571</width>
+            <height>361</height>
            </rect>
           </property>
           <property name="editTriggers">

@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget2->setSortingEnabled(false);
 
+
     QStringList labels2;
     labels2 << "School" << "Souvenir" << "Price";
     ui->souvenirTable->setHorizontalHeaderLabels(labels2);
@@ -31,6 +32,9 @@ MainWindow::MainWindow(QWidget *parent) :
     Database *DB = Database::getInstance();
     this->populate_CD_Distance_Tracker_Combo_Box();
     this->populate_CD_School_Souvenirs_Combo_Box();
+
+
+    ui->tabWidget->setCurrentIndex(0);
 }
 
 MainWindow::~MainWindow()
@@ -174,8 +178,7 @@ void MainWindow::on_CB_Distance_Tracker_currentTextChanged(const QString &arg1)
     if(ui->CB_Distance_Tracker->currentText()!="Select A School")
     {
         QString schoolName = ui->CB_Distance_Tracker->currentText();
-        query.prepare("SELECT EndingCollege, Distance FROM College_Campus_Distances WHERE StartingCollege = :schoolName"
-                      " ORDER BY Distance ASC");
+        query.prepare("SELECT EndingCollege, Distance FROM College_Campus_Distances WHERE StartingCollege = :schoolName ORDER BY Distance ASC");
         query.bindValue(0, schoolName);
         if (query.exec())
         {
@@ -214,7 +217,6 @@ void MainWindow::on_CB_Distance_Tracker_currentTextChanged(const QString &arg1)
                 ui->tableWidget2->insertRow(i);
                 ui->tableWidget2->setItem(i, 0, new QTableWidgetItem(collegesList[i]->endingCollege));
                 ui->tableWidget2->setItem(i, 1, new QTableWidgetItem(QString::number(collegesList[i]->distance)));
-//                qDebug() << collegesList[currentSchoolIndex + i]->distance;
             }
 //        }
 

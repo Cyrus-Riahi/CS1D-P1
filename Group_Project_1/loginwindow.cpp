@@ -64,10 +64,56 @@ bool loginWindow::isUser()
     return this->user;
 }
 
+void loginWindow::on_passwordLineEdit_returnPressed()
+{
+    if(ui->usernameLineEdit->text() == "user")
+    {
+        windowHolder* WH = windowHolder::getInstance();
+        WH->LoginWindowHide();
+        WH->MainWindowShow();
+    }
+    else if(ui->usernameLineEdit->text() == "admin" &&
+            ui->passwordLineEdit->text() == "password" )
+    {
+        windowHolder* WH = windowHolder::getInstance();
+        WH->LoginWindowHide();
+        WH->AdminWindowShow();
+    }
+    else
+    {
+        QMessageBox::critical(this, "ERROR", "Incorrect login information!");
+    }
+    ui->usernameLineEdit->clear();
+    ui->passwordLineEdit->clear();
+}
 
-void loginWindow::on_pushButton_clicked()
+void loginWindow::on_usernameLineEdit_returnPressed()
+{
+    if(ui->usernameLineEdit->text() == "user")
+    {
+        windowHolder* WH = windowHolder::getInstance();
+        WH->LoginWindowHide();
+        WH->MainWindowShow();
+    }
+    else if(ui->usernameLineEdit->text() == "admin" &&
+            ui->passwordLineEdit->text() == "password" )
+    {
+        windowHolder* WH = windowHolder::getInstance();
+        WH->LoginWindowHide();
+        WH->AdminWindowShow();
+    }
+    else
+    {
+        QMessageBox::critical(this, "ERROR", "Incorrect login information!");
+    }
+    ui->usernameLineEdit->clear();
+    ui->passwordLineEdit->clear();
+}
+
+void loginWindow::on_createLoginButton_clicked()
 {
     windowHolder* WH = windowHolder::getInstance();
     WH->LoginWindowHide();
     WH->CreateWindowShow();
+
 }

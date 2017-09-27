@@ -24,7 +24,11 @@ public:
 private slots:
     void on_loginButton_clicked();
 
-    void on_pushButton_clicked();
+    void on_passwordLineEdit_returnPressed();
+
+    void on_usernameLineEdit_returnPressed();
+
+    void on_createLoginButton_clicked();
 
 private:
     Ui::loginWindow *ui;

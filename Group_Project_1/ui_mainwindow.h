@@ -108,7 +108,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
         souvenirTable->setHorizontalHeaderItem(0, __qtablewidgetitem);
         souvenirTable->setObjectName(QStringLiteral("souvenirTable"));
-        souvenirTable->setGeometry(QRect(290, 10, 501, 301));
+        souvenirTable->setGeometry(QRect(290, 10, 571, 361));
         souvenirTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
         souvenirTable->setProperty("showDropIndicator", QVariant(false));
         souvenirTable->setDragDropOverwriteMode(false);
@@ -145,7 +145,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

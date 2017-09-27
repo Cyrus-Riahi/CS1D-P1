@@ -16,4 +16,5 @@ windowHolder::windowHolder()
     main.setWindowTitle("Route Tracker");
     login.setWindowTitle("Route Tracker");
     admin.setWindowTitle("Route Tracker(Admin)");
+    create.setWindowTitle("Create a Login");
 }
