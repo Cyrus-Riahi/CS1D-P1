@@ -3,15 +3,19 @@
 #include <QSqlError>
 #include <math.h>
 
-// This ensures that our database is a singleton.
-// We only need one copy of the database
+/*! \fn Database::instance
+ * This ensures that our database is a singleton.
+ * We only need one copy of the database */
 Database* Database::instance = nullptr;
 
-//This is our private constructor
+/*! \fn Database::Database
+ * //This is our private constructor
+ * This ensures that our database is a singleton.
+ * We only need one copy of the database */
 Database::Database() : QSqlDatabase(addDatabase("QSQLITE"))
 {
-    this->setDatabaseName("./Database/SchoolTrips.db");// add the path to the Database inside quotes
-    QFileInfo existingDatabaseInfo("./Database/SchoolTrips.db");// add th path to the Database inside quotes
+    this->setDatabaseName("./Database/SchoolTrips.db");/*! \brief add the path to the Database inside quotes*/
+    QFileInfo existingDatabaseInfo("./Database/SchoolTrips.db");/*! \brief add th path to the Database inside quotes*/
 
     if(existingDatabaseInfo.exists()){
         qDebug() << "Database file is open.\n";
@@ -23,26 +27,29 @@ Database::Database() : QSqlDatabase(addDatabase("QSQLITE"))
         qDebug() << "Database file is not open.\n";
     }
 }
-
-// This returns the instance as a singleton pattern
+/*! Database* Database::getInstance(){
+ * \fn This returns the instance as a singleton pattern */
 Database* Database::getInstance(){
-    if(instance == nullptr)     //if the instance is still a nullptr
+    if(instance == nullptr)     /*! \brief if the instance is still a nullptr*/
     {
-        instance = new Database;// create a new instance
+        instance = new Database;/*! \brief create a new instance*/
     }
-    return instance; // if the instance exists, it'll return a copy of the isntance
-    // Or if the new instance has been made, it will return that
+    return instance; /*! \brief if the instance exists, it'll return a copy of the isntance
+    // Or if the new instance has been made, it will return that*/
 }
 
-// This function returns the name of the school thats closest and
-// and the distance to it. It also does check to see if the school has already
-// been visited to.
+/*! \fn college* Database::getClosestSchool(QString schoolName,
+ *                                     QVector<college *> collegesToVisit)
+ * This function returns the name of the school thats closest and
+ * and the distance to it. It also does check to see if the school has already
+ * been visited to. */
 college* Database::getClosestSchool(QString schoolName,
                                     QVector<college *> collegesToVisit)
 {
-    int smallestDistance = collegesToVisit[81]->distance;
+    int smallestDistance = collegesToVisit[81]->distance; /*! \brief Sets smallest distance to largest distance....*/
     bool found = false;
 
+    /*! \brief This loop finds the smallest distance from the school name passed in*/
     for(int i = 0 ; i < collegesToVisit.size(); i++)
     {
         if(schoolName == collegesToVisit[i]->endingCollege)
@@ -58,6 +65,7 @@ college* Database::getClosestSchool(QString schoolName,
         }
     }
 
+    /*! \brief prepares to find the index of the smallest distance*/
     int index = 0;
     while(!found && index < collegesToVisit.size())
     {
@@ -75,6 +83,8 @@ college* Database::getClosestSchool(QString schoolName,
     return collegesToVisit[index];
 }
 
+/*! \fn Database::getNumSchools
+ * \return */
 int Database::getNumSchools()
 {
     QSqlQuery qry;
@@ -88,8 +98,3 @@ int Database::getNumSchools()
         return 0;
     }
 }
-
-//QSqlQueryModel* Database::souvenirModel(Qstring schoolName){
-//    QSqlQueryModel* model = new QSqlQueryModel;
-
-//}

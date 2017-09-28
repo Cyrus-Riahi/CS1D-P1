@@ -4,24 +4,31 @@
 #include <QString>
 #include <QVector>
 
-
+/*!
+ * \class College Class
+ */
 class college
 {
 public:
-    // Default Constructor
+    /*!    \fn Default Constructor*/
+    /*!     * \fn college*/
+    /*!     * \param start*/
+    /*!     * \param end*/
+    /*!     * \param boolean*/
+    /*!     * \param int num*/
     college(QString start, QString end, bool boolean, int num)
     {
-        startingCollege = start; // Assigns the starting college
-        endingCollege = end;     // Assigns the ending college
-        visited = boolean;       // Assigns false to visited
-        distance = num;          // Assigns the distance from starting college to ending college
+        startingCollege = start; /*! \brief Assigns the starting college*/
+        endingCollege = end;     /*! \brief Assigns the ending college*/
+        visited = boolean;       /*! \brief Assigns false to visited*/
+        distance = num;          /*! \brief Assigns the distance from starting college to ending college*/
     }
 
     // VARIABLE DECLARATION
-    QString startingCollege;
-    QString endingCollege;
-    bool visited;
-    int distance;
+    QString startingCollege;//! \var QString of our starting college
+    QString endingCollege;  //! \var QString of our ending college
+    bool visited;           //! \var bool of whether the school has been visited
+    int distance;           //! \var int of the distance between colleges
 };
 
 #endif // COLLEGESTOVISIT_H

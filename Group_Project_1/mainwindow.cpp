@@ -5,12 +5,16 @@
 #include <QTableWidget>
 #include <QHeaderView>
 
+/*! \fn MainWindow::MainWindow
+ * \param parent */
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
+    /*! \brief labels
+     * This sets up the Distance table in the user window*/
     QStringList labels;
     labels << "Destination" << "Distance (miles)";
     ui->tableWidget2->setHorizontalHeaderLabels(labels);
@@ -20,7 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget2->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget2->setSortingEnabled(false);
 
-
+    /*! \brief labels2
+     * This sets up the souvenir table in the user window*/
     QStringList labels2;
     labels2 << "School" << "Souvenir" << "Price";
     ui->souvenirTable->setHorizontalHeaderLabels(labels2);
@@ -29,19 +34,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->souvenirTable->setShowGrid(false);
     ui->souvenirTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
+    /*! \brief DB
+     * This populates the drop down boxes for each user window*/
     Database *DB = Database::getInstance();
     this->populate_CD_Distance_Tracker_Combo_Box();
     this->populate_CD_School_Souvenirs_Combo_Box();
 
-
     ui->tabWidget->setCurrentIndex(0);
 }
 
+/*! \fn MainWindow::~MainWindow */
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+/*! \fn MainWindow::on_CB_School_Souvenirs_currentIndexChanged
+ * \param arg1 */
 void MainWindow::on_CB_School_Souvenirs_currentIndexChanged(const QString &arg1)
 {
     QVector<souvenir*> souvenirsList;
@@ -72,6 +81,8 @@ void MainWindow::on_CB_School_Souvenirs_currentIndexChanged(const QString &arg1)
 }
 
 // This function populates the drop down box for School Souvenirs
+/*! \fn MainWindow::populate_CD_School_Souvenirs_Combo_Box
+ * This function populates the drop down box for School Souvenirs */
 void MainWindow::populate_CD_School_Souvenirs_Combo_Box()
 {
     QVector<souvenir*> souvenirsList;
@@ -114,7 +125,9 @@ void MainWindow::populate_CD_School_Souvenirs_Combo_Box()
 }
 
 
-// This function populates the drop down box for Distance Tracker
+/*! \fn MainWindow::populate_CD_Distance_Tracker_Combo_Box
+ * This function populates the drop down box for Distance Tracker
+ */
 void MainWindow::populate_CD_Distance_Tracker_Combo_Box()
 {
     QVector<college*> collegesList;
@@ -155,25 +168,13 @@ void MainWindow::populate_CD_Distance_Tracker_Combo_Box()
 
 }
 
+/*! \fn MainWindow::on_CB_Distance_Tracker_currentTextChanged
+ * \param arg1 */
 void MainWindow::on_CB_Distance_Tracker_currentTextChanged(const QString &arg1)
 {
     QVector<college*> collegesList;
     QSqlQuery query;
     query.prepare("PRAGMA foreign_keys = ON");
-
-//    if (query.exec("SELECT * FROM College_Campus_Distances"))
-//    {
-//        while(query.next())
-//        {
-//            collegesList.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toInt()));
-//            // "SELECT EndingCollege, Distance FROM College_Campus_Distance WHERE StartingCollege = \"schoolName\""
-//        }
-//    }
-
-    // qDebug() << ui->CB_Distance_Tracker->currentText();
-
-
-
 
     if(ui->CB_Distance_Tracker->currentText()!="Select A School")
     {
@@ -191,40 +192,20 @@ void MainWindow::on_CB_Distance_Tracker_currentTextChanged(const QString &arg1)
 
         int numSchools = collegesList.size();/*ceil(sqrt(collegesList.size()));*/
 
-//        int currentSchoolIndex = -1;
-//        // int row = ui->tableWidget2->rowCount();
-
-
-//        // Watch this for out of bounds
-//        for(int i = 0; i < collegesList.size(); i+=(numSchools-1))
-//        {
-//            if(ui->CB_Distance_Tracker->currentText() == collegesList[i]->startingCollege)
-//            {
-//                currentSchoolIndex = i;
-//                break;
-//            }
-//        }
-
-//        if(currentSchoolIndex < 0)
-//        {
-//            qDebug() << "NOT FOUND?? Shouldn't be a thing";
-//        }
-//        else
-//        {
-            ui->tableWidget2->setRowCount(0);
-            for(int i = 0; i < (numSchools); i++)
-            {
-                ui->tableWidget2->insertRow(i);
-                ui->tableWidget2->setItem(i, 0, new QTableWidgetItem(collegesList[i]->endingCollege));
-                ui->tableWidget2->setItem(i, 1, new QTableWidgetItem(QString::number(collegesList[i]->distance)));
-            }
-//        }
+        ui->tableWidget2->setRowCount(0);
+        for(int i = 0; i < (numSchools); i++)
+        {
+            ui->tableWidget2->insertRow(i);
+            ui->tableWidget2->setItem(i, 0, new QTableWidgetItem(collegesList[i]->endingCollege));
+            ui->tableWidget2->setItem(i, 1, new QTableWidgetItem(QString::number(collegesList[i]->distance)));
+        }
 
 
     }
 
 }
 
+/*! \fn MainWindow::on_backToLoginButton_clicked */
 void MainWindow::on_backToLoginButton_clicked()
 {
     windowHolder* WH = windowHolder::getInstance();

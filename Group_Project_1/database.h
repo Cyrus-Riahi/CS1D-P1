@@ -8,21 +8,39 @@
 #include <QSqlQueryModel>
 #include <math.h>
 
-// Our database is a singleton because we dont want accidental copies
+
+/*! \class Database
+ *  Our database is a singleton because we dont want accidental copies
+ */
 class Database: public QSqlDatabase
 {
 public:
+    /*! * \fn getInstance*/
+    /*! * \return*/
     static Database* getInstance();
+
+    /*! * \fn addToDatabase*/
     void addToDatabase();
+
+    /*! * \fn getClosestSchool*/
+    /*! * \param schoolName*/
+    /*! * \param collegesToVisit*/
+    /*! * \return*/
     college* getClosestSchool(QString schoolName,
                           QVector<college*> collegesToVisit);
+
+    /*! * \fn getNumSchools*/
+    /*! * \return*/
     int getNumSchools();
 
-//    QSqlQueryModel* souvenirModel(Qstring schoolName);
-
-
 private:
-    Database();         // private constructor so it cannot be accessed publicly
+    /*!  \fn Database*/
+    /*!  private constructor so it cannot be accessed publicly
+    */
+    Database();
+    /*! * \var instance*/
+    /*!  static variable of our singleton instance
+     */
     static Database* instance;
 };
 

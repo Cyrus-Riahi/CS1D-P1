@@ -1,0 +1,6 @@
+<map id="QMainWindow" name="QMainWindow">
+<area shape="rect" id="node2" href="$classadmin_window.html" title="{adminWindow\n||+ adminWindow()\l+ ~adminWindow()\l}" alt="" coords="5,131,136,223"/>
+<area shape="rect" id="node3" href="$class_create_login_window.html" title="{CreateLoginWindow\n||+ CreateLoginWindow()\l+ ~CreateLoginWindow()\l}" alt="" coords="160,131,325,223"/>
+<area shape="rect" id="node4" href="$classlogin_window.html" title="{loginWindow\n||+ loginWindow()\l+ ~loginWindow()\l}" alt="" coords="349,131,472,223"/>
+<area shape="rect" id="node5" href="$class_main_window.html" title="{MainWindow\n||+ MainWindow()\l+ ~MainWindow()\l}" alt="" coords="497,131,621,223"/>
+</map>
