@@ -16,6 +16,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -36,6 +37,7 @@ public:
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
     QPushButton *backToLoginButton;
+    QLabel *label;
     QWidget *distanceTrackerTab;
     QComboBox *CB_Distance_Tracker;
     QTableWidget *tableWidget2;
@@ -67,9 +69,13 @@ public:
         tripPlannerTab->setObjectName(QStringLiteral("tripPlannerTab"));
         backToLoginButton = new QPushButton(tripPlannerTab);
         backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
-        backToLoginButton->setGeometry(QRect(210, 270, 75, 23));
+        backToLoginButton->setGeometry(QRect(0, 360, 75, 23));
         backToLoginButton->setAutoFillBackground(false);
         backToLoginButton->setFlat(false);
+        label = new QLabel(tripPlannerTab);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(40, 10, 681, 351));
+        label->setPixmap(QPixmap(QString::fromUtf8("../../../../../Desktop/mspaint_2017-10-01_19-33-07.png")));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -145,7 +151,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -155,6 +161,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
+        label->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
         CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));
