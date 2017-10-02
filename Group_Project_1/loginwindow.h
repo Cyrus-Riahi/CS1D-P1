@@ -2,6 +2,10 @@
 #define LOGINWINDOW_H
 
 #include "mainwindow.h"
+#include "account.h"
+#include <QSqlQuery>
+#include <QVariant>
+#include <QVector>
 #include <QMainWindow>
 
 /*! \namespace UI
@@ -34,6 +38,10 @@ private slots:
 
     /*! * \fn on_createLoginButton_clicked*/
     void on_createLoginButton_clicked();
+
+    QVector<Account*> loadAccounts();
+
+    bool validateUserLogin(QVector<Account*> accounts, QString username, QString password);
 
 private:
     /*! * \var ui*/

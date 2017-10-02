@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     windowholder.cpp \
     adminwindow.cpp \
     createloginwindow.cpp \
-    keywindow.cpp
+    keywindow.cpp \
+    account.cpp
 
 HEADERS  += mainwindow.h \
     database.h \
@@ -41,7 +42,8 @@ HEADERS  += mainwindow.h \
     windowholder.h \
     adminwindow.h \
     createloginwindow.h \
-    keywindow.h
+    keywindow.h \
+    account.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
