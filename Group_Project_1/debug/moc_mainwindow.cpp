@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[30];
-    char stringdata0[672];
+    QByteArrayData data[31];
+    char stringdata0[693];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -61,7 +61,8 @@ QT_MOC_LITERAL(25, 523, 38), // "on_UniversityOfWisconsinButto..."
 QT_MOC_LITERAL(26, 562, 29), // "on_NorthwesternButton_clicked"
 QT_MOC_LITERAL(27, 592, 37), // "on_UniversityOfMichiganButton..."
 QT_MOC_LITERAL(28, 630, 20), // "on_MITButton_clicked"
-QT_MOC_LITERAL(29, 651, 20) // "on_OSUButton_clicked"
+QT_MOC_LITERAL(29, 651, 20), // "on_OSUButton_clicked"
+QT_MOC_LITERAL(30, 672, 20) // "on_keyButton_clicked"
 
     },
     "MainWindow\0on_CB_School_Souvenirs_currentIndexChanged\0"
@@ -80,7 +81,8 @@ QT_MOC_LITERAL(29, 651, 20) // "on_OSUButton_clicked"
     "on_UniversityOfWisconsinButton_clicked\0"
     "on_NorthwesternButton_clicked\0"
     "on_UniversityOfMichiganButton_clicked\0"
-    "on_MITButton_clicked\0on_OSUButton_clicked"
+    "on_MITButton_clicked\0on_OSUButton_clicked\0"
+    "on_keyButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -90,7 +92,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -98,25 +100,26 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,  109,    2, 0x08 /* Private */,
-       4,    1,  112,    2, 0x08 /* Private */,
-       5,    0,  115,    2, 0x08 /* Private */,
-       6,    0,  116,    2, 0x08 /* Private */,
-       7,    0,  117,    2, 0x08 /* Private */,
-       8,    0,  118,    2, 0x08 /* Private */,
-       9,    1,  119,    2, 0x08 /* Private */,
-      12,    0,  122,    2, 0x08 /* Private */,
-      13,    0,  123,    2, 0x08 /* Private */,
-      14,    0,  124,    2, 0x08 /* Private */,
-      15,    4,  125,    2, 0x08 /* Private */,
-      22,    0,  134,    2, 0x08 /* Private */,
-      23,    0,  135,    2, 0x08 /* Private */,
-      24,    0,  136,    2, 0x08 /* Private */,
-      25,    0,  137,    2, 0x08 /* Private */,
-      26,    0,  138,    2, 0x08 /* Private */,
-      27,    0,  139,    2, 0x08 /* Private */,
-      28,    0,  140,    2, 0x08 /* Private */,
-      29,    0,  141,    2, 0x08 /* Private */,
+       1,    1,  114,    2, 0x08 /* Private */,
+       4,    1,  117,    2, 0x08 /* Private */,
+       5,    0,  120,    2, 0x08 /* Private */,
+       6,    0,  121,    2, 0x08 /* Private */,
+       7,    0,  122,    2, 0x08 /* Private */,
+       8,    0,  123,    2, 0x08 /* Private */,
+       9,    1,  124,    2, 0x08 /* Private */,
+      12,    0,  127,    2, 0x08 /* Private */,
+      13,    0,  128,    2, 0x08 /* Private */,
+      14,    0,  129,    2, 0x08 /* Private */,
+      15,    4,  130,    2, 0x08 /* Private */,
+      22,    0,  139,    2, 0x08 /* Private */,
+      23,    0,  140,    2, 0x08 /* Private */,
+      24,    0,  141,    2, 0x08 /* Private */,
+      25,    0,  142,    2, 0x08 /* Private */,
+      26,    0,  143,    2, 0x08 /* Private */,
+      27,    0,  144,    2, 0x08 /* Private */,
+      28,    0,  145,    2, 0x08 /* Private */,
+      29,    0,  146,    2, 0x08 /* Private */,
+      30,    0,  147,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -130,6 +133,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::Int, 0x80000000 | 18, 0x80000000 | 20,   16,   17,   19,   21,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -167,6 +171,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 16: _t->on_UniversityOfMichiganButton_clicked(); break;
         case 17: _t->on_MITButton_clicked(); break;
         case 18: _t->on_OSUButton_clicked(); break;
+        case 19: _t->on_keyButton_clicked(); break;
         default: ;
         }
     }
@@ -197,13 +202,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 20;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 19)
+        if (_id < 20)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 19;
+        _id -= 20;
     }
     return _id;
 }

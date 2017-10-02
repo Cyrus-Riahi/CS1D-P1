@@ -1,6 +1,7 @@
 #include "loginwindow.h"
 #include "adminwindow.h"
 #include "createloginwindow.h"
+#include "keywindow.h"
 #ifndef WINDOWHOLDER_H
 #define WINDOWHOLDER_H
 
@@ -45,6 +46,7 @@ public:
     /*! \fn AdminWindowShow*/
     void AdminWindowShow()
     {
+        admin.hideGroupBoxes();
         admin.show();
     }
 
@@ -60,6 +62,16 @@ public:
         create.show();
     }
 
+    void keyWindowHide()
+    {
+        key.hide();
+    }
+
+    void keyWindowShow()
+    {
+        key.show();
+    }
+
 private:
     windowHolder();                 /*! \var constructor of our singleton*/
     static windowHolder* instance;  /*! \var static instance of the singleton*/
@@ -67,6 +79,7 @@ private:
     loginWindow login;              /*! \var login window*/
     adminWindow admin;              /*! \var admin window*/
     CreateLoginWindow create;       /*! \var create a login window*/
+    keyWindow key;                  /*! \var key window*/
 };
 
 #endif // WINDOWHOLDER_H

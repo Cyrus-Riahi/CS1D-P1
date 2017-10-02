@@ -54,6 +54,7 @@ public:
     QPushButton *UniversityOfMichiganButton;
     QPushButton *OSUButton;
     QPushButton *MITButton;
+    QPushButton *keyButton;
     QWidget *distanceTrackerTab;
     QComboBox *CB_Distance_Tracker;
     QTableWidget *tableWidget2;
@@ -132,7 +133,7 @@ public:
 " min-height:10px;"));
         automaticRouteTrackingCheckBox = new QCheckBox(tripPlannerTab);
         automaticRouteTrackingCheckBox->setObjectName(QStringLiteral("automaticRouteTrackingCheckBox"));
-        automaticRouteTrackingCheckBox->setGeometry(QRect(670, 10, 151, 17));
+        automaticRouteTrackingCheckBox->setGeometry(QRect(660, 10, 151, 17));
         TotalMilesLabel = new QLabel(tripPlannerTab);
         TotalMilesLabel->setObjectName(QStringLiteral("TotalMilesLabel"));
         TotalMilesLabel->setGeometry(QRect(660, 350, 111, 16));
@@ -232,6 +233,9 @@ public:
 " max-height:10px;\n"
 " min-width:10px;\n"
 " min-height:10px;"));
+        keyButton = new QPushButton(tripPlannerTab);
+        keyButton->setObjectName(QStringLiteral("keyButton"));
+        keyButton->setGeometry(QRect(780, 350, 75, 23));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -331,6 +335,7 @@ public:
         UniversityOfMichiganButton->setText(QApplication::translate("MainWindow", "9", Q_NULLPTR));
         OSUButton->setText(QApplication::translate("MainWindow", "10", Q_NULLPTR));
         MITButton->setText(QApplication::translate("MainWindow", "11", Q_NULLPTR));
+        keyButton->setText(QApplication::translate("MainWindow", "Key", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
         CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));

@@ -149,7 +149,7 @@
          <widget class="QCheckBox" name="automaticRouteTrackingCheckBox">
           <property name="geometry">
            <rect>
-            <x>670</x>
+            <x>660</x>
             <y>10</y>
             <width>151</width>
             <height>17</height>
@@ -362,6 +362,19 @@
           </property>
           <property name="text">
            <string>11</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="keyButton">
+          <property name="geometry">
+           <rect>
+            <x>780</x>
+            <y>350</y>
+            <width>75</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Key</string>
           </property>
          </widget>
         </widget>

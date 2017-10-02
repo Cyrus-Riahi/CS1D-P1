@@ -26,11 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     database.cpp \
-    routetracker.cpp \
     loginwindow.cpp \
     windowholder.cpp \
     adminwindow.cpp \
-    createloginwindow.cpp
+    createloginwindow.cpp \
+    keywindow.cpp
 
 HEADERS  += mainwindow.h \
     database.h \
@@ -40,9 +40,11 @@ HEADERS  += mainwindow.h \
     loginwindow.h \
     windowholder.h \
     adminwindow.h \
-    createloginwindow.h
+    createloginwindow.h \
+    keywindow.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
     adminwindow.ui \
-    createloginwindow.ui
+    createloginwindow.ui \
+    keywindow.ui

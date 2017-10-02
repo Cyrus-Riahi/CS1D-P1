@@ -92,6 +92,7 @@ void MainWindow::on_CB_School_Souvenirs_currentIndexChanged(const QString &arg1)
  * This function populates the drop down box for School Souvenirs */
 void MainWindow::populate_CD_School_Souvenirs_Combo_Box()
 {
+    ui->CB_School_Souvenirs->clear();
     QVector<souvenir*> souvenirsList;
     QSqlQuery query;
     query.prepare("PRAGMA foreign_keys = ON");
@@ -137,6 +138,7 @@ void MainWindow::populate_CD_School_Souvenirs_Combo_Box()
  */
 void MainWindow::populate_CD_Distance_Tracker_Combo_Box()
 {
+    ui->CB_Distance_Tracker->clear();
     QVector<college*> collegesList;
     QSqlQuery query;
     query.prepare("PRAGMA foreign_keys = ON");
@@ -249,7 +251,9 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event){
     //    ui->testBrowser->update();
 }
 
-
+/*!
+ * \fn MainWindow::on_SaddlebackButton_clicked
+ */
 void MainWindow::on_SaddlebackButton_clicked()
 {
     int totalMiles = 0;
@@ -268,6 +272,9 @@ void MainWindow::on_SaddlebackButton_clicked()
     qDebug() << "Selected Saddleback College!";
 }
 
+/*!
+ * \fn MainWindow::on_UCIButton_clicked
+ */
 void MainWindow::on_UCIButton_clicked()
 {
     int totalMiles = 0;
@@ -286,6 +293,9 @@ void MainWindow::on_UCIButton_clicked()
     qDebug() << "Selected University of California, Irvine (UCI)!";
 }
 
+/*!
+ * \fn MainWindow::on_UCLAButton_clicked
+ */
 void MainWindow::on_UCLAButton_clicked()
 {
     int totalMiles = 0;
@@ -338,6 +348,9 @@ void MainWindow::routeTracker(QString schoolName,           // Name of school th
     }
 }
 
+/*!
+ * \fn MainWindow::on_UniversityOfPacificButton_clicked
+ */
 void MainWindow::on_UniversityOfPacificButton_clicked()
 {
     int totalMiles = 0;
@@ -356,6 +369,9 @@ void MainWindow::on_UniversityOfPacificButton_clicked()
     qDebug() << "University of the Pacific!";
 }
 
+/*!
+ * \fn MainWindow::on_UniversityOfOregonButton_clicked
+ */
 void MainWindow::on_UniversityOfOregonButton_clicked()
 {
     int totalMiles = 0;
@@ -374,6 +390,9 @@ void MainWindow::on_UniversityOfOregonButton_clicked()
     qDebug() << "University of Oregon!";
 }
 
+/*!
+ * \fn MainWindow::on_ASUButton_clicked
+ */
 void MainWindow::on_ASUButton_clicked()
 {
     int totalMiles = 0;
@@ -393,6 +412,9 @@ void MainWindow::on_ASUButton_clicked()
 
 }
 
+/*!
+ * \fn MainWindow::on_UniversityOfWisconsinButton_clicked
+ */
 void MainWindow::on_UniversityOfWisconsinButton_clicked()
 {
     int totalMiles = 0;
@@ -412,6 +434,9 @@ void MainWindow::on_UniversityOfWisconsinButton_clicked()
 
 }
 
+/*!
+ * \fn MainWindow::on_NorthwesternButton_clicked
+ */
 void MainWindow::on_NorthwesternButton_clicked()
 {
     int totalMiles = 0;
@@ -431,6 +456,9 @@ void MainWindow::on_NorthwesternButton_clicked()
 
 }
 
+/*!
+ * \fn MainWindow::on_UniversityOfMichiganButton_clicked
+ */
 void MainWindow::on_UniversityOfMichiganButton_clicked()
 {
     int totalMiles = 0;
@@ -450,7 +478,9 @@ void MainWindow::on_UniversityOfMichiganButton_clicked()
 
 }
 
-
+/*!
+ * \fn MainWindow::on_MITButton_clicked
+ */
 void MainWindow::on_MITButton_clicked()
 {
     int totalMiles = 0;
@@ -470,6 +500,9 @@ void MainWindow::on_MITButton_clicked()
 
 }
 
+/*!
+ * \fn MainWindow::on_OSUButton_clicked
+ */
 void MainWindow::on_OSUButton_clicked()
 {
     int totalMiles = 0;
@@ -487,4 +520,13 @@ void MainWindow::on_OSUButton_clicked()
     }
     qDebug() << "Ohio State University!";
 
+}
+
+/*!
+ * \fn MainWindow::on_keyButton_clicked
+ */
+void MainWindow::on_keyButton_clicked()
+{
+    windowHolder *WH = windowHolder::getInstance();
+    WH->keyWindowShow();
 }

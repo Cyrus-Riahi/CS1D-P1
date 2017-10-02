@@ -73,6 +73,8 @@ private slots:
 
     void on_OSUButton_clicked();
 
+    void on_keyButton_clicked();
+
 private:
     /*! \var ui*/
     Ui::MainWindow *ui;
