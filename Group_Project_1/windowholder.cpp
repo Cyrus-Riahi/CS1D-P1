@@ -1,16 +1,20 @@
 #include "windowholder.h"
 
+/*! \brief windowHolder::instance */
 windowHolder* windowHolder::instance = nullptr;
 
+/*! \fn windowHolder::getInstance
+ * \return */
 windowHolder *windowHolder::getInstance()
 {
-    if(instance == nullptr)     //if the instance is still a nullptr
+    if(instance == nullptr)     /*! \brief if the instance is still a nullptr*/
     {
-        instance = new windowHolder;// create a new instance
+        instance = new windowHolder;/*! \brief create a new instance*/
     }
-    return instance; // if the instance exists, it'll return a copy of the isntance
+    return instance; /*! \brief if the instance exists, it'll return a copy of the isntance*/
 }
 
+/*! \fn windowHolder::windowHolder */
 windowHolder::windowHolder()
 {
     main.setWindowTitle("Route Tracker");

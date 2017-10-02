@@ -1,0 +1,109 @@
+\hypertarget{class_database}{}\section{Database Class Reference}
+\label{class_database}\index{Database@{Database}}
+
+
+{\ttfamily \#include $<$database.\+h$>$}
+
+
+
+Inheritance diagram for Database\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{class_database__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Database\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{class_database__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_database_a76a9b0363174bdd6c70a052a088cfaf8}\label{class_database_a76a9b0363174bdd6c70a052a088cfaf8}} 
+void {\bfseries add\+To\+Database} ()
+\item 
+\hyperlink{classcollege}{college} $\ast$ \hyperlink{class_database_affe7eb5c35db111e3ff7dc752f5a6c38}{get\+Closest\+School} (Q\+String school\+Name, Q\+Vector$<$ \hyperlink{classcollege}{college} $\ast$$>$ colleges\+To\+Visit)
+\item 
+int \hyperlink{class_database_aa5d167b5300b715844a760ed9d7e223f}{get\+Num\+Schools} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_database}{Database} $\ast$ \hyperlink{class_database_a5a3b028f980a577ea0b809eb92312761}{get\+Instance} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Our database is a singleton because we dont want accidental copies 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_database_affe7eb5c35db111e3ff7dc752f5a6c38}\label{class_database_affe7eb5c35db111e3ff7dc752f5a6c38}} 
+\index{Database@{Database}!get\+Closest\+School@{get\+Closest\+School}}
+\index{get\+Closest\+School@{get\+Closest\+School}!Database@{Database}}
+\subsubsection{\texorpdfstring{get\+Closest\+School()}{getClosestSchool()}}
+{\footnotesize\ttfamily \hyperlink{classcollege}{college} $\ast$ Database\+::get\+Closest\+School (\begin{DoxyParamCaption}\item[{Q\+String}]{school\+Name,  }\item[{Q\+Vector$<$ \hyperlink{classcollege}{college} $\ast$$>$}]{colleges\+To\+Visit }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Parameters}
+{\em school\+Name} & \\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em colleges\+To\+Visit} & \\
+\hline
+\end{DoxyParams}
+
+\item \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+This function returns the name of the school thats closest and and the distance to it. It also does check to see if the school has already been visited to. 
+\end{DoxyItemize}Sets smallest distance to largest distance....
+
+This loop finds the smallest distance from the school name passed in
+
+prepares to find the index of the smallest distance \mbox{\Hypertarget{class_database_a5a3b028f980a577ea0b809eb92312761}\label{class_database_a5a3b028f980a577ea0b809eb92312761}} 
+\index{Database@{Database}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Database@{Database}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily \hyperlink{class_database}{Database} $\ast$ Database\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\end{DoxyItemize}if the instance is still a nullptr
+
+create a new instance
+
+if the instance exists, it\textquotesingle{}ll return a copy of the isntance Or if the new instance has been made, it will return that \mbox{\Hypertarget{class_database_aa5d167b5300b715844a760ed9d7e223f}\label{class_database_aa5d167b5300b715844a760ed9d7e223f}} 
+\index{Database@{Database}!get\+Num\+Schools@{get\+Num\+Schools}}
+\index{get\+Num\+Schools@{get\+Num\+Schools}!Database@{Database}}
+\subsubsection{\texorpdfstring{get\+Num\+Schools()}{getNumSchools()}}
+{\footnotesize\ttfamily int Database\+::get\+Num\+Schools (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyReturn}{Returns}
+
+
+
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+database.\+h\item 
+database.\+cpp\end{DoxyCompactItemize}
