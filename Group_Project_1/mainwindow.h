@@ -1,3 +1,4 @@
+#include <QVector>
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -40,9 +41,43 @@ private slots:
     /*! \fn on_backToLoginButton_clicked*/
     void on_backToLoginButton_clicked();
 
+    void loadCollegesToVisit();
+
+    void mouseMoveEvent(QMouseEvent *event);
+
+    void on_SaddlebackButton_clicked();
+
+    void on_UCIButton_clicked();
+
+    void on_UCLAButton_clicked();
+
+    void routeTracker(QString schoolName,           // Name of school that gets passed in
+                      int numOfSchoolsVisiting,     // Total number of schools visiting
+                      int &totalMiles,              // Total mileage of the trip
+                      QVector<college*> collegesToVisit);// Vector of schools we are visiting
+
+
+    void on_UniversityOfPacificButton_clicked();
+
+    void on_UniversityOfOregonButton_clicked();
+
+    void on_ASUButton_clicked();
+
+    void on_UniversityOfWisconsinButton_clicked();
+
+    void on_NorthwesternButton_clicked();
+
+    void on_UniversityOfMichiganButton_clicked();
+
+    void on_MITButton_clicked();
+
+    void on_OSUButton_clicked();
+
 private:
     /*! \var ui*/
     Ui::MainWindow *ui;
+
+    QVector<college*> colleges;
 };
 
 #endif // MAINWINDOW_H
