@@ -23,6 +23,20 @@ loginWindow::~loginWindow()
 /*! \fn loginWindow::on_loginButton_clicked */
 void loginWindow::on_loginButton_clicked()
 {
+    bool userLogin;
+    QSqlQuery query;
+    query.prepare("SELECT username, userPassword"
+                   "FROM Account"
+                   "WHERE (username = :tempUser) & (userPassword = :tempPassword)");
+    query.bindValue(":tempUser", ui->usernameLineEdit->text());
+    query.bindValue(":tempPassword", ui->passwordLineEdit->text());
+    userLogin = query.exec();
+    if(userLogin){
+        qDebug() << "\nExecuted!\n";
+    }
+    else{
+          qDebug() << "\nNot executing!\n";
+    }
     /*! \brief user login requirements*/
     if(ui->usernameLineEdit->text() == "user")
     {
@@ -37,6 +51,11 @@ void loginWindow::on_loginButton_clicked()
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
         WH->AdminWindowShow();
+    }
+    else if(userLogin){
+        windowHolder* WH = windowHolder::getInstance();
+        WH->LoginWindowHide();
+        WH->MainWindowShow();
     }
     /*! \brief Incorrect login information*/
     else
