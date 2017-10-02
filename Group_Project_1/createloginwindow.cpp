@@ -2,7 +2,10 @@
 #include "ui_createloginwindow.h"
 #include "windowholder.h"
 #include <database.h>
-
+#include <QString>
+#include <QVariant>
+#include <QSqlQuery>
+#include <QSqlError>
 /*! \fn CreateLoginWindow::CreateLoginWindow
  * \param parent */
 CreateLoginWindow::CreateLoginWindow(QWidget *parent) :
@@ -30,22 +33,24 @@ void CreateLoginWindow::on_pushButton_clicked()
 void CreateLoginWindow::on_Enter_clicked()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO Account (firstName, lastName, email, address, states, cardNum, CVV, expMonth, expYear, username, password)"
+    query.prepare("INSERT INTO Account (firstName, lastName, email, address, states, cardNum, CVV, expMonth, expYear, username, userPassword)"
                   "VALUES (:tempFirst, :tempLast, :tempEmail, :tempAddress, :tempState, :tempCard, :tempCVV, :tempMonth, :tempYear, :tempUser, :tempPass)");
+
     query.bindValue(":tempFirst", ui->firstName->text());
     query.bindValue(":tempLast", ui->lastName->text());
     query.bindValue(":tempEmail", ui->email->text());
     query.bindValue(":tempAddress", ui->address->text());
     query.bindValue(":tempState", ui->state->text());
     query.bindValue(":tempCard", ui->cardNum->text());
-    query.bindValue(":tempCVV", ui->CVV->text().toInt());
-    query.bindValue(":tempMonth", ui->month->currentText().toInt());
-    query.bindValue(":tempYear", ui->year->currentText().toInt());
+    query.bindValue(":tempCVV", ui->CVV->text());
+    query.bindValue(":tempMonth", ui->month->currentText());
+    query.bindValue(":tempYear", ui->year->currentText());
     query.bindValue(":tempUser", ui->username->text());
     query.bindValue(":tempPass", ui->password->text());
 
     if(!query.exec()){
         qDebug() << "\nLogin Query Failed to execute!\n";
+        qDebug() << query.lastError();
     }
     else{
         qDebug() << "\nQuery successfully executed!\n";

@@ -5,6 +5,7 @@
 #include "windowholder.h"
 #include <QMessageBox>
 
+
 /*! \fn loginWindow::loginWindow
  * \param parent */
 loginWindow::loginWindow(QWidget *parent) :
@@ -23,22 +24,13 @@ loginWindow::~loginWindow()
 /*! \fn loginWindow::on_loginButton_clicked */
 void loginWindow::on_loginButton_clicked()
 {
-    bool userLogin;
-    QSqlQuery query;
-    query.prepare("SELECT username, userPassword"
-                   "FROM Account"
-                   "WHERE (username = :tempUser) & (userPassword = :tempPassword)");
-    query.bindValue(":tempUser", ui->usernameLineEdit->text());
-    query.bindValue(":tempPassword", ui->passwordLineEdit->text());
-    userLogin = query.exec();
-    if(userLogin){
-        qDebug() << "\nExecuted!\n";
-    }
-    else{
-          qDebug() << "\nNot executing!\n";
-    }
+    QVector<Account*> accounts;
+    accounts = loadAccounts();
+    bool userLogin = validateUserLogin(accounts,
+                                       ui->usernameLineEdit->text(),
+                                       ui->passwordLineEdit->text());
     /*! \brief user login requirements*/
-    if(ui->usernameLineEdit->text() == "user")
+    if(userLogin)
     {
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
@@ -52,11 +44,6 @@ void loginWindow::on_loginButton_clicked()
         WH->LoginWindowHide();
         WH->AdminWindowShow();
     }
-    else if(userLogin){
-        windowHolder* WH = windowHolder::getInstance();
-        WH->LoginWindowHide();
-        WH->MainWindowShow();
-    }
     /*! \brief Incorrect login information*/
     else
     {
@@ -69,8 +56,13 @@ void loginWindow::on_loginButton_clicked()
 /*! \fn loginWindow::on_passwordLineEdit_returnPressed */
 void loginWindow::on_passwordLineEdit_returnPressed()
 {
+    QVector<Account*> accounts;
+    accounts = loadAccounts();
+    bool userLogin = validateUserLogin(accounts,
+                     ui->usernameLineEdit->text(),
+                     ui->passwordLineEdit->text());
     /*! \brief user login requirements*/
-    if(ui->usernameLineEdit->text() == "user")
+    if(userLogin)
     {
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
@@ -96,8 +88,12 @@ void loginWindow::on_passwordLineEdit_returnPressed()
 /*! \fn loginWindow::on_usernameLineEdit_returnPressed */
 void loginWindow::on_usernameLineEdit_returnPressed()
 {
-    /*! \brief user login requirements*/
-    if(ui->usernameLineEdit->text() == "user")
+    QVector<Account*> accounts;
+    accounts = loadAccounts();
+    bool userLogin = validateUserLogin(accounts,
+                                       ui->usernameLineEdit->text(),
+                                       ui->passwordLineEdit->text());
+    if(userLogin)
     {
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
@@ -126,4 +122,44 @@ void loginWindow::on_createLoginButton_clicked()
     windowHolder* WH = windowHolder::getInstance();
     WH->LoginWindowHide();
     WH->CreateWindowShow();
+}
+
+QVector<Account*> loginWindow::loadAccounts(){
+    QVector<Account*> accounts;
+    QSqlQuery query;
+    query.prepare("PRAGMA foreign_keys = ON");
+    if (query.exec("SELECT * FROM Account"))
+    {
+        while(query.next())
+        {
+            accounts.push_back(new Account(query.value(0).toString(),
+                                           query.value(1).toString(),
+                                           query.value(2).toString(),
+                                           query.value(3).toString(),
+                                           query.value(4).toString(),
+                                           query.value(5).toString(),
+                                           query.value(6).toString(),
+                                           query.value(7).toString(),
+                                           query.value(8).toString(),
+                                           query.value(9).toString(),
+                                           query.value(10).toString()));
+        }
+    }
+    return accounts;
+}
+
+bool loginWindow::validateUserLogin(QVector<Account*> accounts,
+                                    QString username,
+                                    QString password){
+    bool found = false;
+    int count = 0;
+    while(count < accounts.size()){
+        if(accounts[count]->getUsername() == username &&
+           accounts[count]->getPassword() == password){
+            found = true;
+
+        }
+        count++;
+    }
+    return found;
 }

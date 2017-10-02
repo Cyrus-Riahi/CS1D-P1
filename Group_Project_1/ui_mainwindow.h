@@ -13,15 +13,18 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -36,6 +39,21 @@ public:
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
     QPushButton *backToLoginButton;
+    QLabel *Us_pixelmap;
+    QTextBrowser *testBrowser;
+    QPushButton *SaddlebackButton;
+    QPushButton *UCIButton;
+    QPushButton *UCLAButton;
+    QCheckBox *automaticRouteTrackingCheckBox;
+    QLabel *TotalMilesLabel;
+    QPushButton *UniversityOfPacificButton;
+    QPushButton *UniversityOfOregonButton;
+    QPushButton *ASUButton;
+    QPushButton *UniversityOfWisconsinButton;
+    QPushButton *NorthwesternButton;
+    QPushButton *UniversityOfMichiganButton;
+    QPushButton *OSUButton;
+    QPushButton *MITButton;
     QWidget *distanceTrackerTab;
     QComboBox *CB_Distance_Tracker;
     QTableWidget *tableWidget2;
@@ -67,9 +85,153 @@ public:
         tripPlannerTab->setObjectName(QStringLiteral("tripPlannerTab"));
         backToLoginButton = new QPushButton(tripPlannerTab);
         backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
-        backToLoginButton->setGeometry(QRect(210, 270, 75, 23));
+        backToLoginButton->setGeometry(QRect(0, 350, 75, 23));
         backToLoginButton->setAutoFillBackground(false);
         backToLoginButton->setFlat(false);
+        Us_pixelmap = new QLabel(tripPlannerTab);
+        Us_pixelmap->setObjectName(QStringLiteral("Us_pixelmap"));
+        Us_pixelmap->setGeometry(QRect(0, 0, 651, 341));
+        testBrowser = new QTextBrowser(tripPlannerTab);
+        testBrowser->setObjectName(QStringLiteral("testBrowser"));
+        testBrowser->setGeometry(QRect(660, 30, 201, 311));
+        SaddlebackButton = new QPushButton(tripPlannerTab);
+        SaddlebackButton->setObjectName(QStringLiteral("SaddlebackButton"));
+        SaddlebackButton->setGeometry(QRect(60, 220, 12, 12));
+        SaddlebackButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        UCIButton = new QPushButton(tripPlannerTab);
+        UCIButton->setObjectName(QStringLiteral("UCIButton"));
+        UCIButton->setGeometry(QRect(50, 210, 12, 12));
+        UCIButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        UCLAButton = new QPushButton(tripPlannerTab);
+        UCLAButton->setObjectName(QStringLiteral("UCLAButton"));
+        UCLAButton->setGeometry(QRect(40, 200, 12, 12));
+        UCLAButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        automaticRouteTrackingCheckBox = new QCheckBox(tripPlannerTab);
+        automaticRouteTrackingCheckBox->setObjectName(QStringLiteral("automaticRouteTrackingCheckBox"));
+        automaticRouteTrackingCheckBox->setGeometry(QRect(670, 10, 151, 17));
+        TotalMilesLabel = new QLabel(tripPlannerTab);
+        TotalMilesLabel->setObjectName(QStringLiteral("TotalMilesLabel"));
+        TotalMilesLabel->setGeometry(QRect(660, 350, 111, 16));
+        UniversityOfPacificButton = new QPushButton(tripPlannerTab);
+        UniversityOfPacificButton->setObjectName(QStringLiteral("UniversityOfPacificButton"));
+        UniversityOfPacificButton->setGeometry(QRect(20, 150, 12, 12));
+        UniversityOfPacificButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        UniversityOfOregonButton = new QPushButton(tripPlannerTab);
+        UniversityOfOregonButton->setObjectName(QStringLiteral("UniversityOfOregonButton"));
+        UniversityOfOregonButton->setGeometry(QRect(30, 70, 12, 12));
+        UniversityOfOregonButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        ASUButton = new QPushButton(tripPlannerTab);
+        ASUButton->setObjectName(QStringLiteral("ASUButton"));
+        ASUButton->setGeometry(QRect(130, 230, 12, 12));
+        ASUButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        UniversityOfWisconsinButton = new QPushButton(tripPlannerTab);
+        UniversityOfWisconsinButton->setObjectName(QStringLiteral("UniversityOfWisconsinButton"));
+        UniversityOfWisconsinButton->setGeometry(QRect(410, 100, 12, 12));
+        UniversityOfWisconsinButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        NorthwesternButton = new QPushButton(tripPlannerTab);
+        NorthwesternButton->setObjectName(QStringLiteral("NorthwesternButton"));
+        NorthwesternButton->setGeometry(QRect(430, 120, 12, 12));
+        NorthwesternButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        UniversityOfMichiganButton = new QPushButton(tripPlannerTab);
+        UniversityOfMichiganButton->setObjectName(QStringLiteral("UniversityOfMichiganButton"));
+        UniversityOfMichiganButton->setGeometry(QRect(470, 100, 12, 12));
+        UniversityOfMichiganButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        OSUButton = new QPushButton(tripPlannerTab);
+        OSUButton->setObjectName(QStringLiteral("OSUButton"));
+        OSUButton->setGeometry(QRect(490, 130, 12, 12));
+        OSUButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
+        MITButton = new QPushButton(tripPlannerTab);
+        MITButton->setObjectName(QStringLiteral("MITButton"));
+        MITButton->setGeometry(QRect(610, 70, 12, 12));
+        MITButton->setStyleSheet(QLatin1String("background-color: white;\n"
+" border-style: solid;\n"
+" border-width:1px;\n"
+" border-radius: 5px;\n"
+" border-color: blue;\n"
+" max-width:10px;\n"
+" max-height:10px;\n"
+" min-width:10px;\n"
+" min-height:10px;"));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -145,7 +307,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -155,6 +317,20 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
+        Us_pixelmap->setText(QString());
+        SaddlebackButton->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
+        UCIButton->setText(QApplication::translate("MainWindow", "2", Q_NULLPTR));
+        UCLAButton->setText(QApplication::translate("MainWindow", "3", Q_NULLPTR));
+        automaticRouteTrackingCheckBox->setText(QApplication::translate("MainWindow", "Automatic Route Tracking", Q_NULLPTR));
+        TotalMilesLabel->setText(QString());
+        UniversityOfPacificButton->setText(QApplication::translate("MainWindow", "4", Q_NULLPTR));
+        UniversityOfOregonButton->setText(QApplication::translate("MainWindow", "5", Q_NULLPTR));
+        ASUButton->setText(QApplication::translate("MainWindow", "6", Q_NULLPTR));
+        UniversityOfWisconsinButton->setText(QApplication::translate("MainWindow", "7", Q_NULLPTR));
+        NorthwesternButton->setText(QApplication::translate("MainWindow", "8", Q_NULLPTR));
+        UniversityOfMichiganButton->setText(QApplication::translate("MainWindow", "9", Q_NULLPTR));
+        OSUButton->setText(QApplication::translate("MainWindow", "10", Q_NULLPTR));
+        MITButton->setText(QApplication::translate("MainWindow", "11", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
         CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));
