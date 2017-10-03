@@ -46,7 +46,13 @@ Database* Database::getInstance(){
 college* Database::getClosestSchool(QString schoolName,
                                     QVector<college *> collegesToVisit)
 {
-    int smallestDistance = collegesToVisit[81]->distance; /*! \brief Sets smallest distance to largest distance....*/
+    QSqlQuery query;
+    query.prepare("SELECT Distance FROM College_Campus_Distances ORDER BY Distance DESC");
+    if(query.exec())
+    {
+        query.next();
+    }
+    int smallestDistance = query.value(0).toInt();
     bool found = false;
 
     /*! \brief This loop finds the smallest distance from the school name passed in*/

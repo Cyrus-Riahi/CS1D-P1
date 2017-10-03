@@ -38,7 +38,6 @@ public:
     QGridLayout *gridLayout;
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
-    QPushButton *backToLoginButton;
     QLabel *Us_pixelmap;
     QTextBrowser *testBrowser;
     QPushButton *SaddlebackButton;
@@ -54,12 +53,14 @@ public:
     QPushButton *UniversityOfMichiganButton;
     QPushButton *OSUButton;
     QPushButton *MITButton;
+    QPushButton *keyButton;
     QWidget *distanceTrackerTab;
     QComboBox *CB_Distance_Tracker;
     QTableWidget *tableWidget2;
     QWidget *souvenirsTab;
     QComboBox *CB_School_Souvenirs;
     QTableWidget *souvenirTable;
+    QPushButton *backToLoginButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -83,11 +84,6 @@ public:
         tabWidget->setMaximumSize(QSize(16777215, 16777215));
         tripPlannerTab = new QWidget();
         tripPlannerTab->setObjectName(QStringLiteral("tripPlannerTab"));
-        backToLoginButton = new QPushButton(tripPlannerTab);
-        backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
-        backToLoginButton->setGeometry(QRect(0, 350, 75, 23));
-        backToLoginButton->setAutoFillBackground(false);
-        backToLoginButton->setFlat(false);
         Us_pixelmap = new QLabel(tripPlannerTab);
         Us_pixelmap->setObjectName(QStringLiteral("Us_pixelmap"));
         Us_pixelmap->setGeometry(QRect(0, 0, 651, 341));
@@ -132,7 +128,7 @@ public:
 " min-height:10px;"));
         automaticRouteTrackingCheckBox = new QCheckBox(tripPlannerTab);
         automaticRouteTrackingCheckBox->setObjectName(QStringLiteral("automaticRouteTrackingCheckBox"));
-        automaticRouteTrackingCheckBox->setGeometry(QRect(670, 10, 151, 17));
+        automaticRouteTrackingCheckBox->setGeometry(QRect(660, 10, 151, 17));
         TotalMilesLabel = new QLabel(tripPlannerTab);
         TotalMilesLabel->setObjectName(QStringLiteral("TotalMilesLabel"));
         TotalMilesLabel->setGeometry(QRect(660, 350, 111, 16));
@@ -232,6 +228,9 @@ public:
 " max-height:10px;\n"
 " min-width:10px;\n"
 " min-height:10px;"));
+        keyButton = new QPushButton(tripPlannerTab);
+        keyButton->setObjectName(QStringLiteral("keyButton"));
+        keyButton->setGeometry(QRect(780, 350, 75, 23));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -292,6 +291,13 @@ public:
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
+        backToLoginButton = new QPushButton(centralWidget);
+        backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
+        backToLoginButton->setAutoFillBackground(false);
+        backToLoginButton->setFlat(false);
+
+        gridLayout_2->addWidget(backToLoginButton, 1, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -316,7 +322,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
         Us_pixelmap->setText(QString());
         SaddlebackButton->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
         UCIButton->setText(QApplication::translate("MainWindow", "2", Q_NULLPTR));
@@ -331,12 +336,14 @@ public:
         UniversityOfMichiganButton->setText(QApplication::translate("MainWindow", "9", Q_NULLPTR));
         OSUButton->setText(QApplication::translate("MainWindow", "10", Q_NULLPTR));
         MITButton->setText(QApplication::translate("MainWindow", "11", Q_NULLPTR));
+        keyButton->setText(QApplication::translate("MainWindow", "Key", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
         CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));
         QTableWidgetItem *___qtablewidgetitem = souvenirTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(souvenirsTab), QApplication::translate("MainWindow", "Souvenirs", Q_NULLPTR));
+        backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
     } // retranslateUi
 
 };
