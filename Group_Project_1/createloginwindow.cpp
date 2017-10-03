@@ -6,6 +6,7 @@
 #include <QVariant>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QMessageBox>
 /*! \fn CreateLoginWindow::CreateLoginWindow
  * \param parent */
 CreateLoginWindow::CreateLoginWindow(QWidget *parent) :
@@ -33,37 +34,54 @@ void CreateLoginWindow::on_pushButton_clicked()
 void CreateLoginWindow::on_Enter_clicked()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO Account (firstName, lastName, email, address, states, cardNum, CVV, expMonth, expYear, username, userPassword)"
-                  "VALUES (:tempFirst, :tempLast, :tempEmail, :tempAddress, :tempState, :tempCard, :tempCVV, :tempMonth, :tempYear, :tempUser, :tempPass)");
+    /* \ToDo Add error checking */
+    if(!validateCreateLogin()){
+        query.prepare("INSERT INTO Account (firstName, lastName, email, address, states, cardNum, CVV, expMonth, expYear, username, userPassword)"
+                      "VALUES (:tempFirst, :tempLast, :tempEmail, :tempAddress, :tempState, :tempCard, :tempCVV, :tempMonth, :tempYear, :tempUser, :tempPass)");
 
-    query.bindValue(":tempFirst", ui->firstName->text());
-    query.bindValue(":tempLast", ui->lastName->text());
-    query.bindValue(":tempEmail", ui->email->text());
-    query.bindValue(":tempAddress", ui->address->text());
-    query.bindValue(":tempState", ui->state->text());
-    query.bindValue(":tempCard", ui->cardNum->text());
-    query.bindValue(":tempCVV", ui->CVV->text());
-    query.bindValue(":tempMonth", ui->month->currentText());
-    query.bindValue(":tempYear", ui->year->currentText());
-    query.bindValue(":tempUser", ui->username->text());
-    query.bindValue(":tempPass", ui->password->text());
+        query.bindValue(":tempFirst", ui->firstName->text());
+        query.bindValue(":tempLast", ui->lastName->text());
+        query.bindValue(":tempEmail", ui->email->text());
+        query.bindValue(":tempAddress", ui->address->text());
+        query.bindValue(":tempState", ui->state->text());
+        query.bindValue(":tempCard", ui->cardNum->text());
+        query.bindValue(":tempCVV", ui->CVV->text());
+        query.bindValue(":tempMonth", ui->month->currentText());
+        query.bindValue(":tempYear", ui->year->currentText());
+        query.bindValue(":tempUser", ui->username->text());
+        query.bindValue(":tempPass", ui->password->text());
 
-    if(!query.exec()){
-        qDebug() << "\nLogin Query Failed to execute!\n";
-        qDebug() << query.lastError();
+        if(!query.exec()){
+            qDebug() << "\nLogin Query Failed to execute!\n";
+            qDebug() << query.lastError();
+        }
+        else{
+            qDebug() << "\nQuery successfully executed!\n";
+        }
+        ui->password->clear();
+        ui->username->clear();
+        ui->firstName->clear();
+        ui->lastName->clear();
+        ui->email->clear();
+        ui->address->clear();
+        ui->state->clear();
+        ui->cardNum->clear();
+        ui->CVV->clear();
+        ui->month->clear();
+        ui->year->clear();
+
+        windowHolder *w = windowHolder::getInstance();
+        w->CreateWindowHide();
+        w->LoginWindowShow();
     }
     else{
-        qDebug() << "\nQuery successfully executed!\n";
+        QMessageBox::critical(this, "ERROR", "Please fill in all infromation before entering!");
     }
-    ui->password->clear();
-    ui->username->clear();
-    ui->firstName->clear();
-    ui->lastName->clear();
-    ui->email->clear();
-    ui->address->clear();
-    ui->state->clear();
-    ui->cardNum->clear();
-    ui->CVV->clear();
-    ui->month->clear();
-    ui->year->clear();
 }
+
+ bool CreateLoginWindow::validateCreateLogin(){
+     return (ui->firstName->text() == "" || ui->lastName->text() == "" || ui->email->text() == "" ||
+             ui->address->text() == "" || ui->state->text() == "" || ui->cardNum->text() == "" ||
+             ui->CVV->text() == "" || ui->month->currentText() == "Month" || ui->year->currentText() == "Year" ||
+             ui->username->text() == "" || ui->password->text() == "");
+ }

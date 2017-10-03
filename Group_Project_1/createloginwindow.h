@@ -30,7 +30,7 @@ private slots:
 
     void on_Enter_clicked();
 
-
+    bool validateCreateLogin();
 private:
     Ui::CreateLoginWindow *ui; /*! \var UI for the create login window*/
 };
