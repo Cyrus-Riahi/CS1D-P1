@@ -76,10 +76,10 @@ void adminWindow::on_backToLoginButton_2_clicked()
 
 void adminWindow::on_addSouvenirButton_clicked()
 {
+    this->populateAddSouvenirCB();
     ui->leftGroupBoxAdd->show();
     ui->rightGroupBoxDelete->hide();
     ui->bottomGroupBoxModify->hide();
-    this->populateAddSouvenirCB();
 }
 
 void adminWindow::hideGroupBoxes()
@@ -171,24 +171,159 @@ void adminWindow::populateSchoolNameDeleteDB()
 
 }
 
+void adminWindow::populateSchoolNameModifyCB()
+{
+    ui->modifySchoolNameComboBox->clear();
+    QVector<college*> collegesList;
+    QSqlQuery query;
+    query.prepare("PRAGMA foreign_keys = ON");
+
+    if (query.exec("SELECT * FROM College_Campus_Distances"))
+    {
+        while(query.next())
+        {
+            collegesList.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toInt()));
+        }
+    }
+    QVector<QString> dropDownVector;
+    dropDownVector.push_back("Select A School");
+    bool found = false;
+    for(int i = 0; i < collegesList.size(); i++)
+    {
+        for(int j = 0; j < dropDownVector.size(); j++)
+        {
+            if(collegesList[i]->startingCollege == dropDownVector[j])
+            {
+                found = true;
+            }
+        }
+        if(!found)
+        {
+            dropDownVector.push_back(collegesList[i]->startingCollege);
+        }
+        found = false;
+    }
+
+
+    for(int i = 0; i < dropDownVector.size(); i++)
+    {
+        ui->modifySchoolNameComboBox->addItem(dropDownVector[i]);
+    }
+}
+
 void adminWindow::on_deleteSouvenirButton_clicked()
 {
+    this->populateSchoolNameDeleteDB();
     ui->leftGroupBoxAdd->hide();
     ui->rightGroupBoxDelete->show();
     ui->bottomGroupBoxModify->hide();
-    this->populateSchoolNameDeleteDB();
 }
 
 void adminWindow::on_modifySouvenirButton_clicked()
 {
+    this->populateSchoolNameModifyCB();
     ui->leftGroupBoxAdd->hide();
     ui->rightGroupBoxDelete->hide();
     ui->bottomGroupBoxModify->show();
+}
+
+
+void adminWindow::on_schoolNameDeleteComboBox_currentTextChanged(const QString &arg1)
+{
+    ui->schoolSouvenirComboBox->clear();
+    if(ui->schoolNameDeleteComboBox->currentText() != "Select A School")
+    {
+        QSqlQuery query;
+        QVector<souvenir*> souvenirList;
+
+        query.prepare("SELECT Traditional_Souvenirs FROM College_Souvenirs WHERE College = :school");
+        query.bindValue(0, arg1);
+
+        query.exec();
+
+        ui->schoolSouvenirComboBox->addItem("Select A Souvenir");
+        while(query.next())
+        {
+            ui->schoolSouvenirComboBox->addItem(query.value(0).toString());
+        }
+    }
+}
+
+void adminWindow::on_schoolSouvenirComboBox_currentIndexChanged(const QString &arg1)
+{
+    ui->priceLineEdit->clear();
+    if(ui->schoolSouvenirComboBox->currentText() != "Select A Souvenir")
+    {
+        QSqlQuery query;
+
+        query.prepare("SELECT Cost FROM College_Souvenirs WHERE College = :College AND Traditional_Souvenirs = :Traditional_Souvenirs");
+        query.bindValue(0, ui->schoolNameDeleteComboBox->currentText());
+        query.bindValue(1, arg1);
+
+        query.exec();
+        query.next();
+
+        ui->priceLineEdit->setText(query.value(0).toString());
+    }
 
 }
 
-void adminWindow::on_schoolNameDeleteComboBox_currentIndexChanged(int index)
+void adminWindow::on_cancelAddButton_clicked()
 {
-    QSqlQuery query;
-    QVector<souvenir*> souvenirList;
+    ui->leftGroupBoxAdd->hide();
+    ui->souvenirNameLineEdit->clear();
+    ui->souvenirPriceLineEdit->clear();
+}
+
+void adminWindow::on_cancelDeleteButton_clicked()
+{
+    ui->rightGroupBoxDelete->hide();
+    ui->priceLineEdit->clear();
+}
+
+void adminWindow::on_cancelModifyButton_clicked()
+{
+    ui->bottomGroupBoxModify->hide();
+    ui->modifyPriceLineEdit->clear();
+}
+
+void adminWindow::on_modifySchoolNameComboBox_currentIndexChanged(const QString &arg1)
+{
+    ui->modifySouvenirComboBox->clear();
+    if(ui->modifySchoolNameComboBox->currentText() != "Select A School")
+    {
+        QSqlQuery query;
+        QVector<souvenir*> souvenirList;
+
+        query.prepare("SELECT Traditional_Souvenirs FROM College_Souvenirs WHERE College = :school");
+        query.bindValue(0, arg1);
+
+        query.exec();
+
+        ui->modifySouvenirComboBox->addItem("Select A Souvenir");
+        while(query.next())
+        {
+            ui->modifySouvenirComboBox->addItem(query.value(0).toString());
+        }
+    }
+
+}
+
+void adminWindow::on_modifySouvenirComboBox_currentIndexChanged(const QString &arg1)
+{
+    ui->modifyPriceLineEdit->clear();
+    if(ui->schoolSouvenirComboBox->currentText() != "Select A Souvenir")
+    {
+        QSqlQuery query;
+
+        query.prepare("SELECT Cost FROM College_Souvenirs WHERE College = :College AND Traditional_Souvenirs = :Traditional_Souvenirs");
+        query.bindValue(0, ui->modifySchoolNameComboBox->currentText());
+        query.bindValue(1, arg1);
+
+        query.exec();
+        query.next();
+
+        ui->modifyPriceLineEdit->setText(query.value(0).toString());
+    }
+
 }

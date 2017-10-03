@@ -38,7 +38,6 @@ public:
     QGridLayout *gridLayout;
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
-    QPushButton *backToLoginButton;
     QLabel *Us_pixelmap;
     QTextBrowser *testBrowser;
     QPushButton *SaddlebackButton;
@@ -61,6 +60,7 @@ public:
     QWidget *souvenirsTab;
     QComboBox *CB_School_Souvenirs;
     QTableWidget *souvenirTable;
+    QPushButton *backToLoginButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -84,11 +84,6 @@ public:
         tabWidget->setMaximumSize(QSize(16777215, 16777215));
         tripPlannerTab = new QWidget();
         tripPlannerTab->setObjectName(QStringLiteral("tripPlannerTab"));
-        backToLoginButton = new QPushButton(tripPlannerTab);
-        backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
-        backToLoginButton->setGeometry(QRect(0, 350, 75, 23));
-        backToLoginButton->setAutoFillBackground(false);
-        backToLoginButton->setFlat(false);
         Us_pixelmap = new QLabel(tripPlannerTab);
         Us_pixelmap->setObjectName(QStringLiteral("Us_pixelmap"));
         Us_pixelmap->setGeometry(QRect(0, 0, 651, 341));
@@ -296,6 +291,13 @@ public:
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
+        backToLoginButton = new QPushButton(centralWidget);
+        backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
+        backToLoginButton->setAutoFillBackground(false);
+        backToLoginButton->setFlat(false);
+
+        gridLayout_2->addWidget(backToLoginButton, 1, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -320,7 +322,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
         Us_pixelmap->setText(QString());
         SaddlebackButton->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
         UCIButton->setText(QApplication::translate("MainWindow", "2", Q_NULLPTR));
@@ -342,6 +343,7 @@ public:
         QTableWidgetItem *___qtablewidgetitem = souvenirTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(souvenirsTab), QApplication::translate("MainWindow", "Souvenirs", Q_NULLPTR));
+        backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
     } // retranslateUi
 
 };
