@@ -35,6 +35,7 @@ public:
 
     void populateSchoolNameModifyCB();
 
+    void populateDeleteCollegeCB();
 
 private slots:
     /*!
@@ -64,6 +65,24 @@ private slots:
     void on_modifySchoolNameComboBox_currentIndexChanged(const QString &arg1);
 
     void on_modifySouvenirComboBox_currentIndexChanged(const QString &arg1);
+
+    void on_addToDatabaseButton_clicked();
+
+    void on_deleteFromDatabaseButton_clicked();
+
+    void on_modifyButton_clicked();
+
+    void on_deleteCollegeButton_clicked();
+
+    void on_AddFromFileButton_clicked();
+
+    void on_deleteCollegeCancelButton_clicked();
+
+    void on_addFromFileCancelButton_clicked();
+
+    void on_addToDbFromFileButton_clicked();
+
+    void on_deleteFromDbButton_clicked();
 
 private:
     Ui::adminWindow *ui; /*! \brief \var ui for admin window*/

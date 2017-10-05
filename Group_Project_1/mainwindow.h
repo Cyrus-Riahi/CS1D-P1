@@ -23,6 +23,10 @@ public:
     /*! \fn Destructor*/
     ~MainWindow();
 
+    int getNumOfSchool();
+
+    void showFullertonAndTexas();
+
 private slots:
     /*! * \fn on_CB_School_Souvenirs_currentIndexChanged*/
     /*! * \param arg1*/
@@ -53,7 +57,7 @@ private slots:
 
     void routeTracker(QString schoolName,           // Name of school that gets passed in
                       int numOfSchoolsVisiting,     // Total number of schools visiting
-                      int &totalMiles,              // Total mileage of the trip
+                      double &totalMiles,              // Total mileage of the trip
                       QVector<college*> collegesToVisit);// Vector of schools we are visiting
 
 
@@ -74,6 +78,10 @@ private slots:
     void on_OSUButton_clicked();
 
     void on_keyButton_clicked();
+
+    void on_FullertonButton_clicked();
+
+    void on_TexasButton_clicked();
 
 private:
     /*! \var ui*/

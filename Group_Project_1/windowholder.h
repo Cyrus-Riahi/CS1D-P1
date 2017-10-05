@@ -72,6 +72,11 @@ public:
         key.show();
     }
 
+    void showFAT()
+    {
+        main.showFullertonAndTexas();
+    }
+
 private:
     windowHolder();                 /*! \var constructor of our singleton*/
     static windowHolder* instance;  /*! \var static instance of the singleton*/

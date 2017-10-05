@@ -48,12 +48,39 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Us_pixelmap->setPixmap((QPixmap("..\\Images\\map")));
     ui->Us_pixelmap->setScaledContents(true);
     ui->Us_pixelmap->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
+
+
+    ui->FullertonButton->hide();
+    ui->TexasButton->hide();
 }
 
 /*! \fn MainWindow::~MainWindow */
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+int MainWindow::getNumOfSchool()
+{
+    QVector<QString> collegeNames;
+    QSqlQuery query;
+
+    query.prepare("SELECT distinct StartingCollege FROM College_Campus_Distances");
+
+    query.exec();
+
+    while(query.next())
+    {
+        collegeNames.push_back(query.value(0).toString());
+    }
+
+    return collegeNames.size();
+}
+
+void MainWindow::showFullertonAndTexas()
+{
+    ui->FullertonButton->show();
+    ui->TexasButton->show();
 }
 
 /*! \fn MainWindow::on_CB_School_Souvenirs_currentIndexChanged
@@ -147,7 +174,7 @@ void MainWindow::populate_CD_Distance_Tracker_Combo_Box()
     {
         while(query.next())
         {
-            collegesList.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toInt()));
+            collegesList.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toDouble()));
         }
     }
     QVector<QString> dropDownVector;
@@ -194,7 +221,7 @@ void MainWindow::on_CB_Distance_Tracker_currentTextChanged(const QString &arg1)
         {
             while(query.next())
             {
-                collegesList.push_back(new college(schoolName, query.value(0).toString(), false, query.value(1).toInt()));
+                collegesList.push_back(new college(schoolName, query.value(0).toString(), false, query.value(1).toDouble()));
             }
         }
 
@@ -237,7 +264,7 @@ void MainWindow::loadCollegesToVisit()
     {
         while(query.next())
         {
-            this->colleges.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toInt()));
+            this->colleges.push_back(new college(query.value(0).toString(), query.value(1).toString(), false, query.value(2).toDouble()));
         }
     }
 }
@@ -256,14 +283,15 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event){
  */
 void MainWindow::on_SaddlebackButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: Saddleback College\n");
         this->loadCollegesToVisit();
-        routeTracker("Saddleback College", 10, totalMiles, colleges);
+        routeTracker("Saddleback College", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -277,14 +305,15 @@ void MainWindow::on_SaddlebackButton_clicked()
  */
 void MainWindow::on_UCIButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: University of California, Irvine (UCI)\n");
         this->loadCollegesToVisit();
-        routeTracker("University of California, Irvine (UCI)", 10, totalMiles, colleges);
+        routeTracker("University of California, Irvine (UCI)", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -298,14 +327,15 @@ void MainWindow::on_UCIButton_clicked()
  */
 void MainWindow::on_UCLAButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: University of California, Los Angeles (UCLA)\n");
         this->loadCollegesToVisit();
-        routeTracker("University of California, Los Angeles (UCLA)", 10, totalMiles, colleges);
+        routeTracker("University of California, Los Angeles (UCLA)", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -321,7 +351,7 @@ void MainWindow::on_UCLAButton_clicked()
  * \param collegesToVisit */
 void MainWindow::routeTracker(QString schoolName,           // Name of school that gets passed in
                   int numOfSchoolsVisiting,     // Total number of schools visiting
-                  int &totalMiles,              // Total mileage of the trip
+                  double &totalMiles,              // Total mileage of the trip
                   QVector<college*> collegesToVisit){// Vector of schools we are visiting
     /*! \brief Our database*/
     Database *DB = Database::getInstance();
@@ -353,14 +383,15 @@ void MainWindow::routeTracker(QString schoolName,           // Name of school th
  */
 void MainWindow::on_UniversityOfPacificButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: University of the Pacific\n");
         this->loadCollegesToVisit();
-        routeTracker("University of the Pacific", 10, totalMiles, colleges);
+        routeTracker("University of the Pacific", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -374,14 +405,15 @@ void MainWindow::on_UniversityOfPacificButton_clicked()
  */
 void MainWindow::on_UniversityOfOregonButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: University of Oregon\n");
         this->loadCollegesToVisit();
-        routeTracker("University of Oregon", 10, totalMiles, colleges);
+        routeTracker("University of Oregon", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -395,14 +427,15 @@ void MainWindow::on_UniversityOfOregonButton_clicked()
  */
 void MainWindow::on_ASUButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: Arizona State University\n");
         this->loadCollegesToVisit();
-        routeTracker("Arizona State University", 10, totalMiles, colleges);
+        routeTracker("Arizona State University", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -417,14 +450,15 @@ void MainWindow::on_ASUButton_clicked()
  */
 void MainWindow::on_UniversityOfWisconsinButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: University of Wisconsin\n");
         this->loadCollegesToVisit();
-        routeTracker("University of Wisconsin", 10, totalMiles, colleges);
+        routeTracker("University of Wisconsin", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -439,14 +473,15 @@ void MainWindow::on_UniversityOfWisconsinButton_clicked()
  */
 void MainWindow::on_NorthwesternButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: Northwestern\n");
         this->loadCollegesToVisit();
-        routeTracker("Northwestern", 10, totalMiles, colleges);
+        routeTracker("Northwestern", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -461,14 +496,15 @@ void MainWindow::on_NorthwesternButton_clicked()
  */
 void MainWindow::on_UniversityOfMichiganButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: University of Michigan\n");
         this->loadCollegesToVisit();
-        routeTracker("University of Michigan", 10, totalMiles, colleges);
+        routeTracker("University of Michigan", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -483,14 +519,15 @@ void MainWindow::on_UniversityOfMichiganButton_clicked()
  */
 void MainWindow::on_MITButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: Massachusetts Institute of Technology (MIT)\n");
         this->loadCollegesToVisit();
-        routeTracker("Massachusetts Institute of Technology (MIT)", 10, totalMiles, colleges);
+        routeTracker("Massachusetts Institute of Technology (MIT)", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -505,14 +542,15 @@ void MainWindow::on_MITButton_clicked()
  */
 void MainWindow::on_OSUButton_clicked()
 {
-    int totalMiles = 0;
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
     ui->testBrowser->clear();
     ui->TotalMilesLabel->clear();
     if(ui->automaticRouteTrackingCheckBox->isChecked())
     {
         ui->testBrowser->setText("Starting School: Ohio State University\n");
         this->loadCollegesToVisit();
-        routeTracker("Ohio State University", 10, totalMiles, colleges);
+        routeTracker("Ohio State University", numOfSchools - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
@@ -529,4 +567,43 @@ void MainWindow::on_keyButton_clicked()
 {
     windowHolder *WH = windowHolder::getInstance();
     WH->keyWindowShow();
+}
+
+void MainWindow::on_FullertonButton_clicked()
+{
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
+    ui->testBrowser->clear();
+    ui->TotalMilesLabel->clear();
+    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    {
+        ui->testBrowser->setText("Starting School: California State University, Fullerton");
+        this->loadCollegesToVisit();
+        routeTracker("California State University, Fullerton", numOfSchools - 1, totalMiles, colleges);
+        QTextCursor cursor = ui->testBrowser->textCursor();
+        cursor.setPosition(0);
+        ui->testBrowser->setTextCursor(cursor);
+        ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+    }
+    qDebug() << "California State University, Fullerton!";
+}
+
+void MainWindow::on_TexasButton_clicked()
+{
+    double totalMiles = 0;
+    int numOfSchools = this->getNumOfSchool();
+    ui->testBrowser->clear();
+    ui->TotalMilesLabel->clear();
+    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    {
+        ui->testBrowser->setText("Starting School: University of Texas");
+        this->loadCollegesToVisit();
+        routeTracker("University of Texas", numOfSchools - 1, totalMiles, colleges);
+        QTextCursor cursor = ui->testBrowser->textCursor();
+        cursor.setPosition(0);
+        ui->testBrowser->setTextCursor(cursor);
+        ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+    }
+    qDebug() << "University of Texas!";
+
 }

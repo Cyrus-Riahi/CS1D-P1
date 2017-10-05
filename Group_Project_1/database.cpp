@@ -52,7 +52,7 @@ college* Database::getClosestSchool(QString schoolName,
     {
         query.next();
     }
-    int smallestDistance = query.value(0).toInt();
+    double smallestDistance = query.value(0).toDouble();
     bool found = false;
 
     /*! \brief This loop finds the smallest distance from the school name passed in*/

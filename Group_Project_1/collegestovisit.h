@@ -16,7 +16,7 @@ public:
     /*!     * \param end*/
     /*!     * \param boolean*/
     /*!     * \param int num*/
-    college(QString start, QString end, bool boolean, int num)
+    college(QString start, QString end, bool boolean, double num)
     {
         startingCollege = start; /*! \brief Assigns the starting college*/
         endingCollege = end;     /*! \brief Assigns the ending college*/
@@ -28,7 +28,7 @@ public:
     QString startingCollege;//! \var QString of our starting college
     QString endingCollege;  //! \var QString of our ending college
     bool visited;           //! \var bool of whether the school has been visited
-    int distance;           //! \var int of the distance between colleges
+    double distance;           //! \var int of the distance between colleges
 };
 
 #endif // COLLEGESTOVISIT_H
