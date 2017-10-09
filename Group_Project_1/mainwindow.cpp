@@ -83,6 +83,68 @@ void MainWindow::showFullertonAndTexas()
     ui->TexasButton->show();
 }
 
+void MainWindow::hideAllButtons()
+{
+    ui->FullertonButton->hide();
+    ui->ASUButton->hide();
+    ui->MITButton->hide();
+    ui->NorthwesternButton->hide();
+    ui->OSUButton->hide();
+    ui->UCLAButton->hide();
+    ui->UCIButton->hide();
+    ui->UniversityOfWisconsinButton->hide();
+    ui->UniversityOfPacificButton->hide();
+    ui->UniversityOfOregonButton->hide();
+    ui->UniversityOfMichiganButton->hide();
+    ui->TexasButton->hide();
+    ui->SaddlebackButton->hide();
+}
+
+void MainWindow::checkSchoolsForButtons()
+{
+    this->hideAllButtons();
+    QSqlQuery query;
+    QVector<QString> schooooools;
+
+    query.prepare("SELECT distinct StartingCollege from College_Campus_Distances");
+
+    query.exec();
+
+    while(query.next())
+    {
+        schooooools.push_back(query.value(0).toString());
+    }
+    for(int i = 0; i < schooooools.size(); ++i)
+    {
+        if(schooooools[i] == "Arizona State University")
+            ui->ASUButton->show();
+        if(schooooools[i] == "Massachusetts Institute of Technology (MIT)")
+            ui->MITButton->show();
+        if(schooooools[i] == "Northwestern")
+            ui->NorthwesternButton->show();
+        if(schooooools[i] == "Ohio State University")
+            ui->OSUButton->show();
+        if(schooooools[i] == "Saddleback College")
+            ui->SaddlebackButton->show();
+        if(schooooools[i] == "University of Michigan")
+            ui->UniversityOfMichiganButton->show();
+        if(schooooools[i] == "University of California, Irvine (UCI)")
+            ui->UCIButton->show();
+        if(schooooools[i] == "University of California, Los Angeles (UCLA)")
+            ui->UCLAButton->show();
+        if(schooooools[i] == "University of Oregon")
+            ui->UniversityOfOregonButton->show();
+        if(schooooools[i] == "University of the Pacific")
+            ui->UniversityOfPacificButton->show();
+        if(schooooools[i] == "University of Wisconsin")
+            ui->UniversityOfWisconsinButton->show();
+        if(schooooools[i] == "California State University, Fullerton")
+            ui->FullertonButton->show();
+        if(schooooools[i] == "University of Texas")
+            ui->TexasButton->show();
+    }
+}
+
 /*! \fn MainWindow::on_CB_School_Souvenirs_currentIndexChanged
  * \param arg1 */
 void MainWindow::on_CB_School_Souvenirs_currentIndexChanged(const QString &arg1)

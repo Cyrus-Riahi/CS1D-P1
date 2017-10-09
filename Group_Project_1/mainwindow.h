@@ -27,6 +27,10 @@ public:
 
     void showFullertonAndTexas();
 
+    void hideAllButtons();
+
+    void checkSchoolsForButtons();
+
 private slots:
     /*! * \fn on_CB_School_Souvenirs_currentIndexChanged*/
     /*! * \param arg1*/

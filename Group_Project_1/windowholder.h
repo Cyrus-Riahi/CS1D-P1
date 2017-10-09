@@ -22,6 +22,7 @@ public:
     /*! \fn MainWindowShow*/
     void MainWindowShow()
     {
+        main.checkSchoolsForButtons();
         main.show();
     }
 
@@ -70,11 +71,6 @@ public:
     void keyWindowShow()
     {
         key.show();
-    }
-
-    void showFAT()
-    {
-        main.showFullertonAndTexas();
     }
 
 private:

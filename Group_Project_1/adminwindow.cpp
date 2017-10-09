@@ -658,8 +658,4 @@ void adminWindow::on_deleteFromDbButton_clicked()
         ui->rightDeleteCollegeGroupBox->hide();
 
     }
-
-
-    windowHolder *WH = windowHolder::getInstance();
-    WH->showFAT();
 }
