@@ -21,11 +21,13 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -35,7 +37,7 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout_2;
-    QGridLayout *gridLayout;
+    QVBoxLayout *verticalLayout;
     QTabWidget *tabWidget;
     QWidget *tripPlannerTab;
     QLabel *Us_pixelmap;
@@ -56,6 +58,8 @@ public:
     QPushButton *keyButton;
     QPushButton *FullertonButton;
     QPushButton *TexasButton;
+    QSpinBox *numOfSchoolsWheel;
+    QLabel *numOfSchoolsToVisitLabel;
     QWidget *distanceTrackerTab;
     QComboBox *CB_Distance_Tracker;
     QTableWidget *tableWidget2;
@@ -71,16 +75,16 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(896, 475);
+        MainWindow->resize(900, 521);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout_2 = new QGridLayout(centralWidget);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(6);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setMaximumSize(QSize(16777215, 16777215));
@@ -91,7 +95,7 @@ public:
         Us_pixelmap->setGeometry(QRect(0, 0, 651, 341));
         testBrowser = new QTextBrowser(tripPlannerTab);
         testBrowser->setObjectName(QStringLiteral("testBrowser"));
-        testBrowser->setGeometry(QRect(660, 30, 201, 311));
+        testBrowser->setGeometry(QRect(660, 20, 201, 311));
         SaddlebackButton = new QPushButton(tripPlannerTab);
         SaddlebackButton->setObjectName(QStringLiteral("SaddlebackButton"));
         SaddlebackButton->setGeometry(QRect(60, 220, 12, 12));
@@ -130,10 +134,10 @@ public:
 " min-height:10px;"));
         automaticRouteTrackingCheckBox = new QCheckBox(tripPlannerTab);
         automaticRouteTrackingCheckBox->setObjectName(QStringLiteral("automaticRouteTrackingCheckBox"));
-        automaticRouteTrackingCheckBox->setGeometry(QRect(660, 10, 151, 17));
+        automaticRouteTrackingCheckBox->setGeometry(QRect(660, 0, 151, 17));
         TotalMilesLabel = new QLabel(tripPlannerTab);
         TotalMilesLabel->setObjectName(QStringLiteral("TotalMilesLabel"));
-        TotalMilesLabel->setGeometry(QRect(660, 350, 111, 16));
+        TotalMilesLabel->setGeometry(QRect(660, 340, 111, 16));
         UniversityOfPacificButton = new QPushButton(tripPlannerTab);
         UniversityOfPacificButton->setObjectName(QStringLiteral("UniversityOfPacificButton"));
         UniversityOfPacificButton->setGeometry(QRect(20, 150, 12, 12));
@@ -232,7 +236,7 @@ public:
 " min-height:10px;"));
         keyButton = new QPushButton(tripPlannerTab);
         keyButton->setObjectName(QStringLiteral("keyButton"));
-        keyButton->setGeometry(QRect(780, 350, 75, 23));
+        keyButton->setGeometry(QRect(780, 340, 75, 23));
         FullertonButton = new QPushButton(tripPlannerTab);
         FullertonButton->setObjectName(QStringLiteral("FullertonButton"));
         FullertonButton->setGeometry(QRect(60, 210, 12, 12));
@@ -257,6 +261,15 @@ public:
 " max-height:10px;\n"
 " min-width:10px;\n"
 " min-height:10px;"));
+        numOfSchoolsWheel = new QSpinBox(tripPlannerTab);
+        numOfSchoolsWheel->setObjectName(QStringLiteral("numOfSchoolsWheel"));
+        numOfSchoolsWheel->setGeometry(QRect(210, 360, 42, 22));
+        numOfSchoolsWheel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        numOfSchoolsToVisitLabel = new QLabel(tripPlannerTab);
+        numOfSchoolsToVisitLabel->setObjectName(QStringLiteral("numOfSchoolsToVisitLabel"));
+        numOfSchoolsToVisitLabel->setGeometry(QRect(10, 360, 201, 16));
+        numOfSchoolsToVisitLabel->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
+        numOfSchoolsToVisitLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -312,22 +325,22 @@ public:
         souvenirTable->verticalHeader()->setVisible(false);
         tabWidget->addTab(souvenirsTab, QString());
 
-        gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
+        verticalLayout->addWidget(tabWidget);
 
 
-        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+        gridLayout_2->addLayout(verticalLayout, 0, 0, 1, 1);
 
         backToLoginButton = new QPushButton(centralWidget);
         backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
         backToLoginButton->setAutoFillBackground(false);
         backToLoginButton->setFlat(false);
 
-        gridLayout_2->addWidget(backToLoginButton, 1, 0, 1, 1);
+        gridLayout_2->addWidget(backToLoginButton, 2, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 896, 21));
+        menuBar->setGeometry(QRect(0, 0, 900, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -365,6 +378,7 @@ public:
         keyButton->setText(QApplication::translate("MainWindow", "Key", Q_NULLPTR));
         FullertonButton->setText(QApplication::translate("MainWindow", "12", Q_NULLPTR));
         TexasButton->setText(QApplication::translate("MainWindow", "13", Q_NULLPTR));
+        numOfSchoolsToVisitLabel->setText(QApplication::translate("MainWindow", "Number of Schools to Visit:", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
         CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));

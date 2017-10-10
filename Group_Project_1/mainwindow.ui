@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>896</width>
-    <height>475</height>
+    <width>900</width>
+    <height>521</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
        <widget class="QTabWidget" name="tabWidget">
         <property name="maximumSize">
          <size>
@@ -49,7 +49,7 @@
           <property name="geometry">
            <rect>
             <x>660</x>
-            <y>30</y>
+            <y>20</y>
             <width>201</width>
             <height>311</height>
            </rect>
@@ -131,7 +131,7 @@
           <property name="geometry">
            <rect>
             <x>660</x>
-            <y>10</y>
+            <y>0</y>
             <width>151</width>
             <height>17</height>
            </rect>
@@ -144,7 +144,7 @@
           <property name="geometry">
            <rect>
             <x>660</x>
-            <y>350</y>
+            <y>340</y>
             <width>111</width>
             <height>16</height>
            </rect>
@@ -349,7 +349,7 @@
           <property name="geometry">
            <rect>
             <x>780</x>
-            <y>350</y>
+            <y>340</y>
             <width>75</width>
             <height>23</height>
            </rect>
@@ -404,6 +404,38 @@
           </property>
           <property name="text">
            <string>13</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="numOfSchoolsWheel">
+          <property name="geometry">
+           <rect>
+            <x>210</x>
+            <y>360</y>
+            <width>42</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="numOfSchoolsToVisitLabel">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>360</y>
+            <width>201</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Number of Schools to Visit:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
          </widget>
         </widget>
@@ -560,7 +592,7 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QPushButton" name="backToLoginButton">
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -580,7 +612,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>896</width>
+     <width>900</width>
      <height>21</height>
     </rect>
    </property>

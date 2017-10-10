@@ -3,7 +3,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "routetracker.h"
+#include "collegestovisit.h"
 #include "souvenir.h"
 
 /*! \namespace UI*/
@@ -51,8 +51,6 @@ private slots:
 
     void loadCollegesToVisit();
 
-    void mouseMoveEvent(QMouseEvent *event);
-
     void on_SaddlebackButton_clicked();
 
     void on_UCIButton_clicked();
@@ -87,11 +85,18 @@ private slots:
 
     void on_TexasButton_clicked();
 
+
+    void on_automaticRouteTrackingCheckBox_toggled(bool checked);
+
+    void on_automaticRouteTrackingCheckBox_clicked(bool checked);
+
 private:
     /*! \var ui*/
     Ui::MainWindow *ui;
-
+    QVector<college*> manualTrip;
+    QString currentSchool;
     QVector<college*> colleges;
+    double totalMiles;
 };
 
 #endif // MAINWINDOW_H

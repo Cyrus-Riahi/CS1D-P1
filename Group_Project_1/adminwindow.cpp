@@ -3,6 +3,8 @@
 #include "windowholder.h"
 #include <QSqlQueryModel>
 #include <QMessageBox>
+#include <QDebug>
+
 /*! \fn adminWindow::adminWindow
  * \param parent*/
 adminWindow::adminWindow(QWidget *parent) :

@@ -35,7 +35,6 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     database.h \
-    routetracker.h \
     collegestovisit.h \
     souvenir.h \
     loginwindow.h \
