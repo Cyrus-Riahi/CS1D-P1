@@ -438,6 +438,19 @@
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
          </widget>
+         <widget class="QPushButton" name="removePrevDesButton">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>360</y>
+            <width>231</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Remove Previous Destination</string>
+          </property>
+         </widget>
         </widget>
         <widget class="QWidget" name="distanceTrackerTab">
          <attribute name="title">

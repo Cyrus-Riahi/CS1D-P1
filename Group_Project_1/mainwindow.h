@@ -85,10 +85,9 @@ private slots:
 
     void on_TexasButton_clicked();
 
-
-    void on_automaticRouteTrackingCheckBox_toggled(bool checked);
-
     void on_automaticRouteTrackingCheckBox_clicked(bool checked);
+
+    void on_removePrevDesButton_clicked();
 
 private:
     /*! \var ui*/

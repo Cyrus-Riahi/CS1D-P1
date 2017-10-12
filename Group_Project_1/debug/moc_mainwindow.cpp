@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[33];
-    char stringdata0[804];
+    char stringdata0[793];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -64,7 +64,7 @@ QT_MOC_LITERAL(28, 662, 26), // "on_FullertonButton_clicked"
 QT_MOC_LITERAL(29, 689, 22), // "on_TexasButton_clicked"
 QT_MOC_LITERAL(30, 712, 41), // "on_automaticRouteTrackingChec..."
 QT_MOC_LITERAL(31, 754, 7), // "checked"
-QT_MOC_LITERAL(32, 762, 41) // "on_automaticRouteTrackingChec..."
+QT_MOC_LITERAL(32, 762, 30) // "on_removePrevDesButton_clicked"
 
     },
     "MainWindow\0on_CB_School_Souvenirs_currentIndexChanged\0"
@@ -85,8 +85,8 @@ QT_MOC_LITERAL(32, 762, 41) // "on_automaticRouteTrackingChec..."
     "on_MITButton_clicked\0on_OSUButton_clicked\0"
     "on_keyButton_clicked\0on_FullertonButton_clicked\0"
     "on_TexasButton_clicked\0"
-    "on_automaticRouteTrackingCheckBox_toggled\0"
-    "checked\0on_automaticRouteTrackingCheckBox_clicked"
+    "on_automaticRouteTrackingCheckBox_clicked\0"
+    "checked\0on_removePrevDesButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -126,7 +126,7 @@ static const uint qt_meta_data_MainWindow[] = {
       28,    0,  160,    2, 0x08 /* Private */,
       29,    0,  161,    2, 0x08 /* Private */,
       30,    1,  162,    2, 0x08 /* Private */,
-      32,    1,  165,    2, 0x08 /* Private */,
+      32,    0,  165,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -151,7 +151,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Bool,   31,
-    QMetaType::Void, QMetaType::Bool,   31,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -183,7 +183,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 18: _t->on_keyButton_clicked(); break;
         case 19: _t->on_FullertonButton_clicked(); break;
         case 20: _t->on_TexasButton_clicked(); break;
-        case 22: _t->on_automaticRouteTrackingCheckBox_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 21: _t->on_automaticRouteTrackingCheckBox_clicked((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 22: _t->on_removePrevDesButton_clicked(); break;
         default: ;
         }
     }

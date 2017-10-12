@@ -543,10 +543,11 @@ void MainWindow::routeTracker(QString schoolName,           // Name of school th
         ui->testBrowser->append("From " + closestSchool->startingCollege + " to " +
                                 closestSchool->endingCollege + " is " + QString::number(closestSchool->distance) + " miles\n");
 
-//        windowHolder *WH = windowHolder::getInstance();
+        windowHolder *WH = windowHolder::getInstance();
 
-//        WH->shoppingWindowShow();
-
+        WH->shoppingWindowShow();
+        qDebug() << "Between funcs";
+        WH->shoppingWindowWhile();
 
         /*! \brief Calls the function again*/
         routeTracker(closestSchoolName, --numOfSchoolsVisiting, totalMiles, collegesToVisit);
@@ -1160,7 +1161,5 @@ void MainWindow::on_removePrevDesButton_clicked()
     else
     {
         ui->testBrowser->clear();
-        this->manualTrip.clear();
-        this->currentSchool.clear();
     }
 }

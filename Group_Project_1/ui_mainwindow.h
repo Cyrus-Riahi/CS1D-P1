@@ -60,6 +60,7 @@ public:
     QPushButton *TexasButton;
     QSpinBox *numOfSchoolsWheel;
     QLabel *numOfSchoolsToVisitLabel;
+    QPushButton *removePrevDesButton;
     QWidget *distanceTrackerTab;
     QComboBox *CB_Distance_Tracker;
     QTableWidget *tableWidget2;
@@ -270,6 +271,9 @@ public:
         numOfSchoolsToVisitLabel->setGeometry(QRect(10, 360, 201, 16));
         numOfSchoolsToVisitLabel->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
         numOfSchoolsToVisitLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        removePrevDesButton = new QPushButton(tripPlannerTab);
+        removePrevDesButton->setObjectName(QStringLiteral("removePrevDesButton"));
+        removePrevDesButton->setGeometry(QRect(400, 360, 231, 23));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -379,6 +383,7 @@ public:
         FullertonButton->setText(QApplication::translate("MainWindow", "12", Q_NULLPTR));
         TexasButton->setText(QApplication::translate("MainWindow", "13", Q_NULLPTR));
         numOfSchoolsToVisitLabel->setText(QApplication::translate("MainWindow", "Number of Schools to Visit:", Q_NULLPTR));
+        removePrevDesButton->setText(QApplication::translate("MainWindow", "Remove Previous Destination", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(tripPlannerTab), QApplication::translate("MainWindow", "Trip Planner", Q_NULLPTR));
         CB_Distance_Tracker->setCurrentText(QString());
         tabWidget->setTabText(tabWidget->indexOf(distanceTrackerTab), QApplication::translate("MainWindow", "Distance Tracker", Q_NULLPTR));

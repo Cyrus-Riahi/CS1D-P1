@@ -2,8 +2,13 @@
 #include "adminwindow.h"
 #include "createloginwindow.h"
 #include "keywindow.h"
+#include "shoppingcart.h"
 #ifndef WINDOWHOLDER_H
 #define WINDOWHOLDER_H
+
+#include <QDebug>
+
+
 
 /*! \class windowHolder*/
 class windowHolder
@@ -73,6 +78,17 @@ public:
         key.show();
     }
 
+    void shoppingWindowHide()
+    {
+        shop.hide();
+    }
+
+    void shoppingWindowShow()
+    {
+        shop.show();
+    }
+
+
 private:
     windowHolder();                 /*! \var constructor of our singleton*/
     static windowHolder* instance;  /*! \var static instance of the singleton*/
@@ -81,6 +97,7 @@ private:
     adminWindow admin;              /*! \var admin window*/
     CreateLoginWindow create;       /*! \var create a login window*/
     keyWindow key;                  /*! \var key window*/
+    shoppingcart shop;              /*! \var key window*/
 };
 
 #endif // WINDOWHOLDER_H
