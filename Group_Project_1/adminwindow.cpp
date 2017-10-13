@@ -620,6 +620,7 @@ void adminWindow::populateDeleteCollegeCB()
     }
 }
 
+
 void adminWindow::on_addToDbFromFileButton_clicked()
 {
     QSqlQuery query;

@@ -22,4 +22,5 @@ windowHolder::windowHolder()
     admin.setWindowTitle("Route Tracker(Admin)");
     create.setWindowTitle("Create a Login");
     key.setWindowTitle("Key");
+    shop.setWindowTitle("Shop \'Til You Drop");
 }

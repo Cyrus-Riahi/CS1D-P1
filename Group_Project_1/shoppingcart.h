@@ -15,6 +15,17 @@ public:
     explicit shoppingcart(QWidget *parent = 0);
     ~shoppingcart();
 
+    void setButtonSchool(QString);
+
+    void showNextSchoolButton();
+
+    void hideNextSchoolButton();
+
+private slots:
+    void on_addToCartPushButton_clicked();
+
+    void on_toTheNextButton_clicked();
+
 private:
     Ui::shoppingcart *ui;
 };

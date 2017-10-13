@@ -88,6 +88,36 @@ public:
         shop.show();
     }
 
+    void setShopButton(QString school)
+    {
+        shop.setButtonSchool(school);
+    }
+
+    void showShopNextSchoolButton()
+    {
+        shop.showNextSchoolButton();
+    }
+
+    void hideShopNextSchoolButton()
+    {
+        shop.hideNextSchoolButton();
+    }
+
+    void mainUpdateUI()
+    {
+        main.updateUserUI();
+    }
+
+    void mainIncIndex()
+    {
+        main.incAutoTripIndex();
+    }
+
+    void updateShopWindow()
+    {
+        shop.update();
+    }
+
 
 private:
     windowHolder();                 /*! \var constructor of our singleton*/

@@ -31,6 +31,11 @@ public:
 
     void checkSchoolsForButtons();
 
+    void updateUserUI();
+
+    void incAutoTripIndex();
+
+
 private slots:
     /*! * \fn on_CB_School_Souvenirs_currentIndexChanged*/
     /*! * \param arg1*/
@@ -93,9 +98,11 @@ private:
     /*! \var ui*/
     Ui::MainWindow *ui;
     QVector<college*> manualTrip;
+    QVector<college*> autoTrip;
     QString currentSchool;
     QVector<college*> colleges;
     double totalMiles;
+    int autoTripIndex;
 };
 
 #endif // MAINWINDOW_H

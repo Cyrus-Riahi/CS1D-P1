@@ -1,7 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>shoppingcart</class>
  <widget class="QMainWindow" name="shoppingcart">
   <property name="geometry">
@@ -15,10 +13,183 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menubar"/>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>109</y>
+      <width>781</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QTableView" name="souvenirTableView">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>3</y>
+          <width>371</width>
+          <height>391</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="quantityLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>400</y>
+          <width>301</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="quantitySpinBox">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>400</y>
+          <width>37</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QTableView" name="shoppingCartTableView">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>4</y>
+          <width>371</width>
+          <height>391</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>400</y>
+          <width>28</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Total:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="totalCostLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>42</x>
+          <y>400</y>
+          <width>341</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>49</y>
+      <width>781</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="addToCartPushButton">
+       <property name="text">
+        <string>Add to Shopping Cart</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="deleteFromCartPushButton">
+       <property name="text">
+        <string>Delete From Shopping Cart</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>321</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 20pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string>You are currently visiting:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="currentSchoolLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>20</y>
+      <width>471</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="toTheNextButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>530</y>
+      <width>781</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>To the next school!</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <pixmapfunction/>
+ <resources/>
  <connections/>
 </ui>

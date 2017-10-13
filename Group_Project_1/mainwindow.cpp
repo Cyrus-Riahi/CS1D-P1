@@ -56,8 +56,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Us_pixelmap->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
 
 
-//    ui->FullertonButton->hide();
-//    ui->TexasButton->hide();
+    this->autoTripIndex = 0;
 }
 
 /*! \fn MainWindow::~MainWindow */
@@ -158,6 +157,45 @@ void MainWindow::checkSchoolsForButtons()
     ui->numOfSchoolsWheel->hide();
     ui->testBrowser->clear();
 }
+
+void MainWindow::updateUserUI()
+{
+    windowHolder *WH = windowHolder::getInstance();
+
+    if(this->autoTripIndex < this->autoTrip.size())
+    {
+        ui->testBrowser->append("From " + this->autoTrip[this->autoTripIndex-1]->startingCollege +
+                " to " + this->autoTrip[this->autoTripIndex-1]->endingCollege
+                + QString::number(this->autoTrip[this->autoTripIndex-1]->distance) + " miles\n");
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->updateShopWindow();
+        WH->shoppingWindowShow();
+
+        this->incAutoTripIndex();
+    }
+    else if(this->autoTripIndex == this->autoTrip.size())
+    {
+        ui->testBrowser->append("From " + this->autoTrip[this->autoTripIndex-1]->startingCollege +
+                " to " + this->autoTrip[this->autoTripIndex-1]->endingCollege
+                + QString::number(this->autoTrip[this->autoTripIndex-1]->distance) + " miles\n");
+        WH->setShopButton(this->autoTrip[this->autoTripIndex-1]->endingCollege);
+        WH->updateShopWindow();
+        WH->shoppingWindowShow();
+        this->incAutoTripIndex();
+    }
+    else
+    {
+        WH->shoppingWindowHide();
+        QMessageBox::information(this, "DONE!", "Visited all the schools!");
+
+    }
+}
+
+void MainWindow::incAutoTripIndex()
+{
+    this->autoTripIndex++;
+}
+
 
 /*! \fn MainWindow::on_CB_School_Souvenirs_currentIndexChanged
  * \param arg1 */
@@ -350,7 +388,10 @@ void MainWindow::loadCollegesToVisit()
  */
 void MainWindow::on_SaddlebackButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 1)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -358,13 +399,22 @@ void MainWindow::on_SaddlebackButton_clicked()
 
         ui->testBrowser->setText("Starting School: Saddleback College\n");
         this->loadCollegesToVisit();
-        routeTracker("Saddleback College", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("Saddleback College", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: Saddleback College\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -398,6 +448,10 @@ void MainWindow::on_SaddlebackButton_clicked()
             this->currentSchool = "Saddleback College";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->setShopButton(this->currentSchool);
+        WH->shoppingWindowShow();
     }
 }
 
@@ -406,7 +460,11 @@ void MainWindow::on_SaddlebackButton_clicked()
  */
 void MainWindow::on_UCIButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 1)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -414,13 +472,23 @@ void MainWindow::on_UCIButton_clicked()
 
         ui->testBrowser->setText("Starting School: University of California, Irvine (UCI)\n");
         this->loadCollegesToVisit();
-        routeTracker("University of California, Irvine (UCI)", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("University of California, Irvine (UCI)", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: University of California, Irvine (UCI)\n");
+        this->incAutoTripIndex();
+
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -455,6 +523,10 @@ void MainWindow::on_UCIButton_clicked()
             this->currentSchool = "University of California, Irvine (UCI)";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->setShopButton(this->currentSchool);
+        WH->shoppingWindowShow();
     }
 }
 
@@ -463,7 +535,11 @@ void MainWindow::on_UCIButton_clicked()
  */
 void MainWindow::on_UCLAButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 1)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -471,13 +547,22 @@ void MainWindow::on_UCLAButton_clicked()
 
         ui->testBrowser->setText("Starting School: University of California, Los Angeles (UCLA)\n");
         this->loadCollegesToVisit();
-        routeTracker("University of California, Los Angeles (UCLA)", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("University of California, Los Angeles (UCLA)", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: University of California, Los Angeles (UCLA)\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -511,6 +596,9 @@ void MainWindow::on_UCLAButton_clicked()
             this->currentSchool = "University of California, Los Angeles (UCLA)";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -540,13 +628,10 @@ void MainWindow::routeTracker(QString schoolName,           // Name of school th
     {
         totalMiles += closestSchool->distance;
 
-        ui->testBrowser->append("From " + closestSchool->startingCollege + " to " +
-                                closestSchool->endingCollege + " is " + QString::number(closestSchool->distance) + " miles\n");
-
-//        windowHolder *WH = windowHolder::getInstance();
-
-//        WH->shoppingWindowShow();
-
+        qDebug() << "About to push back";
+        this->autoTrip.push_back(closestSchool);
+        //        ui->testBrowser->append("From " + closestSchool->startingCollege + " to " +
+        //                                closestSchool->endingCollege + " is " + QString::number(closestSchool->distance) + " miles\n");
 
         /*! \brief Calls the function again*/
         routeTracker(closestSchoolName, --numOfSchoolsVisiting, totalMiles, collegesToVisit);
@@ -558,7 +643,11 @@ void MainWindow::routeTracker(QString schoolName,           // Name of school th
  */
 void MainWindow::on_UniversityOfPacificButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -566,13 +655,22 @@ void MainWindow::on_UniversityOfPacificButton_clicked()
 
         ui->testBrowser->setText("Starting School: University of the Pacific\n");
         this->loadCollegesToVisit();
-        routeTracker("University of the Pacific", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("University of the Pacific", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: University of the Pacific\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -606,6 +704,9 @@ void MainWindow::on_UniversityOfPacificButton_clicked()
             this->currentSchool = "University of the Pacific";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -614,7 +715,11 @@ void MainWindow::on_UniversityOfPacificButton_clicked()
  */
 void MainWindow::on_UniversityOfOregonButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -622,13 +727,22 @@ void MainWindow::on_UniversityOfOregonButton_clicked()
 
         ui->testBrowser->setText("Starting School: University of Oregon\n");
         this->loadCollegesToVisit();
-        routeTracker("University of Oregon", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("University of Oregon", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: University of Oregon\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -662,6 +776,9 @@ void MainWindow::on_UniversityOfOregonButton_clicked()
             this->currentSchool = "University of Oregon";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -670,7 +787,11 @@ void MainWindow::on_UniversityOfOregonButton_clicked()
  */
 void MainWindow::on_ASUButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -678,13 +799,22 @@ void MainWindow::on_ASUButton_clicked()
 
         ui->testBrowser->setText("Starting School: Arizona State University\n");
         this->loadCollegesToVisit();
-        routeTracker("Arizona State University", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("Arizona State University", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: Arizona State University\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -718,6 +848,9 @@ void MainWindow::on_ASUButton_clicked()
             this->currentSchool = "Arizona State University";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -726,7 +859,11 @@ void MainWindow::on_ASUButton_clicked()
  */
 void MainWindow::on_UniversityOfWisconsinButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -734,13 +871,22 @@ void MainWindow::on_UniversityOfWisconsinButton_clicked()
 
         ui->testBrowser->setText("Starting School: University of Wisconsin\n");
         this->loadCollegesToVisit();
-        routeTracker("University of Wisconsin", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("University of Wisconsin", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: University of Wisconsin\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -774,6 +920,9 @@ void MainWindow::on_UniversityOfWisconsinButton_clicked()
             this->currentSchool = "University of Wisconsin";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -782,7 +931,11 @@ void MainWindow::on_UniversityOfWisconsinButton_clicked()
  */
 void MainWindow::on_NorthwesternButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -790,13 +943,22 @@ void MainWindow::on_NorthwesternButton_clicked()
 
         ui->testBrowser->setText("Starting School: Northwestern\n");
         this->loadCollegesToVisit();
-        routeTracker("Northwestern", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("Northwestern", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: Northwestern\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -830,6 +992,9 @@ void MainWindow::on_NorthwesternButton_clicked()
             this->currentSchool = "Northwestern";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -838,7 +1003,11 @@ void MainWindow::on_NorthwesternButton_clicked()
  */
 void MainWindow::on_UniversityOfMichiganButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -846,13 +1015,22 @@ void MainWindow::on_UniversityOfMichiganButton_clicked()
 
         ui->testBrowser->setText("Starting School: University of Michigan\n");
         this->loadCollegesToVisit();
-        routeTracker("University of Michigan", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("University of Michigan", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: University of Michigan\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -886,6 +1064,9 @@ void MainWindow::on_UniversityOfMichiganButton_clicked()
             this->currentSchool = "University of Michigan";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -894,21 +1075,34 @@ void MainWindow::on_UniversityOfMichiganButton_clicked()
  */
 void MainWindow::on_MITButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
+        this->autoTrip.clear();
+
         ui->testBrowser->clear();
         ui->TotalMilesLabel->clear();
 
         ui->testBrowser->setText("Starting School: Massachusetts Institute of Technology (MIT)\n");
         this->loadCollegesToVisit();
-        routeTracker("Massachusetts Institute of Technology (MIT)", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("Massachusetts Institute of Technology (MIT)", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: Massachusetts Institute of Technology (MIT)\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -942,6 +1136,9 @@ void MainWindow::on_MITButton_clicked()
             this->currentSchool = "Massachusetts Institute of Technology (MIT)";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -950,7 +1147,11 @@ void MainWindow::on_MITButton_clicked()
  */
 void MainWindow::on_OSUButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -958,13 +1159,22 @@ void MainWindow::on_OSUButton_clicked()
 
         ui->testBrowser->setText("Starting School: Ohio State University\n");
         this->loadCollegesToVisit();
-        routeTracker("Ohio State University", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("Ohio State University", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: Ohio State University\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -998,6 +1208,9 @@ void MainWindow::on_OSUButton_clicked()
             this->currentSchool = "Ohio State University";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
@@ -1012,7 +1225,11 @@ void MainWindow::on_keyButton_clicked()
 
 void MainWindow::on_FullertonButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -1020,13 +1237,22 @@ void MainWindow::on_FullertonButton_clicked()
 
         ui->testBrowser->setText("Starting School: California State University, Fullerton");
         this->loadCollegesToVisit();
-        routeTracker("California State University, Fullerton", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("California State University, Fullerton", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: California State University, Fullerton\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -1060,12 +1286,19 @@ void MainWindow::on_FullertonButton_clicked()
             this->currentSchool = "California State University, Fullerton";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
 void MainWindow::on_TexasButton_clicked()
 {
-    if(ui->automaticRouteTrackingCheckBox->isChecked())
+    this->autoTripIndex = 0;
+    this->autoTrip.clear();
+
+    if(ui->automaticRouteTrackingCheckBox->isChecked() &&
+            ui->numOfSchoolsWheel->text().toInt() > 0)
     {
         double totalMiles = 0;
         ui->testBrowser->clear();
@@ -1073,13 +1306,22 @@ void MainWindow::on_TexasButton_clicked()
 
         ui->testBrowser->setText("Starting School: University of Texas");
         this->loadCollegesToVisit();
-        routeTracker("University of Texas", ui->numOfSchoolsWheel->text().toInt(), totalMiles, colleges);
+        routeTracker("University of Texas", ui->numOfSchoolsWheel->text().toInt() - 1, totalMiles, colleges);
         QTextCursor cursor = ui->testBrowser->textCursor();
         cursor.setPosition(0);
         ui->testBrowser->setTextCursor(cursor);
         ui->TotalMilesLabel->setText("Total Miles: " + QString::number(totalMiles));
+
+        windowHolder *WH = windowHolder::getInstance();
+        WH->setShopButton(this->autoTrip[this->autoTripIndex]->startingCollege);
+        WH->shoppingWindowShow();
+        if(ui->numOfSchoolsWheel->text() > 1)
+            ui->testBrowser->setText("Starting School: " + this->autoTrip[this->autoTripIndex]->startingCollege + "\n");
+        else
+            ui->testBrowser->setText("Starting School: University of Texas\n");
+        this->incAutoTripIndex();
     }
-    else
+    else if(!ui->automaticRouteTrackingCheckBox->isChecked())
     {
         if(!this->currentSchool.isEmpty())
         {
@@ -1101,7 +1343,6 @@ void MainWindow::on_TexasButton_clicked()
             college* temp = new college("University of Texas", currentSchool,false, query.value(0).toDouble());
             this->manualTrip.push_back(temp);
             this->currentSchool = "University of Texas";
-
         }
         else if(this->currentSchool == "University of Texas")
         {
@@ -1113,21 +1354,29 @@ void MainWindow::on_TexasButton_clicked()
             this->currentSchool = "University of Texas";
             this->totalMiles = 0;
         }
+        windowHolder *WH  = windowHolder::getInstance();
+
+        WH->shoppingWindowShow();
     }
 }
 
 
 void MainWindow::on_automaticRouteTrackingCheckBox_clicked(bool checked)
 {
+    windowHolder *WH = windowHolder::getInstance();
     if(checked)
     {
         ui->numOfSchoolsToVisitLabel->show();
+        ui->numOfSchoolsWheel->setValue(0);
         ui->numOfSchoolsWheel->show();
         ui->testBrowser->clear();
         ui->TotalMilesLabel->clear();
         ui->removePrevDesButton->hide();
         this->manualTrip.clear();
         this->currentSchool.clear();
+        this->autoTrip.clear();
+
+        WH->showShopNextSchoolButton();
     }
     else
     {
@@ -1136,6 +1385,8 @@ void MainWindow::on_automaticRouteTrackingCheckBox_clicked(bool checked)
         ui->testBrowser->clear();
         ui->TotalMilesLabel->clear();
         ui->removePrevDesButton->show();
+
+        WH->hideShopNextSchoolButton();
     }
 }
 
