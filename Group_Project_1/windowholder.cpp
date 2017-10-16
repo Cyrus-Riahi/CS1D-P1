@@ -18,9 +18,15 @@ windowHolder *windowHolder::getInstance()
 windowHolder::windowHolder()
 {
     main.setWindowTitle("Route Tracker");
+    main.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     login.setWindowTitle("Route Tracker");
+    login.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     admin.setWindowTitle("Route Tracker(Admin)");
+    admin.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     create.setWindowTitle("Create a Login");
+    create.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     key.setWindowTitle("Key");
+    key.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     shop.setWindowTitle("Shop \'Til You Drop");
+    shop.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
 }
