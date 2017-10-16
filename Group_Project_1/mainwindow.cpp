@@ -1234,6 +1234,9 @@ void MainWindow::on_keyButton_clicked()
     WH->keyWindowShow();
 }
 
+/*!
+ * \fn MainWindow::on_FullertonButton_clicked
+ */
 void MainWindow::on_FullertonButton_clicked()
 {
     this->autoTripIndex = 0;
@@ -1304,6 +1307,9 @@ void MainWindow::on_FullertonButton_clicked()
     }
 }
 
+/*!
+ * \fn MainWindow::on_TexasButton_clicked
+ */
 void MainWindow::on_TexasButton_clicked()
 {
     this->autoTripIndex = 0;
@@ -1373,7 +1379,10 @@ void MainWindow::on_TexasButton_clicked()
     }
 }
 
-
+/*!
+ * \fn MainWindow::on_automaticRouteTrackingCheckBox_clicked
+ * \param checked
+ */
 void MainWindow::on_automaticRouteTrackingCheckBox_clicked(bool checked)
 {
     windowHolder *WH = windowHolder::getInstance();
@@ -1403,6 +1412,9 @@ void MainWindow::on_automaticRouteTrackingCheckBox_clicked(bool checked)
     }
 }
 
+/*!
+ * \fn MainWindow::on_removePrevDesButton_clicked
+ */
 void MainWindow::on_removePrevDesButton_clicked()
 {
     if(this->manualTrip.size() != 0)

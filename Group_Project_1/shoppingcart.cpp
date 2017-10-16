@@ -6,6 +6,10 @@
 #include <QHeaderView>
 #include <QStandardItemModel>
 
+/*!
+ * \fn shoppingcart::shoppingcart
+ * \param parent
+ */
 shoppingcart::shoppingcart(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::shoppingcart)
@@ -28,15 +32,21 @@ shoppingcart::shoppingcart(QWidget *parent) :
 
     ui->quantitySpinBox->setMinimum(1);
 
-
     ui->quantityLineEdit->setText("Number of souvenirs to buy: ");
 }
 
+/*!
+ * \fn shoppingcart::~shoppingcart
+ */
 shoppingcart::~shoppingcart()
 {
     delete ui;
 }
 
+/*!
+ * \fn shoppingcart::setButtonSchool
+ * \param school
+ */
 void shoppingcart::setButtonSchool(QString school)
 {
     ui->currentSchoolLineEdit->setText(school);
@@ -56,18 +66,19 @@ void shoppingcart::setButtonSchool(QString school)
     ui->souvenirTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->souvenirTableView->verticalHeader()->setVisible(false);
     ui->souvenirTableView->show();
-    //    QItemSelectionModel *select = ui->souvenirTableView->selectionModel();
-
-    //    select->hasSelection(); //check if has selection
-    //    select->selectedRows(); // return selected row(s)
-
 }
 
+/*!
+ * \fn shoppingcart::showNextSchoolButton
+ */
 void shoppingcart::showNextSchoolButton()
 {
     ui->toTheNextButton->show();
 }
 
+/*!
+ * \fn shoppingcart::hideNextSchoolButton
+ */
 void shoppingcart::hideNextSchoolButton()
 {
     ui->toTheNextButton->hide();
@@ -81,6 +92,9 @@ void shoppingcart::clearShoppingCart()
     ui->shoppingCartTableWidget->removeRow(0);
 }
 
+/*!
+* \fn shoppingcart::on_addToCartPushButton_clicked
+*/
 void shoppingcart::on_addToCartPushButton_clicked()
 {
     QModelIndexList selection = ui->souvenirTableView->selectionModel()->selectedIndexes();
@@ -174,12 +188,18 @@ void shoppingcart::on_addToCartPushButton_clicked()
     ui->souvenirTableView->selectionModel()->clear();
 }
 
+/*!
+ * \fn shoppingcart::on_toTheNextButton_clicked
+ */
 void shoppingcart::on_toTheNextButton_clicked()
 {
     windowHolder *WH = windowHolder::getInstance();
     WH->mainUpdateUI();
 }
 
+/*!
+ * \fn shoppingcart::on_deleteFromCartPushButton_clicked
+ */
 void shoppingcart::on_deleteFromCartPushButton_clicked()
 {
     QModelIndexList selection = ui->shoppingCartTableWidget->selectionModel()->selectedIndexes();
@@ -188,6 +208,8 @@ void shoppingcart::on_deleteFromCartPushButton_clicked()
     double math = 0;
     QString tempTotal = ui->totalCostLineEdit->text();
     QString priceToDelete;
+
+    qDebug() << ui->shoppingCartTableWidget->rowCount();
 
     if(ui->shoppingCartTableWidget->rowCount() > 1 &&
        selection.count() == 1)
@@ -213,19 +235,19 @@ void shoppingcart::on_deleteFromCartPushButton_clicked()
         }
         priceToDelete = ui->shoppingCartTableWidget->item(index, 2)->text();
         ui->shoppingCartTableWidget->removeRow(index);
-    }
-    priceToDelete.remove("$");
-    tempTotal.remove("$");
+        priceToDelete.remove("$");
+        tempTotal.remove("$");
 
-    math = tempTotal.toDouble();
-    math -= priceToDelete.toDouble();
-    tempTotal = QString::number(math);
-    if(tempTotal.at(tempTotal.size() - 3) != ".")
-    {
-        tempTotal.push_back("0");
-    }
+        math = tempTotal.toDouble();
+        math -= priceToDelete.toDouble();
+        tempTotal = QString::number(math);
+        if(tempTotal.at(tempTotal.size() - 3) != ".")
+        {
+            tempTotal.push_back("0");
+        }
 
-    ui->totalCostLineEdit->setText("$" + tempTotal);
+        ui->totalCostLineEdit->setText("$" + tempTotal);
+    }
     ui->shoppingCartTableWidget->selectionModel()->clear();
 }
 
