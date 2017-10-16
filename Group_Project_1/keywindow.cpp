@@ -1,6 +1,10 @@
 #include "keywindow.h"
 #include "ui_keywindow.h"
 
+/*!
+ * \fn keyWindow::keyWindow
+ * \param parent
+ */
 keyWindow::keyWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::keyWindow)
@@ -24,6 +28,9 @@ keyWindow::keyWindow(QWidget *parent) :
 
 }
 
+/*!
+ * \fn keyWindow::~keyWindow
+ */
 keyWindow::~keyWindow()
 {
     delete ui;

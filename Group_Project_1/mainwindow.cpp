@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->helpTextBrowser->setText("Welcome to the route tracker program! To use this program:\n"
                                  "1) First figure out if you want to do a manual trip between schools\n"
                                  "\tOR if you want to do an automatic trip using our formula.\n"
-                                 "2) If you are unsure about what each school represents, click the \"Key\" button.\n"
+                                 "2) If you are unsure about what school each button represents, click the \"Key\" button.\n"
                                  "3) If you chose to do a manual trip(Auto-route-tracking is not clicked), start off by\n"
                                  "\tchoosing your first school. A window will pop up, this window allows you to buy a \n"
                                  "\tsouvenir from that school. Once done, close that window and choose your next school!\n"
@@ -82,6 +82,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/*!
+ * \fn MainWindow::getNumOfSchool
+ * \return
+ */
 int MainWindow::getNumOfSchool()
 {
     QVector<QString> collegeNames;
@@ -105,6 +109,9 @@ void MainWindow::showFullertonAndTexas()
     ui->TexasButton->show();
 }
 
+/*!
+ * \fn MainWindow::hideAllButtons
+ */
 void MainWindow::hideAllButtons()
 {
     ui->FullertonButton->hide();
@@ -122,6 +129,9 @@ void MainWindow::hideAllButtons()
     ui->SaddlebackButton->hide();
 }
 
+/*!
+ * \fn MainWindow::checkSchoolsForButtons
+ */
 void MainWindow::checkSchoolsForButtons()
 {
     this->hideAllButtons();
@@ -175,6 +185,9 @@ void MainWindow::checkSchoolsForButtons()
     ui->testBrowser->clear();
 }
 
+/*!
+ * \fn MainWindow::updateUserUI
+ */
 void MainWindow::updateUserUI()
 {
     windowHolder *WH = windowHolder::getInstance();
@@ -188,7 +201,12 @@ void MainWindow::updateUserUI()
         WH->updateShopWindow();
         WH->shoppingWindowShow();
 
+
         this->incAutoTripIndex();
+        if(this->autoTripIndex == this->autoTrip.size() - 1)
+        {
+            QMessageBox::information(this, "WARNING!", "This is the last stop! Don't forget to hit checkout!");
+        }
     }
     else if(this->autoTripIndex == this->autoTrip.size())
     {
@@ -208,6 +226,9 @@ void MainWindow::updateUserUI()
     }
 }
 
+/*!
+ * \fn MainWindow::incAutoTripIndex
+ */
 void MainWindow::incAutoTripIndex()
 {
     this->autoTripIndex++;
@@ -1457,11 +1478,19 @@ void MainWindow::on_removePrevDesButton_clicked()
     }
 }
 
+/*!
+ * \fn MainWindow::getCurrentAccount
+ * \return
+ */
 QString MainWindow::getCurrentAccount() const
 {
     return currentAccount;
 }
 
+/*!
+ * \fn MainWindow::setCurrentAccount
+ * \param value
+ */
 void MainWindow::setCurrentAccount(const QString &value)
 {
     currentAccount = value;

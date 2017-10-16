@@ -156,6 +156,13 @@ QVector<Account*> loginWindow::loadAccounts(){
     return accounts;
 }
 
+/*!
+ * \fn loginWindow::validateUserLogin
+ * \param accounts
+ * \param username
+ * \param password
+ * \return
+ */
 bool loginWindow::validateUserLogin(QVector<Account*> accounts,
                                     QString username,
                                     QString password){

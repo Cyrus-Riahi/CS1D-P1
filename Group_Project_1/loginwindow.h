@@ -22,9 +22,14 @@ class loginWindow : public QMainWindow
 public:
     /*! * \fn loginWindow*/
     /*! * \param parent*/
-    QString getUserNameLineEdit();
     explicit loginWindow(QWidget *parent = 0);
     ~loginWindow();
+
+    /*!
+     * fn getUserNameLineEdit
+     * \return
+     */
+    QString getUserNameLineEdit();
 
 
 private slots:
@@ -40,8 +45,19 @@ private slots:
     /*! * \fn on_createLoginButton_clicked*/
     void on_createLoginButton_clicked();
 
+    /*!
+     * \fn loadAccounts
+     * \return
+     */
     QVector<Account*> loadAccounts();
 
+    /*!
+     * \fn validateUserLogin
+     * \param accounts
+     * \param username
+     * \param password
+     * \return
+     */
     bool validateUserLogin(QVector<Account*> accounts, QString username, QString password);
 
 private:

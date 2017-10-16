@@ -3,6 +3,11 @@
 #include "windowholder.h"
 #include <QMessageBox>
 #include <QDebug>
+
+/*!
+ * \fn CheckoutWindow::CheckoutWindow
+ * \param parent
+ */
 CheckoutWindow::CheckoutWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::CheckoutWindow)
@@ -11,11 +16,17 @@ CheckoutWindow::CheckoutWindow(QWidget *parent) :
 
 }
 
+/*!
+ * \fn CheckoutWindow::~CheckoutWindow
+ */
 CheckoutWindow::~CheckoutWindow()
 {
     delete ui;
 }
 
+/*!
+ * \fn CheckoutWindow::on_pushButton_clicked
+ */
 void CheckoutWindow::on_pushButton_clicked()
 {
     QString cardNum;
@@ -54,6 +65,9 @@ void CheckoutWindow::on_pushButton_clicked()
 
 }
 
+/*!
+ * \fn CheckoutWindow::on_pushButton_2_clicked
+ */
 void CheckoutWindow::on_pushButton_2_clicked()
 {
     ui->cardNum->clear();
@@ -61,10 +75,14 @@ void CheckoutWindow::on_pushButton_2_clicked()
     ui->month->setCurrentIndex(0);
     ui->year->setCurrentIndex(0);
     windowHolder* wh = windowHolder::getInstance();
-    wh->clearShoppingCart();
     wh->checkoutWindowHide();
 }
 
+/*!
+ * \fn CheckoutWindow::checkNum
+ * \param postion
+ * \return
+ */
 bool CheckoutWindow::checkNum(QChar postion){
     return (postion == '0' ||
             postion == '1' ||
@@ -78,12 +96,20 @@ bool CheckoutWindow::checkNum(QChar postion){
             postion == '9');
 }
 
+/*!
+ * \fn CheckoutWindow::setUserameLabel
+ */
 void CheckoutWindow::setUserameLabel()
 {
     windowHolder *WH = windowHolder::getInstance();
     ui->infoLabel->setText("Please enter your credit/debit card information " + WH->getUsername());
 }
 
+/*!
+ * \fn CheckoutWindow::invalidCardNumber
+ * \param cardNum
+ * \return
+ */
 bool CheckoutWindow::invalidCardNumber(QString cardNum){
     bool invalid = false;
     if(cardNum.size() != 16){
@@ -98,6 +124,12 @@ bool CheckoutWindow::invalidCardNumber(QString cardNum){
         return invalid;
     }
 }
+
+/*!
+ * \fn CheckoutWindow::invalidCVV
+ * \param cvv
+ * \return
+ */
 bool CheckoutWindow::invalidCVV(QString cvv){
     bool invalid = false;
     if(cvv.size() != 3){

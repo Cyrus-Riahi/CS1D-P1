@@ -129,30 +129,51 @@ public:
         shop.update();
     }
 
+    /*!
+     * \fn checkoutWindowHide
+     */
     void checkoutWindowHide()
     {
         checkout.hide();
     }
 
+    /*!
+     * \fn checkoutWindowShow
+     */
     void checkoutWindowShow()
     {
         checkout.show();
         checkout.setUserameLabel();
     }
+
+    /*!
+     * \fn getUserName
+     * \return
+     */
     QString getUserName(){
         return login.getUserNameLineEdit();
     }
 
+    /*!
+     * \fn setMainUsername
+     */
     void setMainUsername()
     {
         main.setCurrentAccount(this->getUserName());
     }
 
+    /*!
+     * \fn getUsername
+     * \return
+     */
     QString getUsername()
     {
         return main.getCurrentAccount();
     }
 
+    /*!
+     * \fn clearShoppingCart
+     */
     void clearShoppingCart()
     {
         shop.clearShoppingCart();

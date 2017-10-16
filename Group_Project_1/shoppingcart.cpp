@@ -90,6 +90,7 @@ void shoppingcart::clearShoppingCart()
     for(int i = 0; i < ui->shoppingCartTableWidget->rowCount(); i++)
         ui->shoppingCartTableWidget->removeRow(i);
     ui->shoppingCartTableWidget->removeRow(0);
+    ui->totalCostLineEdit->clear();
 }
 
 /*!
@@ -251,12 +252,18 @@ void shoppingcart::on_deleteFromCartPushButton_clicked()
     ui->shoppingCartTableWidget->selectionModel()->clear();
 }
 
+/*!
+ * \fn shoppingcart::on_checkoutButton_clicked
+ */
 void shoppingcart::on_checkoutButton_clicked()
 {
     windowHolder* wh = windowHolder::getInstance();
     wh->checkoutWindowShow();
 }
 
+/*!
+ * fn shoppingcart::setShoppingCartTable
+ */
 void shoppingcart::setShoppingCartTable()
 {
     QStringList labels;

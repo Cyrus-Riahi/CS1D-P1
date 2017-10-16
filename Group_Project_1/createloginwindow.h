@@ -28,8 +28,15 @@ private slots:
     /*! * \fn on_pushButton_clicked*/
     void on_pushButton_clicked();
 
+    /*!
+     * \fn on_Enter_clicked
+     */
     void on_Enter_clicked();
 
+    /*!
+     * \fn validateCreateLogin
+     * \return
+     */
     bool validateCreateLogin();
 private:
     Ui::CreateLoginWindow *ui; /*! \var UI for the create login window*/

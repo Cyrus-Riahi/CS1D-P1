@@ -7,6 +7,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QMessageBox>
+
 /*! \fn CreateLoginWindow::CreateLoginWindow
  * \param parent */
 CreateLoginWindow::CreateLoginWindow(QWidget *parent) :
@@ -71,8 +72,12 @@ void CreateLoginWindow::on_Enter_clicked()
     }
 }
 
- bool CreateLoginWindow::validateCreateLogin(){
+/*!
+  * \brief CreateLoginWindow::validateCreateLogin
+  * \return
+  */
+bool CreateLoginWindow::validateCreateLogin(){
      return (ui->firstName->text() == "" || ui->lastName->text() == "" || ui->email->text() == "" ||
              ui->address->text() == "" || ui->state->text() == "" ||
              ui->username->text() == "" || ui->password->text() == "");
- }
+}

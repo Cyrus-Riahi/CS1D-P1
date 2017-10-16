@@ -381,38 +381,74 @@ void adminWindow::on_addToDatabaseButton_clicked()
             ui->souvenirNameLineEdit->text() != ""       &&
             ui->souvenirPriceLineEdit->text() != "")
     {
-        QString tempCollege = ui->addSouvenirSchoolNameComboBox->currentText();
-        QString tempSouvenirName = ui->souvenirNameLineEdit->text();
-        QString tempSouvenirPrice = "$" + ui->souvenirPriceLineEdit->text();
-
-        QSqlQuery query;
-        query.prepare("INSERT INTO College_Souvenirs (College, Traditional_Souvenirs, Cost)"
-                      "VALUES (:tempCollege, :tempSouvenirName, :tempSouvenirPrice)");
-        query.bindValue(":tempCollege", tempCollege);
-        query.bindValue(":tempSouvenirName", tempSouvenirName);
-        query.bindValue(":tempSouvenirPrice", tempSouvenirPrice);
-
-        if(!query.exec())
+        bool invalidPrice = false;
+        int decimalCount = 0;
+        for(int i = 1; i < ui->souvenirPriceLineEdit->text().size(); ++i)
         {
-            qDebug() << "YOU GOT CANCER!";
+            if(ui->souvenirPriceLineEdit->text()[i] == ".")
+            {
+                decimalCount++;
+            }
+            else if(ui->souvenirPriceLineEdit->text()[i] != "0" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "1" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "2" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "3" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "4" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "5" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "6" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "7" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "8" &&
+                    ui->souvenirPriceLineEdit->text()[i] != "9")
+            {
+                qDebug() << ui->souvenirPriceLineEdit->text()[i];
+                invalidPrice = true;
+            }
+
         }
+        if(decimalCount > 1)
+        {
+            invalidPrice = true;
+        }
+        if(invalidPrice)
+        {
+            QMessageBox::critical(this, "ERROR", "Must be a numerical value.");
+        }
+        else
+        {
+
+            QString tempCollege = ui->addSouvenirSchoolNameComboBox->currentText();
+            QString tempSouvenirName = ui->souvenirNameLineEdit->text();
+            QString tempSouvenirPrice = "$" + ui->souvenirPriceLineEdit->text();
+
+            QSqlQuery query;
+            query.prepare("INSERT INTO College_Souvenirs (College, Traditional_Souvenirs, Cost)"
+                          "VALUES (:tempCollege, :tempSouvenirName, :tempSouvenirPrice)");
+            query.bindValue(":tempCollege", tempCollege);
+            query.bindValue(":tempSouvenirName", tempSouvenirName);
+            query.bindValue(":tempSouvenirPrice", tempSouvenirPrice);
+
+            if(!query.exec())
+            {
+                qDebug() << "YOU GOT CANCER!";
+            }
 
 
 
-        QSqlQueryModel* model = new QSqlQueryModel;
-        QSqlQuery otherQuery;
+            QSqlQueryModel* model = new QSqlQueryModel;
+            QSqlQuery otherQuery;
 
-        otherQuery.prepare("SELECT * FROM College_Souvenirs ORDER BY College ASC");
+            otherQuery.prepare("SELECT * FROM College_Souvenirs ORDER BY College ASC");
 
-        otherQuery.exec();
+            otherQuery.exec();
 
-        model->setQuery(otherQuery);
+            model->setQuery(otherQuery);
 
-        ui->SouvenirListTableView->setModel(model);
-        ui->SouvenirListTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-        ui->SouvenirListTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-        ui->SouvenirListTableView->show();
-        ui->leftGroupBoxAdd->hide();
+            ui->SouvenirListTableView->setModel(model);
+            ui->SouvenirListTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+            ui->SouvenirListTableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+            ui->SouvenirListTableView->show();
+            ui->leftGroupBoxAdd->hide();
+        }
     }
     else
     {
@@ -611,7 +647,9 @@ void adminWindow::populateDeleteCollegeCB()
     }
 }
 
-
+/*!
+ * \fn adminWindow::on_addToDbFromFileButton_clicked
+ */
 void adminWindow::on_addToDbFromFileButton_clicked()
 {
     QSqlQuery query;
@@ -661,6 +699,9 @@ void adminWindow::on_addToDbFromFileButton_clicked()
 
 }
 
+/*!
+ * \fn adminWindow::on_deleteFromDbButton_clicked
+ */
 void adminWindow::on_deleteFromDbButton_clicked()
 {
     if(ui->deleteCollegeDB->currentText() != "Select A School")
