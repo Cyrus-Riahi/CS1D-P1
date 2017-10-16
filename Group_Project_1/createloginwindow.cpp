@@ -36,18 +36,14 @@ void CreateLoginWindow::on_Enter_clicked()
     QSqlQuery query;
     /* \ToDo Add error checking */
     if(!validateCreateLogin()){
-        query.prepare("INSERT INTO Account (firstName, lastName, email, address, states, cardNum, CVV, expMonth, expYear, username, userPassword)"
-                      "VALUES (:tempFirst, :tempLast, :tempEmail, :tempAddress, :tempState, :tempCard, :tempCVV, :tempMonth, :tempYear, :tempUser, :tempPass)");
+        query.prepare("INSERT INTO Account (firstName, lastName, email, address, states, username, userPassword)"
+                      "VALUES (:tempFirst, :tempLast, :tempEmail, :tempAddress, :tempState, :tempUser, :tempPass)");
 
         query.bindValue(":tempFirst", ui->firstName->text());
         query.bindValue(":tempLast", ui->lastName->text());
         query.bindValue(":tempEmail", ui->email->text());
         query.bindValue(":tempAddress", ui->address->text());
         query.bindValue(":tempState", ui->state->text());
-        query.bindValue(":tempCard", ui->cardNum->text());
-        query.bindValue(":tempCVV", ui->CVV->text());
-        query.bindValue(":tempMonth", ui->month->currentText());
-        query.bindValue(":tempYear", ui->year->currentText());
         query.bindValue(":tempUser", ui->username->text());
         query.bindValue(":tempPass", ui->password->text());
 
@@ -65,10 +61,6 @@ void CreateLoginWindow::on_Enter_clicked()
         ui->email->clear();
         ui->address->clear();
         ui->state->clear();
-        ui->cardNum->clear();
-        ui->CVV->clear();
-        ui->month->clear();
-        ui->year->clear();
 
         windowHolder *w = windowHolder::getInstance();
         w->CreateWindowHide();
@@ -81,7 +73,6 @@ void CreateLoginWindow::on_Enter_clicked()
 
  bool CreateLoginWindow::validateCreateLogin(){
      return (ui->firstName->text() == "" || ui->lastName->text() == "" || ui->email->text() == "" ||
-             ui->address->text() == "" || ui->state->text() == "" || ui->cardNum->text() == "" ||
-             ui->CVV->text() == "" || ui->month->currentText() == "Month" || ui->year->currentText() == "Year" ||
+             ui->address->text() == "" || ui->state->text() == "" ||
              ui->username->text() == "" || ui->password->text() == "");
  }

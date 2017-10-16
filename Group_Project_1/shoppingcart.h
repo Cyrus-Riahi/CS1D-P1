@@ -26,6 +26,8 @@ private slots:
 
     void on_toTheNextButton_clicked();
 
+    void on_deleteFromCartPushButton_clicked();
+
 private:
     Ui::shoppingcart *ui;
 };

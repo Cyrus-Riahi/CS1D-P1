@@ -138,11 +138,7 @@ QVector<Account*> loginWindow::loadAccounts(){
                                            query.value(3).toString(),
                                            query.value(4).toString(),
                                            query.value(5).toString(),
-                                           query.value(6).toString(),
-                                           query.value(7).toString(),
-                                           query.value(8).toString(),
-                                           query.value(9).toString(),
-                                           query.value(10).toString()));
+                                           query.value(6).toString()));
         }
     }
     return accounts;
