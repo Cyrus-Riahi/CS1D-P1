@@ -390,6 +390,7 @@ void MainWindow::on_SaddlebackButton_clicked()
 {
     this->autoTripIndex = 0;
     this->autoTrip.clear();
+
     if(ui->automaticRouteTrackingCheckBox->isChecked() &&
             ui->numOfSchoolsWheel->text().toInt() > 1)
     {
@@ -598,6 +599,7 @@ void MainWindow::on_UCLAButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -706,6 +708,7 @@ void MainWindow::on_UniversityOfPacificButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -778,6 +781,7 @@ void MainWindow::on_UniversityOfOregonButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -850,6 +854,7 @@ void MainWindow::on_ASUButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -922,6 +927,7 @@ void MainWindow::on_UniversityOfWisconsinButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -994,6 +1000,7 @@ void MainWindow::on_NorthwesternButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -1066,6 +1073,7 @@ void MainWindow::on_UniversityOfMichiganButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -1138,6 +1146,7 @@ void MainWindow::on_MITButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -1210,6 +1219,7 @@ void MainWindow::on_OSUButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -1288,6 +1298,7 @@ void MainWindow::on_FullertonButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
@@ -1356,6 +1367,7 @@ void MainWindow::on_TexasButton_clicked()
         }
         windowHolder *WH  = windowHolder::getInstance();
 
+        WH->setShopButton(this->currentSchool);
         WH->shoppingWindowShow();
     }
 }
