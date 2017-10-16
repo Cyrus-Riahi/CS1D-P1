@@ -77,19 +77,22 @@ void shoppingcart::on_addToCartPushButton_clicked()
 {
     QModelIndexList selection = ui->souvenirTableView->selectionModel()->selectedIndexes();
 
-    qDebug() << selection.count();
-    qDebug() << selection.at(0).data().toString();
     int rowCount = ui->shoppingCartTableWidget->rowCount();
 
+    double totalCost = 0;
+    double tempCost = 0;
+    if(ui->totalCostLineEdit->text() != "")
+    {
+        QString temp = ui->totalCostLineEdit->text();
+        temp.remove("$");
+        totalCost += temp.toDouble();
+    }
 
     if(selection.count() == 1)
     {
         QString indexItem = selection.at(0).data().toString();
 
         QSqlQuery query;
-
-
-        qDebug() << rowCount;
 
         ui->shoppingCartTableWidget->insertRow(rowCount);
         ui->shoppingCartTableWidget->setRowCount(rowCount + 1);
@@ -109,10 +112,15 @@ void shoppingcart::on_addToCartPushButton_clicked()
             ui->shoppingCartTableWidget->setItem(rowCount - 1, 2,
                                                  new QTableWidgetItem(indexItem));
 
+            indexItem.remove("$");
+            tempCost = ui->quantitySpinBox->text().toDouble() * indexItem.toDouble();
+            totalCost += tempCost;
+            ui->totalCostLineEdit->setText("$" + QString::number(totalCost));
+            qDebug() << totalCost;
         }
         else
         {
-            query.prepare("SELECT Traditional_Souvenirs FROM College_Souvenirs WHERE Traditional_Souvenirs = :Souvenir AND College = :College");
+            query.prepare("SELECT Cost FROM College_Souvenirs WHERE Traditional_Souvenirs = :Souvenir AND College = :College");
             query.bindValue(1, ui->currentSchoolLineEdit->text());
             query.bindValue(0, indexItem);
 
@@ -125,6 +133,13 @@ void shoppingcart::on_addToCartPushButton_clicked()
             ui->shoppingCartTableWidget->setItem(rowCount - 1, 2,
                                                  new QTableWidgetItem(query.value(0).toString()));// Souvenir
 
+            QString temp = query.value(0).toString();
+            temp.remove("$");
+            tempCost = ui->quantitySpinBox->text().toDouble() * temp.toDouble();
+            totalCost += tempCost;
+            ui->totalCostLineEdit->setText("$" + QString::number(totalCost));
+            qDebug() << totalCost;
+
         }
 
         ui->shoppingCartTableWidget->setItem(rowCount - 1, 0,
@@ -133,7 +148,9 @@ void shoppingcart::on_addToCartPushButton_clicked()
                                              new QTableWidgetItem(ui->quantitySpinBox->text()));
 
 
+
     }
+    ui->souvenirTableView->selectionModel()->clear();
 }
 
 void shoppingcart::on_toTheNextButton_clicked()
@@ -144,5 +161,43 @@ void shoppingcart::on_toTheNextButton_clicked()
 
 void shoppingcart::on_deleteFromCartPushButton_clicked()
 {
+    QModelIndexList selection = ui->shoppingCartTableWidget->selectionModel()->selectedIndexes();
+    bool found = false;
+    int index = 0;
+    double math = 0;
+    QString tempTotal = ui->totalCostLineEdit->text();
+    QString priceToDelete;
 
+    if(ui->shoppingCartTableWidget->rowCount() > 1 &&
+       selection.count() == 1)
+    {
+        while(!found && index < ui->shoppingCartTableWidget->rowCount())
+        {
+            qDebug() << QString::number(index);
+            for(int j = 0; j < 4; ++j)
+            {
+                qDebug() << j;
+                if(selection.at(0).data().toString() == ui->shoppingCartTableWidget->item(index, j)->text())
+                {
+                    found = true;
+                    qDebug() << "Found";
+                    qDebug() << ui->shoppingCartTableWidget->item(index, 0)->text();
+                }
+            }
+            if(!found)
+            {
+                ++index;
+                qDebug() << "Not found";
+            }
+        }
+        priceToDelete = ui->shoppingCartTableWidget->item(index, 2)->text();
+        ui->shoppingCartTableWidget->removeRow(index);
+    }
+    priceToDelete.remove("$");
+    tempTotal.remove("$");
+
+    math = tempTotal.toDouble();
+    math -= priceToDelete.toDouble();
+    ui->totalCostLineEdit->setText("$" + QString::number(math));
+    ui->shoppingCartTableWidget->selectionModel()->clear();
 }
