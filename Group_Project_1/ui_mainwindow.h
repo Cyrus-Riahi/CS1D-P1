@@ -67,6 +67,9 @@ public:
     QWidget *souvenirsTab;
     QComboBox *CB_School_Souvenirs;
     QTableWidget *souvenirTable;
+    QWidget *tab;
+    QLabel *label;
+    QTextBrowser *helpTextBrowser;
     QPushButton *backToLoginButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -328,6 +331,18 @@ public:
         souvenirTable->horizontalHeader()->setStretchLastSection(false);
         souvenirTable->verticalHeader()->setVisible(false);
         tabWidget->addTab(souvenirsTab, QString());
+        tab = new QWidget();
+        tab->setObjectName(QStringLiteral("tab"));
+        label = new QLabel(tab);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(170, 10, 531, 61));
+        label->setStyleSheet(QLatin1String("font: 75 36pt \"MS Shell Dlg 2\";\n"
+""));
+        helpTextBrowser = new QTextBrowser(tab);
+        helpTextBrowser->setObjectName(QStringLiteral("helpTextBrowser"));
+        helpTextBrowser->setGeometry(QRect(30, 70, 811, 311));
+        helpTextBrowser->setStyleSheet(QStringLiteral("font: 12pt \"MS Shell Dlg 2\";"));
+        tabWidget->addTab(tab, QString());
 
         verticalLayout->addWidget(tabWidget);
 
@@ -356,7 +371,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -390,6 +405,8 @@ public:
         QTableWidgetItem *___qtablewidgetitem = souvenirTable->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "1", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(souvenirsTab), QApplication::translate("MainWindow", "Souvenirs", Q_NULLPTR));
+        label->setText(QApplication::translate("MainWindow", "Welcome to the help tab!", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "HELP", Q_NULLPTR));
         backToLoginButton->setText(QApplication::translate("MainWindow", "Back to Login", Q_NULLPTR));
     } // retranslateUi
 

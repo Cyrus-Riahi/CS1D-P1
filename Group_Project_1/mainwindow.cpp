@@ -57,6 +57,22 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Us_pixelmap->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
 
 
+    ui->helpTextBrowser->setText("Welcome to the route tracker program! To use this program:\n"
+                                 "1) First figure out if you want to do a manual trip between schools\n"
+                                 "\tOR if you want to do an automatic trip using our formula.\n"
+                                 "2) If you are unsure about what each school represents, click the \"Key\" button.\n"
+                                 "3) If you chose to do a manual trip(Auto-route-tracking is not clicked), start off by\n"
+                                 "\tchoosing your first school. A window will pop up, this window allows you to buy a \n"
+                                 "\tsouvenir from that school. Once done, close that window and choose your next school!\n"
+                                 "\tOnce you have visited all of your schools, click the checkout button on your final \n"
+                                 "\tdestination to checkout and finish!\n"
+                                 "4) If you chose to do an auto trip, the button you click represents the starting school.\n"
+                                 "\tTo go to more than 1 school, increase the spin box. Once you have the desired settings,\n"
+                                 "\tclick the school you would like to start at. After clicking this school, the shopping\n"
+                                 "\twindow will apear, to go to the next school in your trip, hit the \"Next School\" Button.\n"
+                                 "\tOnce you have visited all of your schools, click the checkout button on your final \n"
+                                 "\tdestination to checkout and finish!\n");
+
     this->autoTripIndex = 0;
 }
 

@@ -26,7 +26,7 @@
          </size>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="tripPlannerTab">
          <attribute name="title">
@@ -599,6 +599,41 @@
           </column>
           <column/>
           <column/>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>HELP</string>
+         </attribute>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>10</y>
+            <width>531</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 75 36pt &quot;MS Shell Dlg 2&quot;;
+</string>
+          </property>
+          <property name="text">
+           <string>Welcome to the help tab!</string>
+          </property>
+         </widget>
+         <widget class="QTextBrowser" name="helpTextBrowser">
+          <property name="geometry">
+           <rect>
+            <x>30</x>
+            <y>70</y>
+            <width>811</width>
+            <height>311</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+          </property>
          </widget>
         </widget>
        </widget>
