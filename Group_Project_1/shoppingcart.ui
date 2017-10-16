@@ -33,7 +33,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>3</y>
+          <y>0</y>
           <width>371</width>
           <height>391</height>
          </rect>
@@ -69,16 +69,6 @@
        <property name="title">
         <string/>
        </property>
-       <widget class="QTableView" name="shoppingCartTableView">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>4</y>
-          <width>371</width>
-          <height>391</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_2">
         <property name="geometry">
          <rect>
@@ -104,6 +94,36 @@
         <property name="readOnly">
          <bool>true</bool>
         </property>
+       </widget>
+       <widget class="QTableWidget" name="shoppingCartTableWidget">
+        <property name="geometry">
+         <rect>
+          <x>5</x>
+          <y>1</y>
+          <width>371</width>
+          <height>391</height>
+         </rect>
+        </property>
+        <column>
+         <property name="text">
+          <string>School</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Souvenir</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Price</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Quantity</string>
+         </property>
+        </column>
        </widget>
       </widget>
      </item>

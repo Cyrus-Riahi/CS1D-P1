@@ -390,6 +390,7 @@ void MainWindow::on_SaddlebackButton_clicked()
 {
     this->autoTripIndex = 0;
     this->autoTrip.clear();
+
     if(ui->automaticRouteTrackingCheckBox->isChecked() &&
             ui->numOfSchoolsWheel->text().toInt() > 1)
     {
