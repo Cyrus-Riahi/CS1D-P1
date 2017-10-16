@@ -14,8 +14,7 @@
 class windowHolder
 {
 public:
-    /*! \fn getInstance
-     * \return*/
+    /*! \fn getInstance */
     static windowHolder* getInstance();
 
     /*! \fn MainWindowHide*/
@@ -68,51 +67,64 @@ public:
         create.show();
     }
 
+    /*! \fn keyWindowHide*/
     void keyWindowHide()
     {
         key.hide();
     }
 
+    /*! \fn keyWindowShow*/
     void keyWindowShow()
     {
         key.show();
     }
 
+    /*! \fn shoppingWindowHide*/
     void shoppingWindowHide()
     {
         shop.hide();
     }
 
+    /*! \fn shoppingWindowShow*/
     void shoppingWindowShow()
     {
         shop.show();
     }
 
+    /*!
+     * \fn setShopButton
+     * \param school
+     */
     void setShopButton(QString school)
     {
         shop.setButtonSchool(school);
     }
 
+    /*! \fn showShopNextSchoolButton*/
     void showShopNextSchoolButton()
     {
         shop.showNextSchoolButton();
     }
 
+    /*! \fn hideShopNextSchoolButton*/
     void hideShopNextSchoolButton()
     {
         shop.hideNextSchoolButton();
     }
 
+    /*! \fn mainUpdateUI*/
     void mainUpdateUI()
     {
         main.updateUserUI();
     }
 
+    /*! \fn mainIncIndex*/
     void mainIncIndex()
     {
         main.incAutoTripIndex();
     }
 
+    /*! \fn updateShopWindow*/
     void updateShopWindow()
     {
         shop.update();
