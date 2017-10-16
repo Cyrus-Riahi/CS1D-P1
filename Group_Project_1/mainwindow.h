@@ -5,7 +5,7 @@
 #include <QMainWindow>
 #include "collegestovisit.h"
 #include "souvenir.h"
-
+#include "account.h"
 /*! \namespace UI*/
 namespace Ui {
 class MainWindow;
@@ -35,6 +35,8 @@ public:
 
     void incAutoTripIndex();
 
+    QString getCurrentAccount() const;
+    void setCurrentAccount(const QString &value);
 
 private slots:
     /*! * \fn on_CB_School_Souvenirs_currentIndexChanged*/
@@ -103,6 +105,7 @@ private:
     QVector<college*> colleges;
     double totalMiles;
     int autoTripIndex;
+    QString currentAccount;
 };
 
 #endif // MAINWINDOW_H

@@ -12,6 +12,8 @@ public:
             QString state,
             QString username,
             QString password);
+
+            void setLastLogin(Account* lastLogin);
             QString getUsername();
             QString getPassword();
 

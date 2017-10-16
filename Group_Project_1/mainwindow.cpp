@@ -1440,3 +1440,13 @@ void MainWindow::on_removePrevDesButton_clicked()
         this->currentSchool.clear();
     }
 }
+
+QString MainWindow::getCurrentAccount() const
+{
+    return currentAccount;
+}
+
+void MainWindow::setCurrentAccount(const QString &value)
+{
+    currentAccount = value;
+}

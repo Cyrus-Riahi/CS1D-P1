@@ -22,6 +22,7 @@ class loginWindow : public QMainWindow
 public:
     /*! * \fn loginWindow*/
     /*! * \param parent*/
+    QString getUserNameLineEdit();
     explicit loginWindow(QWidget *parent = 0);
     ~loginWindow();
 

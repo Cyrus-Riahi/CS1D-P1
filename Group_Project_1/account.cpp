@@ -22,4 +22,6 @@ QString Account::getUsername(){
 QString Account::getPassword(){
     return password;
 }
-
+void Account::setLastLogin(Account *lastLogin){
+//    this->lastLogin = lastLogin;
+}

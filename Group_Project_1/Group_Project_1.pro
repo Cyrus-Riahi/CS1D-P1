@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     createloginwindow.cpp \
     keywindow.cpp \
     account.cpp \
-    shoppingcart.cpp
+    shoppingcart.cpp \
+    checkoutwindow.cpp
 
 HEADERS  += mainwindow.h \
     database.h \
@@ -44,11 +45,15 @@ HEADERS  += mainwindow.h \
     createloginwindow.h \
     keywindow.h \
     account.h \
-    shoppingcart.h
+    shoppingcart.h \
+    checkoutwindow.h
 
 FORMS    += mainwindow.ui \
     loginwindow.ui \
     adminwindow.ui \
     createloginwindow.ui \
     keywindow.ui \
-    shoppingcart.ui
+    shoppingcart.ui \
+    checkoutwindow.ui
+
+DISTFILES +=

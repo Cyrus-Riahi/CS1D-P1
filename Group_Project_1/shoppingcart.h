@@ -21,12 +21,18 @@ public:
 
     void hideNextSchoolButton();
 
+    void clearShoppingCart();
+
+    void setShoppingCartTable();
+
 private slots:
     void on_addToCartPushButton_clicked();
 
     void on_toTheNextButton_clicked();
 
     void on_deleteFromCartPushButton_clicked();
+
+    void on_checkoutButton_clicked();
 
 private:
     Ui::shoppingcart *ui;
