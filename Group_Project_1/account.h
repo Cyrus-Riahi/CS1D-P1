@@ -10,14 +10,10 @@ public:
             QString email,
             QString address,
             QString state,
-            QString cardNum,
-            QString CVV,
-            QString month,
-            QString year,
             QString username,
             QString password);
-    QString getUsername();
-    QString getPassword();
+            QString getUsername();
+            QString getPassword();
 
 private:
     QString firstName;
@@ -26,9 +22,6 @@ private:
     QString address;
     QString state;
     QString cardNum;
-    QString CVV;
-    QString month;
-    QString year;
     QString username;
     QString password;
 };
