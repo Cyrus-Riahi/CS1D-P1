@@ -79,6 +79,7 @@ void shoppingcart::on_addToCartPushButton_clicked()
 
     int rowCount = ui->shoppingCartTableWidget->rowCount();
 
+    QString tempTotal;
     double totalCost = 0;
     double tempCost = 0;
     if(ui->totalCostLineEdit->text() != "")
@@ -115,7 +116,13 @@ void shoppingcart::on_addToCartPushButton_clicked()
             indexItem.remove("$");
             tempCost = ui->quantitySpinBox->text().toDouble() * indexItem.toDouble();
             totalCost += tempCost;
-            ui->totalCostLineEdit->setText("$" + QString::number(totalCost));
+            tempTotal = QString::number(totalCost);
+            if(tempTotal.at(tempTotal.size() - 3) != ".")
+            {
+                tempTotal.push_back("0");
+            }
+
+            ui->totalCostLineEdit->setText("$" + tempTotal);
             qDebug() << totalCost;
         }
         else
@@ -137,7 +144,13 @@ void shoppingcart::on_addToCartPushButton_clicked()
             temp.remove("$");
             tempCost = ui->quantitySpinBox->text().toDouble() * temp.toDouble();
             totalCost += tempCost;
-            ui->totalCostLineEdit->setText("$" + QString::number(totalCost));
+            tempTotal = QString::number(totalCost);
+            if(tempTotal.at(tempTotal.size() - 3) != ".")
+            {
+                tempTotal.push_back("0");
+            }
+
+            ui->totalCostLineEdit->setText("$" + tempTotal);
             qDebug() << totalCost;
 
         }
@@ -198,6 +211,12 @@ void shoppingcart::on_deleteFromCartPushButton_clicked()
 
     math = tempTotal.toDouble();
     math -= priceToDelete.toDouble();
-    ui->totalCostLineEdit->setText("$" + QString::number(math));
+    tempTotal = QString::number(math);
+    if(tempTotal.at(tempTotal.size() - 3) != ".")
+    {
+        tempTotal.push_back("0");
+    }
+
+    ui->totalCostLineEdit->setText("$" + tempTotal);
     ui->shoppingCartTableWidget->selectionModel()->clear();
 }
