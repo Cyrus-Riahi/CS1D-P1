@@ -73,6 +73,14 @@ void shoppingcart::hideNextSchoolButton()
     ui->toTheNextButton->hide();
 }
 
+void shoppingcart::clearShoppingCart()
+{
+    ui->shoppingCartTableWidget->clear();
+    for(int i = 0; i < ui->shoppingCartTableWidget->rowCount(); i++)
+        ui->shoppingCartTableWidget->removeRow(i);
+    ui->shoppingCartTableWidget->removeRow(0);
+}
+
 void shoppingcart::on_addToCartPushButton_clicked()
 {
     QModelIndexList selection = ui->souvenirTableView->selectionModel()->selectedIndexes();
@@ -219,4 +227,25 @@ void shoppingcart::on_deleteFromCartPushButton_clicked()
 
     ui->totalCostLineEdit->setText("$" + tempTotal);
     ui->shoppingCartTableWidget->selectionModel()->clear();
+}
+
+void shoppingcart::on_checkoutButton_clicked()
+{
+    windowHolder* wh = windowHolder::getInstance();
+    wh->checkoutWindowShow();
+}
+
+void shoppingcart::setShoppingCartTable()
+{
+    QStringList labels;
+    labels << "School" << "Souvenir" << "Price" << "Quantity";
+
+    ui->shoppingCartTableWidget->setHorizontalHeaderLabels(labels);
+    ui->shoppingCartTableWidget->horizontalHeader()->show();
+    ui->shoppingCartTableWidget->verticalHeader()->hide();
+    ui->shoppingCartTableWidget->setShowGrid(false);
+    ui->shoppingCartTableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->shoppingCartTableWidget->setSortingEnabled(false);
+    ui->shoppingCartTableWidget->setRowCount(ui->shoppingCartTableWidget->rowCount() + 1);
+
 }

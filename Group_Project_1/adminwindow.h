@@ -44,8 +44,6 @@ private slots:
      */
     void on_backToLoginButton_clicked();
 
-    void on_backToLoginButton_2_clicked();
-
     void on_addSouvenirButton_clicked();
 
     void on_deleteSouvenirButton_clicked();

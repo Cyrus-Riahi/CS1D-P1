@@ -29,4 +29,7 @@ windowHolder::windowHolder()
     key.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     shop.setWindowTitle("Shop \'Til You Drop");
     shop.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
+    checkout.setWindowTitle("Checkout");
+    checkout.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
+
 }

@@ -70,15 +70,6 @@ void adminWindow::on_backToLoginButton_clicked()
     WH->LoginWindowShow();
 }
 
-/*!
- * \fn adminWindow::on_backToLoginButton_2_clicked
- */
-void adminWindow::on_backToLoginButton_2_clicked()
-{
-    windowHolder* WH = windowHolder::getInstance();
-    WH->AdminWindowHide();
-    WH->LoginWindowShow();
-}
 
 /*!
  * \fn adminWindow::on_addSouvenirButton_clicked

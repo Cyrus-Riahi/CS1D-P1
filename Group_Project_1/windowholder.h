@@ -3,12 +3,11 @@
 #include "createloginwindow.h"
 #include "keywindow.h"
 #include "shoppingcart.h"
+#include "checkoutwindow.h"
 #ifndef WINDOWHOLDER_H
 #define WINDOWHOLDER_H
 
 #include <QDebug>
-
-
 
 /*! \class windowHolder*/
 class windowHolder
@@ -118,6 +117,35 @@ public:
         shop.update();
     }
 
+    void checkoutWindowHide()
+    {
+        checkout.hide();
+    }
+
+    void checkoutWindowShow()
+    {
+        checkout.show();
+        checkout.setUserameLabel();
+    }
+    QString getUserName(){
+        return login.getUserNameLineEdit();
+    }
+
+    void setMainUsername()
+    {
+        main.setCurrentAccount(this->getUserName());
+    }
+
+    QString getUsername()
+    {
+        return main.getCurrentAccount();
+    }
+
+    void clearShoppingCart()
+    {
+        shop.clearShoppingCart();
+        shop.setShoppingCartTable();
+    }
 
 private:
     windowHolder();                 /*! \var constructor of our singleton*/
@@ -128,6 +156,7 @@ private:
     CreateLoginWindow create;       /*! \var create a login window*/
     keyWindow key;                  /*! \var key window*/
     shoppingcart shop;              /*! \var key window*/
+    CheckoutWindow checkout;        /*! \var checkout window for buying souvenirs*/
 };
 
 #endif // WINDOWHOLDER_H

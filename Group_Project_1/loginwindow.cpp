@@ -8,6 +8,11 @@
 
 /*! \fn loginWindow::loginWindow
  * \param parent */
+QString loginWindow::getUserNameLineEdit()
+{
+    return ui->usernameLineEdit->text();
+}
+
 loginWindow::loginWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::loginWindow)
@@ -35,6 +40,7 @@ void loginWindow::on_loginButton_clicked()
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
         WH->MainWindowShow();
+        WH->setMainUsername();
     }
     /*! \brief admin login requierments*/
     else if(ui->usernameLineEdit->text() == "admin" &&
@@ -43,6 +49,7 @@ void loginWindow::on_loginButton_clicked()
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
         WH->AdminWindowShow();
+        WH->setMainUsername();
     }
     /*! \brief Incorrect login information*/
     else
@@ -56,6 +63,7 @@ void loginWindow::on_loginButton_clicked()
 /*! \fn loginWindow::on_passwordLineEdit_returnPressed */
 void loginWindow::on_passwordLineEdit_returnPressed()
 {
+
     QVector<Account*> accounts;
     accounts = loadAccounts();
     bool userLogin = validateUserLogin(accounts,
@@ -67,6 +75,7 @@ void loginWindow::on_passwordLineEdit_returnPressed()
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
         WH->MainWindowShow();
+        WH->setMainUsername();
     }
     /*! \brief admin login requierments*/
     else if(ui->usernameLineEdit->text() == "admin" &&
@@ -75,6 +84,7 @@ void loginWindow::on_passwordLineEdit_returnPressed()
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
         WH->AdminWindowShow();
+        WH->setMainUsername();
     }
     /*! \brief Incorrect login information*/
     else
@@ -98,6 +108,7 @@ void loginWindow::on_usernameLineEdit_returnPressed()
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
         WH->MainWindowShow();
+        WH->setMainUsername();
     }
     /*! \brief admin login requierments*/
     else if(ui->usernameLineEdit->text() == "admin" &&
@@ -106,6 +117,7 @@ void loginWindow::on_usernameLineEdit_returnPressed()
         windowHolder* WH = windowHolder::getInstance();
         WH->LoginWindowHide();
         WH->AdminWindowShow();
+        WH->setMainUsername();
     }
     /*! \brief Incorrect login information*/
     else
@@ -153,7 +165,6 @@ bool loginWindow::validateUserLogin(QVector<Account*> accounts,
         if(accounts[count]->getUsername() == username &&
            accounts[count]->getPassword() == password){
             found = true;
-
         }
         count++;
     }

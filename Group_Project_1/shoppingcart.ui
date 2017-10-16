@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>834</width>
+    <height>629</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -197,13 +197,26 @@
      <string>To the next school!</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="checkoutButton">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>560</y>
+      <width>71</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Checkout</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>834</width>
      <height>21</height>
     </rect>
    </property>
