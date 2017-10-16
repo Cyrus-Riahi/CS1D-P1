@@ -18,18 +18,25 @@ windowHolder *windowHolder::getInstance()
 windowHolder::windowHolder()
 {
     main.setWindowTitle("Route Tracker");
+    main.setFixedSize(main.width(), main.height());
     main.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     login.setWindowTitle("Route Tracker");
+    login.setFixedSize(login.width(), login.height());
     login.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     admin.setWindowTitle("Route Tracker(Admin)");
+    admin.setFixedSize(admin.width(), admin.height());
     admin.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     create.setWindowTitle("Create a Login");
+    create.setFixedSize(create.width(), create.height());
     create.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     key.setWindowTitle("Key");
+    key.setFixedSize(key.width(), key.height());
     key.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     shop.setWindowTitle("Shop \'Til You Drop");
+    shop.setFixedSize(shop.width(), shop.height());
     shop.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
     checkout.setWindowTitle("Checkout");
+    checkout.setFixedSize(checkout.width(), checkout.height());
     checkout.setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint | Qt::WindowCloseButtonHint);
 
 }

@@ -57,3 +57,6 @@ FORMS    += mainwindow.ui \
     checkoutwindow.ui
 
 DISTFILES +=
+
+RESOURCES += \
+    ../Images/mapplease.qrc

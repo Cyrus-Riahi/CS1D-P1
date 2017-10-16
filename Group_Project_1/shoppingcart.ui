@@ -13,6 +13,31 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">.QLineEdit, .QComboBox
+{
+border: 2px solid gray;
+}
+#shoppingcart
+{
+	
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(150, 204, 201, 255), stop:1 rgba(255, 255, 255, 255));
+}
+.QLineEdit, .QComboBox
+{
+border-radius:5px;
+}
+
+.QPushButton
+{
+	border-radius: 5px;	
+	height:22px;
+
+
+background-color: rgb(225, 225, 225);
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
@@ -141,6 +166,9 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="addToCartPushButton">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Add to Shopping Cart</string>
        </property>
@@ -148,6 +176,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="deleteFromCartPushButton">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>Delete From Shopping Cart</string>
        </property>
@@ -193,6 +224,9 @@
       <height>23</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>To the next school!</string>
     </property>
@@ -205,6 +239,9 @@
       <width>71</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Checkout</string>

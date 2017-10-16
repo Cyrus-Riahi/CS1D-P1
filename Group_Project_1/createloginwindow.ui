@@ -13,6 +13,31 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">.QLineEdit, .QComboBox
+{
+border: 2px solid gray;
+}
+#CreateLoginWindow
+{
+	
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(150, 204, 201, 255), stop:1 rgba(255, 255, 255, 255));
+}
+.QLineEdit, .QComboBox
+{
+border-radius:5px;
+}
+
+.QPushButton
+{
+	border-radius: 5px;	
+	height:22px;
+
+
+background-color: rgb(225, 225, 225);
+}
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
@@ -22,6 +47,9 @@
       <width>75</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Back to Login</string>
@@ -175,6 +203,9 @@
       <width>75</width>
       <height>23</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>Enter</string>

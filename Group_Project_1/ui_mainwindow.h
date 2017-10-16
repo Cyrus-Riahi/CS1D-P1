@@ -26,7 +26,6 @@
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -72,7 +71,6 @@ public:
     QTextBrowser *helpTextBrowser;
     QPushButton *backToLoginButton;
     QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -80,6 +78,20 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(900, 521);
+        MainWindow->setStyleSheet(QLatin1String(".QLineEdit, .QComboBox\n"
+"{\n"
+"border: 2px solid gray;\n"
+"}\n"
+"#MainWindow\n"
+"{\n"
+"	\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(150, 204, 201, 255), stop:1 rgba(255, 255, 255, 255));\n"
+"}\n"
+".QLineEdit, .QComboBox\n"
+"{\n"
+"border-radius:5px;\n"
+"}\n"
+""));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout_2 = new QGridLayout(centralWidget);
@@ -102,7 +114,8 @@ public:
         testBrowser->setGeometry(QRect(660, 20, 201, 311));
         SaddlebackButton = new QPushButton(tripPlannerTab);
         SaddlebackButton->setObjectName(QStringLiteral("SaddlebackButton"));
-        SaddlebackButton->setGeometry(QRect(60, 220, 12, 12));
+        SaddlebackButton->setGeometry(QRect(60, 220, 12, 24));
+        SaddlebackButton->setCursor(QCursor(Qt::PointingHandCursor));
         SaddlebackButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -114,7 +127,8 @@ public:
 " min-height:10px;"));
         UCIButton = new QPushButton(tripPlannerTab);
         UCIButton->setObjectName(QStringLiteral("UCIButton"));
-        UCIButton->setGeometry(QRect(50, 210, 12, 12));
+        UCIButton->setGeometry(QRect(50, 210, 12, 24));
+        UCIButton->setCursor(QCursor(Qt::PointingHandCursor));
         UCIButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -126,7 +140,8 @@ public:
 " min-height:10px;"));
         UCLAButton = new QPushButton(tripPlannerTab);
         UCLAButton->setObjectName(QStringLiteral("UCLAButton"));
-        UCLAButton->setGeometry(QRect(40, 200, 12, 12));
+        UCLAButton->setGeometry(QRect(40, 200, 12, 24));
+        UCLAButton->setCursor(QCursor(Qt::PointingHandCursor));
         UCLAButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -144,7 +159,8 @@ public:
         TotalMilesLabel->setGeometry(QRect(660, 340, 111, 16));
         UniversityOfPacificButton = new QPushButton(tripPlannerTab);
         UniversityOfPacificButton->setObjectName(QStringLiteral("UniversityOfPacificButton"));
-        UniversityOfPacificButton->setGeometry(QRect(20, 150, 12, 12));
+        UniversityOfPacificButton->setGeometry(QRect(20, 150, 12, 24));
+        UniversityOfPacificButton->setCursor(QCursor(Qt::PointingHandCursor));
         UniversityOfPacificButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -156,7 +172,8 @@ public:
 " min-height:10px;"));
         UniversityOfOregonButton = new QPushButton(tripPlannerTab);
         UniversityOfOregonButton->setObjectName(QStringLiteral("UniversityOfOregonButton"));
-        UniversityOfOregonButton->setGeometry(QRect(30, 70, 12, 12));
+        UniversityOfOregonButton->setGeometry(QRect(30, 70, 12, 24));
+        UniversityOfOregonButton->setCursor(QCursor(Qt::PointingHandCursor));
         UniversityOfOregonButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -168,7 +185,8 @@ public:
 " min-height:10px;"));
         ASUButton = new QPushButton(tripPlannerTab);
         ASUButton->setObjectName(QStringLiteral("ASUButton"));
-        ASUButton->setGeometry(QRect(130, 230, 12, 12));
+        ASUButton->setGeometry(QRect(130, 230, 12, 24));
+        ASUButton->setCursor(QCursor(Qt::PointingHandCursor));
         ASUButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -180,7 +198,8 @@ public:
 " min-height:10px;"));
         UniversityOfWisconsinButton = new QPushButton(tripPlannerTab);
         UniversityOfWisconsinButton->setObjectName(QStringLiteral("UniversityOfWisconsinButton"));
-        UniversityOfWisconsinButton->setGeometry(QRect(410, 100, 12, 12));
+        UniversityOfWisconsinButton->setGeometry(QRect(410, 100, 12, 24));
+        UniversityOfWisconsinButton->setCursor(QCursor(Qt::PointingHandCursor));
         UniversityOfWisconsinButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -192,7 +211,8 @@ public:
 " min-height:10px;"));
         NorthwesternButton = new QPushButton(tripPlannerTab);
         NorthwesternButton->setObjectName(QStringLiteral("NorthwesternButton"));
-        NorthwesternButton->setGeometry(QRect(430, 120, 12, 12));
+        NorthwesternButton->setGeometry(QRect(430, 120, 12, 24));
+        NorthwesternButton->setCursor(QCursor(Qt::PointingHandCursor));
         NorthwesternButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -204,7 +224,8 @@ public:
 " min-height:10px;"));
         UniversityOfMichiganButton = new QPushButton(tripPlannerTab);
         UniversityOfMichiganButton->setObjectName(QStringLiteral("UniversityOfMichiganButton"));
-        UniversityOfMichiganButton->setGeometry(QRect(470, 100, 12, 12));
+        UniversityOfMichiganButton->setGeometry(QRect(470, 100, 12, 24));
+        UniversityOfMichiganButton->setCursor(QCursor(Qt::PointingHandCursor));
         UniversityOfMichiganButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -216,7 +237,8 @@ public:
 " min-height:10px;"));
         OSUButton = new QPushButton(tripPlannerTab);
         OSUButton->setObjectName(QStringLiteral("OSUButton"));
-        OSUButton->setGeometry(QRect(490, 130, 12, 12));
+        OSUButton->setGeometry(QRect(490, 130, 12, 24));
+        OSUButton->setCursor(QCursor(Qt::PointingHandCursor));
         OSUButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -228,7 +250,8 @@ public:
 " min-height:10px;"));
         MITButton = new QPushButton(tripPlannerTab);
         MITButton->setObjectName(QStringLiteral("MITButton"));
-        MITButton->setGeometry(QRect(610, 70, 12, 12));
+        MITButton->setGeometry(QRect(610, 70, 12, 24));
+        MITButton->setCursor(QCursor(Qt::PointingHandCursor));
         MITButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -241,9 +264,11 @@ public:
         keyButton = new QPushButton(tripPlannerTab);
         keyButton->setObjectName(QStringLiteral("keyButton"));
         keyButton->setGeometry(QRect(780, 340, 75, 23));
+        keyButton->setCursor(QCursor(Qt::PointingHandCursor));
         FullertonButton = new QPushButton(tripPlannerTab);
         FullertonButton->setObjectName(QStringLiteral("FullertonButton"));
-        FullertonButton->setGeometry(QRect(60, 210, 12, 12));
+        FullertonButton->setGeometry(QRect(60, 210, 12, 24));
+        FullertonButton->setCursor(QCursor(Qt::PointingHandCursor));
         FullertonButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -255,7 +280,8 @@ public:
 " min-height:10px;"));
         TexasButton = new QPushButton(tripPlannerTab);
         TexasButton->setObjectName(QStringLiteral("TexasButton"));
-        TexasButton->setGeometry(QRect(320, 270, 12, 12));
+        TexasButton->setGeometry(QRect(320, 270, 12, 24));
+        TexasButton->setCursor(QCursor(Qt::PointingHandCursor));
         TexasButton->setStyleSheet(QLatin1String("background-color: white;\n"
 " border-style: solid;\n"
 " border-width:1px;\n"
@@ -277,6 +303,7 @@ public:
         removePrevDesButton = new QPushButton(tripPlannerTab);
         removePrevDesButton->setObjectName(QStringLiteral("removePrevDesButton"));
         removePrevDesButton->setGeometry(QRect(400, 360, 231, 23));
+        removePrevDesButton->setCursor(QCursor(Qt::PointingHandCursor));
         tabWidget->addTab(tripPlannerTab, QString());
         distanceTrackerTab = new QWidget();
         distanceTrackerTab->setObjectName(QStringLiteral("distanceTrackerTab"));
@@ -351,6 +378,7 @@ public:
 
         backToLoginButton = new QPushButton(centralWidget);
         backToLoginButton->setObjectName(QStringLiteral("backToLoginButton"));
+        backToLoginButton->setCursor(QCursor(Qt::PointingHandCursor));
         backToLoginButton->setAutoFillBackground(false);
         backToLoginButton->setFlat(false);
 
@@ -361,9 +389,6 @@ public:
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 900, 21));
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
@@ -371,7 +396,7 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(CB_Distance_Tracker, SIGNAL(currentTextChanged(QString)), tableWidget2, SLOT(clearContents()));
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
