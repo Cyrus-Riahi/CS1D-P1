@@ -1,3 +1,3 @@
 <map id="Ui::MainWindow" name="Ui::MainWindow">
-<area shape="rect" id="node2" href="$class_ui___main_window.html" title="{Ui_MainWindow\n|+ centralWidget\l+ gridLayout_2\l+ gridLayout\l+ tabWidget\l+ tripPlannerTab\l+ backToLoginButton\l+ distanceTrackerTab\l+ CB_Distance_Tracker\l+ tableWidget2\l+ souvenirsTab\l+ CB_School_Souvenirs\l+ souvenirTable\l+ menuBar\l+ mainToolBar\l+ statusBar\l|+ setupUi()\l+ retranslateUi()\l}" alt="" coords="5,5,168,303"/>
+<area shape="rect" id="node2" href="$class_ui___main_window.html" title="Ui_MainWindow" alt="" coords="6,5,121,32"/>
 </map>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['qmainwindow',['QMainWindow',['../class_q_main_window.html',1,'']]],
-  ['qsqldatabase',['QSqlDatabase',['../class_q_sql_database.html',1,'']]]
+  ['mainwindow',['MainWindow',['../class_main_window.html',1,'MainWindow'],['../class_ui_1_1_main_window.html',1,'Ui::MainWindow']]]
 ];

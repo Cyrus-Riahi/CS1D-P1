@@ -203,10 +203,6 @@ void MainWindow::updateUserUI()
 
 
         this->incAutoTripIndex();
-        if(this->autoTripIndex == this->autoTrip.size() - 1)
-        {
-            QMessageBox::information(this, "WARNING!", "This is the last stop! Don't forget to hit checkout!");
-        }
     }
     else if(this->autoTripIndex == this->autoTrip.size())
     {

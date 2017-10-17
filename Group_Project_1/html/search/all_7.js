@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['souvenir',['souvenir',['../classsouvenir.html',1,'souvenir'],['../classsouvenir.html#a53eb7933555c5ba83d336c5b21475cc2',1,'souvenir::souvenir()']]]
+  ['mainwindow',['MainWindow',['../class_main_window.html',1,'MainWindow'],['../class_ui_1_1_main_window.html',1,'Ui::MainWindow'],['../class_main_window.html#a8b244be8b7b7db1b08de2a2acb9409db',1,'MainWindow::MainWindow()']]]
 ];
